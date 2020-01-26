@@ -17,13 +17,21 @@ public class Control : MonoBehaviour
     // Скорость движения персонажей
     private float speed = 10f;
 
-    // Направление движения
-    private Vector2 direction;
+    // Направление движения персонажей
+    public Vector2 Direction { get; private set; }
+
+    // Анимация персонажей
+    private Animator brigade;
+
+    private void Awake()
+    {
+        brigade = transform.GetChild(0).GetComponent<Animator>();
+    }
 
     private void Update()
     {
         // Сбрасываем вектор движения
-        direction = Vector2.zero;
+        Direction = Vector2.zero;
 
         if (ActiveControl)
         {
@@ -31,8 +39,20 @@ public class Control : MonoBehaviour
             CheckPosition();
 
             // Перемещаем персонажей в указанном направлении
-            transform.Translate(direction * speed * Time.deltaTime);
+            transform.Translate(Direction * speed * Time.deltaTime);
         }
+
+        // Если направление нулевое (с погрешностью)
+        if (Direction.x < 0.015f && Direction.x > -0.015f)
+        {
+            // Устанавливаем стандартную анимацию
+            brigade.SetInteger("State", (int)Characters.Animations.Idle);
+        }
+        else
+        {
+            // Иначе устанавливаем анимацию бега
+            brigade.SetInteger("State", (int)Characters.Animations.Run);
+        } 
     }
 
     /// <summary>
@@ -45,26 +65,26 @@ public class Control : MonoBehaviour
                 (transform.position.x > 6.2f && Input.acceleration.x > 0))
         {
             // Сбрасываем направление
-            direction.x *= 0;
+            Direction *= 0;
         }
         else
         {
             // Устанавливаем направление в зависимости от наклона смартфона
-            direction.x = Input.acceleration.x * Inverted;
+            Direction = new Vector2(Input.acceleration.x * Inverted, 0);
         }
 
         // Если длина вектора превышает единицу
-        if (direction.sqrMagnitude > 1)
+        if (Direction.sqrMagnitude > 1)
         {
             // Округляем до единицы
-            direction.Normalize();
+            Direction.Normalize();
         }
     }
 
     /// <summary>
     /// Изменение активности управления
     /// </summary>
-    /// <param name="state">Состояние</param>
+    /// <param name="state">Обновленное состояние</param>
     public void ChangeControl(bool state)
     {
         ActiveControl = state;
