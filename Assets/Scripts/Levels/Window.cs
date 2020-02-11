@@ -1,55 +1,45 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 
-public class Window : MonoBehaviour
+public class Window : MonoBehaviour, IPoolable
 {
-    [Header("Пожар при старте")]
-    [SerializeField] private bool atStart = false;
+    // Открытость текущего окна
+    public bool OpenWindow { get; set; } = false;
 
-    // Был ли пожар в текущем окне
-    private bool repeatedFire = false;
+    // Пожар в текущем окне
+    private bool Fire { get; set; } = false;
 
-    // Текущая активность пожара
-    private bool burns = false;
+    // Эффект пожара в текущем окне
+    [SerializeField] private GameObject fireFX;
 
-    // Эффект огня
-    private GameObject fire;
-
-    // Ссылка на анимацию
+    // Ссылка на анимацию окна
     private Animator animator;
 
     private void Awake()
     {
-        fire = transform.GetChild(0).gameObject;
         animator = GetComponent<Animator>();
     }
-
-    private void Start()
-    {
-        if (atStart)
-        {
-            burns = true;
-            repeatedFire = true;
-            ActivateFire();
-        }
-    }
-
+    
     /// <summary>
-    /// Запуск пожара в окне
+    /// Активация объекта после взятия из пула
     /// </summary>
-    public void ActivateFire()
+    public void ActivateObject()
     {
-        if (repeatedFire)
+        // Перемещаем взятый из пула объект в раздел активных объектов
+        gameObject.transform.parent = transform.parent.parent.Find("ActiveObjects");
+
+        if (OpenWindow)
         {
             // Отображаем открытое окно
             animator.Play("Fire");
+            // Активируем пожар
+            Fire = true;
         }
         else
         {
-            burns = true;
-            repeatedFire = true;
-
-            // Запускаем постепенную анимацию
+            // Открываем окно
+            OpenWindow = true;
+            // Запускаем анимацию пожара
             animator.SetBool("Fire", true);
         }
     }
@@ -59,6 +49,27 @@ public class Window : MonoBehaviour
     /// </summary>
     public void ShowFireEffect()
     {
-        fire.SetActive(true);
+        fireFX.SetActive(true);
+        // Создаем огненные капли
+        StartCoroutine(DropsFalling());
+    }
+
+    /// <summary>
+    /// Создание огненных капель в горящем окне
+    /// </summary>
+    private IEnumerator DropsFalling()
+    {
+        while (Fire)
+        {
+            yield return new WaitForSeconds(Random.Range(2.5f, 6.5f));
+            // Получаем объект из пула и получаем его компонент
+            var drop = PoolsManager.GetObjectFromPool(ListingPools.Pools.Twinkle.ToString()).GetComponent<Drop>();
+
+            // Перемещаем каплю к горящему окну (с небольщим смещением)
+            drop.transform.position = fireFX.transform.position + new Vector3(-0.15f, Random.Range(-0.2f, 0.2f), 0);
+
+            // Активируем объект
+            drop.ActivateObject();
+        }
     }
 }
