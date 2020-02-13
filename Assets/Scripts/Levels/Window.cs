@@ -3,13 +3,10 @@ using UnityEngine;
 
 public class Window : MonoBehaviour, IPoolable
 {
-    // Открытость текущего окна
+    // Открыто ли окно при старте
     public bool OpenWindow { get; set; } = false;
 
-    // Пожар в текущем окне
-    private bool Fire { get; set; } = false;
-
-    // Эффект пожара в текущем окне
+    [Header("Эффект пожара в окне")]
     [SerializeField] private GameObject fireFX;
 
     // Ссылка на анимацию окна
@@ -29,19 +26,11 @@ public class Window : MonoBehaviour, IPoolable
         gameObject.transform.parent = transform.parent.parent.Find("ActiveObjects");
 
         if (OpenWindow)
-        {
             // Отображаем открытое окно
             animator.Play("Fire");
-            // Активируем пожар
-            Fire = true;
-        }
         else
-        {
-            // Открываем окно
-            OpenWindow = true;
-            // Запускаем анимацию пожара
+            // Запускаем постепенную анимацию пожара
             animator.SetBool("Fire", true);
-        }
     }
 
     /// <summary>
@@ -59,17 +48,14 @@ public class Window : MonoBehaviour, IPoolable
     /// </summary>
     private IEnumerator DropsFalling()
     {
-        while (Fire)
-        {
-            yield return new WaitForSeconds(Random.Range(2.5f, 6.5f));
-            // Получаем объект из пула и получаем его компонент
-            var drop = PoolsManager.GetObjectFromPool(ListingPools.Pools.Twinkle.ToString()).GetComponent<Drop>();
+        yield return new WaitForSeconds(Random.Range(3f, 6.5f));
+        // Получаем объект из пула и получаем его компонент
+        var drop = PoolsManager.GetObjectFromPool(ListingPools.Pools.Twinkle.ToString()).GetComponent<Drop>();
 
-            // Перемещаем каплю к горящему окну (с небольщим смещением)
-            drop.transform.position = fireFX.transform.position + new Vector3(-0.15f, Random.Range(-0.2f, 0.2f), 0);
+        // Перемещаем каплю к горящему окну (с небольщим смещением)
+        drop.transform.position = fireFX.transform.position + new Vector3(-0.15f, Random.Range(-0.2f, 0.2f), 0);
 
-            // Активируем объект
-            drop.ActivateObject();
-        }
+        // Активируем объект
+        drop.ActivateObject();
     }
 }
