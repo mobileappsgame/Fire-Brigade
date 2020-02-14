@@ -3,17 +3,17 @@
 public class Hydrant : MonoBehaviour
 {
     [Header("Эффект воды")]
-    [SerializeField] private ParticleSystem particle;
+    [SerializeField] private ParticleSystem water;
 
     [Header("Объект тушения")]
     [SerializeField] private GameObject snuffOut;
 
-    // Ссылки на компоненты
+    // Ссылка на компонент частиц
     private ParticleSystem.MainModule mainModule;
 
     private void Awake()
     {
-        mainModule = particle.main;
+        mainModule = water.main;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

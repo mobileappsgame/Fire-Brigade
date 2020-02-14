@@ -13,13 +13,13 @@ public class Stretcher : MonoBehaviour
     // Горят ли сейчас носилки
     public bool IsBurns { get; private set; }
 
-    [Header("Огонь на носилках")]
+    [Header("Огоньки на носилках")]
     [SerializeField] private GameObject[] lights;
 
     // Перечисление анимаций носилок
     private enum State { Green, Orange, Red, Yellow, Different, Destroy }
 
-    // Ссылки на компоненты
+    // Ссылка на компонент
     private Animator animator;
 
     private void Awake()
@@ -32,6 +32,7 @@ public class Stretcher : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // Если огненная капля касается носилок
         if (collision.gameObject.GetComponent<Drop>())
         {
             // Возвращаем объект в нужный пул
@@ -44,7 +45,6 @@ public class Stretcher : MonoBehaviour
             {
                 // Запускаем отсчет до уничтожения носилок
                 StartCoroutine(DestroyStretcher());
-
                 // Активируем переменную огня
                 IsBurns = true;
             }
@@ -88,9 +88,18 @@ public class Stretcher : MonoBehaviour
         LightVisibility(false);
 
         // Переключаем анимацию носилок на уничтожение
-        animator.SetInteger("State", (int)State.Destroy);
+        ChangeAnimation((int)State.Destroy);
 
         // Вызываем событие о сгоревших носилках
         BurnedOut?.Invoke();
+    }
+
+    /// <summary>
+    /// Переключение анимации носилок
+    /// </summary>
+    /// <param name="number">Значение параметра анимации</param>
+    public void ChangeAnimation(int number)
+    {
+        animator.SetInteger("State", number);
     }
 }

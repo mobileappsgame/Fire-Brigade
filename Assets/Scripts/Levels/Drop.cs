@@ -22,7 +22,7 @@ public class Drop : MonoBehaviour, IPoolable
 
     private void Update()
     {
-        // Движение капли вниз
+        // Движение капли вниз с указанной скоростью
         transform.Translate(Vector2.down * speed * Time.deltaTime);
     }
 
@@ -31,7 +31,7 @@ public class Drop : MonoBehaviour, IPoolable
     /// </summary>
     public void ShowSplashEffect()
     {
-        // Перемещаем эффект к капле
+        // Перемещаем эффект брызг к капле
         spray.transform.position = transform.position;
         // Воспроизводим эффект
         spray.Play();

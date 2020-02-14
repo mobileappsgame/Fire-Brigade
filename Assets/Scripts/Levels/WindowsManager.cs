@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class WindowsManager : MonoBehaviour
 {
-    [Header("Максимум открытых окон")]
+    [Header("Максимум открытых окон")] // при старте уровня
     [SerializeField] private int maximum;
 
     private void Start()
@@ -29,10 +29,11 @@ public class WindowsManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Переодическое открытие окон (появление пожара)
+    /// Переодическое открытие доступных окон (появление пожара)
     /// </summary>
     private IEnumerator OpenWindows()
     {
+        // Пока в пуле есть доступные окна
         while (PoolsManager.QuantityObjects(ListingPools.Pools.Windows.ToString()) > 0)
         {
             var seconds = Random.Range(5, 12);

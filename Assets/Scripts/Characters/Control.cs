@@ -10,7 +10,8 @@ public class Control : MonoBehaviour, IPointerDownHandler
     private int Inverted { get { return inverted ? -1 : 1; } }
 
     // Скорость движения персонажей
-    private float speed = 16.5f;
+    private float speed = 17.2f;
+
     // Высота прыжка персонажей
     private float jump = 5f;
 
@@ -23,6 +24,7 @@ public class Control : MonoBehaviour, IPointerDownHandler
     // Ограничители для персонажей
     private float[] limiters = new float[2];
 
+    // Список ограничителей
     private enum Limiters { Left, Right }
 
     // Ссылки на компоненты
@@ -37,7 +39,7 @@ public class Control : MonoBehaviour, IPointerDownHandler
 
     private void Start()
     {
-        // Получаем границы экрана и устанавливаем ограничители
+        // Получаем границы экрана и устанавливаем ограничители для персонажей
         limiters[(int)Limiters.Left] = Camera.main.ViewportToWorldPoint(new Vector2(0.05f, 0)).x;
         limiters[(int)Limiters.Right] = Camera.main.ViewportToWorldPoint(new Vector2(0.87f, 0)).x;
     }
@@ -98,10 +100,10 @@ public class Control : MonoBehaviour, IPointerDownHandler
     {
         if (IsGroung)
         {
-            // Отключаем нахождение на земле
-            IsGroung = false;
             // Создаем импульсный прыжок персонажей
             rigdbody.AddForce(Vector2.up * jump, ForceMode2D.Impulse);
+            // Отключаем нахождение на земле
+            IsGroung = false;
         }
     }
 }

@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfebb3e5c7c439145bd11173156fd450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particle: {fileID: 7798038503289024479}
+  water: {fileID: 7798038503289024479}
   snuffOut: {fileID: 1305385230}
 --- !u!1 &7798038501382697545
 GameObject:

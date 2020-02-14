@@ -41,11 +41,10 @@ public class PoolsManager
     /// </summary>
     /// <param name="key">Ключ пула в словаре</param>
     /// <param name="number">Номер объекта, который нужно получить из пула</param>
-    /// <returns>Объект из пула</returns>
     public static GameObject GetObjectFromPool(string key, int number = 0)
     {
         // Если в пуле есть доступный объект
-        if (poolsDictionary[key].Count > number)
+        if (poolsDictionary[key].Count > 0)
         {
             // Получаем объект и удаляем его из списка
             GameObject objectFromPool = poolsDictionary[key][number];
