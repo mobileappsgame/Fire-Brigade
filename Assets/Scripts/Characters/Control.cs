@@ -10,7 +10,7 @@ public class Control : MonoBehaviour, IPointerDownHandler
     private int Inverted { get { return inverted ? -1 : 1; } }
 
     // Скорость движения персонажей
-    private float speed = 17.2f;
+    private float speed = 19.5f;
 
     // Высота прыжка персонажей
     private float jump = 5f;

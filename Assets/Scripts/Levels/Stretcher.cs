@@ -82,7 +82,7 @@ public class Stretcher : MonoBehaviour
     /// </summary>
     private IEnumerator DestroyStretcher()
     {
-        yield return new WaitForSeconds(5.5f);
+        yield return new WaitForSeconds(6.0f);
 
         // Скрываем огонь на носилках
         LightVisibility(false);

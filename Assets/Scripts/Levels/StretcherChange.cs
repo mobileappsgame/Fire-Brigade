@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
-public class FireEngine : MonoBehaviour
+public class StretcherChange : MonoBehaviour
 {
     [Header("Аниматор панели выбора")]
     [SerializeField] private Animator panelStretcher;
@@ -16,6 +17,8 @@ public class FireEngine : MonoBehaviour
 
             // Включаем состояние открытия
             panelStretcher.SetBool("Opening", true);
+
+            StartCoroutine(ChangeTimeScale(0.5f));
         }
     }
 
@@ -26,6 +29,18 @@ public class FireEngine : MonoBehaviour
         {
             // Переключаемся на состояние закрытия
             panelStretcher.SetBool("Opening", false);
+
+            StartCoroutine(ChangeTimeScale(1.0f));
         }
+    }
+
+    /// <summary>
+    /// Изменение течения времени
+    /// </summary>
+    /// <param name="scale">Значение времени</param>
+    private IEnumerator ChangeTimeScale(float scale)
+    {
+        yield return new WaitForSeconds(0.12f);
+        Time.timeScale = scale;
     }
 }

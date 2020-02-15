@@ -1,10 +1,14 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class WindowsManager : MonoBehaviour
 {
     [Header("Максимум открытых окон")] // при старте уровня
     [SerializeField] private int maximum;
+
+    // Список открытых окон доступных для персонажей
+    public static List<Window> aaaaaa = new List<Window>();
 
     private void Start()
     {
@@ -47,5 +51,11 @@ public class WindowsManager : MonoBehaviour
             // Активируем объект
             window.ActivateObject();
         }
+    }
+
+    private IEnumerator Aaaaa()
+    {
+        yield return new WaitForSeconds(10);
+        aaaaaa[0].Man();
     }
 }

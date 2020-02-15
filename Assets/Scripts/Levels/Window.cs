@@ -22,16 +22,26 @@ public class Window : MonoBehaviour, IPoolable
     /// </summary>
     public void ActivateObject()
     {
+        WindowsManager.aaaaaa.Add(this);
+
+
+
         // Перемещаем взятый из пула объект в раздел активных объектов
         gameObject.transform.parent = transform.parent.parent.Find("ActiveObjects");
 
         // Если окно уже открыто
         if (OpenWindow)
+        {
             // Отображаем пожар сразу
             animator.Play("Fire");
+        }
         else
+        {
+            // Открываем окно
+            OpenWindow = true;
             // Иначе запускаем постепенный пожар
             animator.SetBool("Fire", true);
+        }
     }
 
     /// <summary>
@@ -52,7 +62,7 @@ public class Window : MonoBehaviour, IPoolable
     {
         while (OpenWindow)
         {
-            yield return new WaitForSeconds(Random.Range(4f, 8.5f));
+            yield return new WaitForSeconds(Random.Range(5f, 12.5f));
             // Получаем объект из пула и получаем его компонент
             var drop = PoolsManager.GetObjectFromPool(ListingPools.Pools.Twinkle.ToString()).GetComponent<Drop>();
 
@@ -62,5 +72,10 @@ public class Window : MonoBehaviour, IPoolable
             // Активируем объект
             drop.ActivateObject();
         }
+    }
+
+    public void Man()
+    {
+        
     }
 }
