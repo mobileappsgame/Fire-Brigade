@@ -1,14 +1,13 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class StretcherChange : MonoBehaviour
 {
-    [Header("Аниматор панели выбора")]
+    [Header("Анимация панели выбора")]
     [SerializeField] private Animator panelStretcher;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Если персонажи касаются машины
+        // Если персонажи касаются пожарной машины
         if (collision.gameObject.GetComponent<Control>())
         {
             // Если аниматор отключен, активируем
@@ -18,29 +17,20 @@ public class StretcherChange : MonoBehaviour
             // Включаем состояние открытия
             panelStretcher.SetBool("Opening", true);
 
-            StartCoroutine(ChangeTimeScale(0.5f));
+            // Вызываем изменение коэффициента падения
+            Slowdown.SlowDown?.Invoke(true);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        // Если персонажи больше не касаются машины
         if (collision.gameObject.GetComponent<Control>())
         {
             // Переключаемся на состояние закрытия
             panelStretcher.SetBool("Opening", false);
 
-            StartCoroutine(ChangeTimeScale(1.0f));
+            // Вызываем изменение коэффициента падения
+            Slowdown.SlowDown?.Invoke(false);
         }
-    }
-
-    /// <summary>
-    /// Изменение течения времени
-    /// </summary>
-    /// <param name="scale">Значение времени</param>
-    private IEnumerator ChangeTimeScale(float scale)
-    {
-        yield return new WaitForSeconds(0.12f);
-        Time.timeScale = scale;
     }
 }

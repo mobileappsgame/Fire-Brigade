@@ -198,6 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireFX: {fileID: 6760477262137639494}
+  victims: RedMen
 --- !u!1 &6760477262137639494
 GameObject:
   m_ObjectHideFlags: 0

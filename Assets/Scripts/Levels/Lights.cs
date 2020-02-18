@@ -4,13 +4,13 @@ public class Lights : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Если огонек касается объекта тушения
+        // Если огонек с носилок касается объекта тушения
         if (collision.transform.parent.GetComponent<Hydrant>())
         {
-            // Скрываем объект
+            // Скрываем текущий огонек
             gameObject.SetActive(false);
 
-            // Вызываем проверку количества огоньков
+            // Проверяем количество оставшихся огоньков
             Stretcher.SnuffOut?.Invoke();
         }
     }

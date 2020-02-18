@@ -5000,6 +5000,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireFX: {fileID: 3111767155956771038}
+  victims: OrangeMen
 --- !u!1 &8272160050493746868
 GameObject:
   m_ObjectHideFlags: 0

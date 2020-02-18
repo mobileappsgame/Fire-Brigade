@@ -4,6 +4,10 @@
     public enum Pools
     {
         Windows,
-        Twinkle
+        Twinkle,
+        GreenMen,
+        OrangeMen,
+        RedMen,
+        YellowMen
     }
 }

@@ -7,8 +7,11 @@ public class WindowsManager : MonoBehaviour
     [Header("Максимум открытых окон")] // при старте уровня
     [SerializeField] private int maximum;
 
+    [Header("Количество жителей")]
+    [SerializeField] private int victims;
+
     // Список открытых окон доступных для персонажей
-    public static List<Window> aaaaaa = new List<Window>();
+    public static List<Window> windows = new List<Window>();
 
     private void Start()
     {
@@ -23,13 +26,17 @@ public class WindowsManager : MonoBehaviour
             // Получаем объект из пула и получаем его компонент
             var window = PoolsManager.GetObjectFromPool(ListingPools.Pools.Windows.ToString(), number).GetComponent<Window>();
 
-            // Открываем выбранное окно
+            // Открываем данное окно
             window.OpenWindow = true;
+
             // Активируем объект
             window.ActivateObject();
         }
 
+        // Запускаем открытие других окон
         StartCoroutine(OpenWindows());
+        // Активируем прыжки персонажей
+        StartCoroutine(CharacterJumping());
     }
 
     /// <summary>
@@ -48,14 +55,36 @@ public class WindowsManager : MonoBehaviour
 
             // Получаем объект из пула и получаем его компонент
             var window = PoolsManager.GetObjectFromPool(ListingPools.Pools.Windows.ToString(), number).GetComponent<Window>();
+            
             // Активируем объект
             window.ActivateObject();
         }
     }
 
-    private IEnumerator Aaaaa()
+    /// <summary>
+    /// Переодическое появление жильцов в доступных окнах
+    /// </summary>
+    private IEnumerator CharacterJumping()
     {
-        yield return new WaitForSeconds(10);
-        aaaaaa[0].Man();
+        // Пока есть жители
+        while (victims > 0)
+        {
+            yield return new WaitForSeconds(Random.Range(3f, 6.5f));
+
+            if (windows.Count > 0)
+            {
+                // Определяем случайное окно из доступных
+                var window = Random.Range(0, windows.Count);
+
+                // Показываем персонажа в окне
+                windows[window].ShowVictims();
+
+                // Удаляем окно из списка доступных
+                windows.RemoveAt(window);
+
+                // Уменьшаем жильцов
+                victims--;
+            }
+        }
     }
 }

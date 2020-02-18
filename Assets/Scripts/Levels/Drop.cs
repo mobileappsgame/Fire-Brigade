@@ -8,22 +8,30 @@ public class Drop : MonoBehaviour, IPoolable
     // Скорость падения капли
     private float speed;
 
+    // Ссылка на компонент
+    private Rigidbody2D rigbody;
+
+    private void Awake()
+    {
+        rigbody = GetComponent<Rigidbody2D>();
+    }
+
+    /// <summary>
+    /// Активация объекта из пула
+    /// </summary>
     public void ActivateObject()
     {
-        // Перемещаем взятый из пула объект в раздел активных объектов
-        gameObject.transform.parent = transform.parent.parent.Find("ActiveObjects");
-
         // Активируем объект
         gameObject.SetActive(true);
 
         // Определяем случайную скорость падения
-        speed = Random.Range(5f, 6.2f);
+        speed = Random.Range(7.5f, 8.5f);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        // Движение капли вниз с указанной скоростью
-        transform.Translate(Vector2.down * speed * Time.deltaTime);
+        // Движение капли вниз с указанной скоростью (и коэффициентом замедления)
+        rigbody.MovePosition(rigbody.position + Vector2.down * (speed * Slowdown.coefficient) * Time.fixedDeltaTime);
     }
 
     /// <summary>
@@ -31,9 +39,18 @@ public class Drop : MonoBehaviour, IPoolable
     /// </summary>
     public void ShowSplashEffect()
     {
-        // Перемещаем эффект брызг к капле
+        // Перемещаем эффект брызг к огненной капле
         spray.transform.position = transform.position;
         // Воспроизводим эффект
         spray.Play();
+    }
+
+    /// <summary>
+    /// Деактивация объекта при возвращении в пул
+    /// </summary>
+    public void DeactivateObject()
+    {
+        // Отключаем объект
+        gameObject.SetActive(false);
     }
 }

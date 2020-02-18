@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Hydrant : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class Hydrant : MonoBehaviour
     [Header("Объект тушения")]
     [SerializeField] private GameObject snuffOut;
 
-    // Ссылка на компонент частиц
+    // Ссылка на основной компонент частиц
     private ParticleSystem.MainModule mainModule;
 
     private void Awake()
@@ -18,33 +19,35 @@ public class Hydrant : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Если персонаж касается гидранта
+        // Если персонажи касаются пожарного гидранта
         if (collision.gameObject.GetComponent<Control>())
         {
             // Увеличиваем напор воды
             mainModule.startLifetime = 0.54f;
+
             // Активируем объект тушения
-            Invoke("ActiveSnuffOut", 0.5f);
+            StartCoroutine(ActiveSnuffOut());
         }  
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        // Если персонаж больше не касается гидранта
         if (collision.gameObject.GetComponent<Control>())
         {
             // Восстанавливаем стандартный напор воды
             mainModule.startLifetime = 0.3f;
+
             // Отключаем объект тушения
             snuffOut.SetActive(false);
         }  
     }
 
     /// <summary>
-    ///  Активация объекта тушения огня
+    /// Активация объекта тушения огня на носилках
     /// </summary>
-    private void ActiveSnuffOut()
+    private IEnumerator ActiveSnuffOut()
     {
+        yield return new WaitForSeconds(0.7f);
         snuffOut.SetActive(true);
     }
 }

@@ -43,8 +43,11 @@ public class PoolsManager
     /// <param name="number">Номер объекта, который нужно получить из пула</param>
     public static GameObject GetObjectFromPool(string key, int number = 0)
     {
+        // Получаем количество объектов в пуле
+        var quantity = poolsDictionary[key].Count;
+
         // Если в пуле есть доступный объект
-        if (poolsDictionary[key].Count > 0)
+        if (quantity > 0 && number < quantity)
         {
             // Получаем объект и удаляем его из списка
             GameObject objectFromPool = poolsDictionary[key][number];
@@ -64,9 +67,7 @@ public class PoolsManager
     {
         // Добавляем объект в словарь
         poolsDictionary[key].Add(target);
-        // Деактивируем объект
-        target.SetActive(false);
-        // Возвращаем объект в родительский объект пула
-        target.transform.parent = target.transform.parent.parent.Find("Pool");
+        // Вызываем деактивацию объекта
+        target.GetComponent<IPoolable>().DeactivateObject();
     }
 }

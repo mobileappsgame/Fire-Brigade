@@ -7,10 +7,10 @@ public class Helmet : MonoBehaviour
         // Если капля касается шлема персонажа
         if (collision.gameObject.GetComponent<Drop>())
         {
-            // Отображаем эффект огненных брызг
+            // Отображаем эффект огненных брызг (разлетание капли)
             collision.gameObject.GetComponent<Drop>().ShowSplashEffect();
 
-            // Возвращаем объект в нужный пул
+            // Возвращаем каплю в указанный пул объектов
             PoolsManager.PutObjectToPool(ListingPools.Pools.Twinkle.ToString(), collision.gameObject);
         }
     }

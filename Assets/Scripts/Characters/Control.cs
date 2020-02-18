@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class Control : MonoBehaviour, IPointerDownHandler
+public class Control : MonoBehaviour
 {
     [Header("Инвертирование управления")]
     [SerializeField] private bool inverted = false;
@@ -16,7 +15,7 @@ public class Control : MonoBehaviour, IPointerDownHandler
     private float jump = 5f;
 
     // Находится ли персонажи на земле
-    public bool IsGroung { get; set; }
+    public bool IsGroung { get; set; } = false;
 
     // Направление движения персонажей
     public Vector2 Direction { get; private set; }
@@ -44,7 +43,7 @@ public class Control : MonoBehaviour, IPointerDownHandler
         limiters[(int)Limiters.Right] = Camera.main.ViewportToWorldPoint(new Vector2(0.87f, 0)).x;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         CheckPosition();
         MoveCharacters();
@@ -77,7 +76,7 @@ public class Control : MonoBehaviour, IPointerDownHandler
     /// </summary>
     private void MoveCharacters()
     {
-        // Если направление нулевое (с погрешностью)
+        // Если направление нулевое (с небольшой погрешностью)
         if (Direction.x < 0.015f && Direction.x > -0.015f)
         {
             // Устанавливаем стандартную анимацию
@@ -88,20 +87,21 @@ public class Control : MonoBehaviour, IPointerDownHandler
             // Иначе устанавливаем анимацию бега персонажей
             brigade.SetInteger("State", (int)Characters.Animations.Run);
 
-            // Перемещаем персонажей в указанном направлении
-            transform.Translate(Direction * speed * Time.deltaTime);
+            // Перемещаем персонажей в указанном направлении с указанной скоростью
+            rigdbody.transform.Translate(Direction * speed * Time.fixedDeltaTime);
         }
     }
-    
+
     /// <summary>
     /// Прыжок персонажей
     /// </summary>
-    public void OnPointerDown(PointerEventData eventData)
+    private void OnMouseDown()
     {
         if (IsGroung)
         {
             // Создаем импульсный прыжок персонажей
             rigdbody.AddForce(Vector2.up * jump, ForceMode2D.Impulse);
+
             // Отключаем нахождение на земле
             IsGroung = false;
         }

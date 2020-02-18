@@ -327,6 +327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireFX: {fileID: 8439333867061880378}
+  victims: GreenMen
 --- !u!1 &8439333867347399157
 GameObject:
   m_ObjectHideFlags: 0
