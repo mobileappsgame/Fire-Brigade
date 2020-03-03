@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class Slowdown : MonoBehaviour
@@ -21,7 +22,29 @@ public class Slowdown : MonoBehaviour
     /// <param name="activity">Активность замедления</param>
     private void ChangeSlowdown(bool activity)
     {
-        // Устанавливаем необходимый коэффициент
-        coefficient = activity ? 0.2f : 1;
+        if (activity)
+        {
+            // Останавливаем увеличение
+            StopAllCoroutines();
+            // Устанавливаем коэффициент
+            coefficient = 0.2f;
+        }
+        else
+        {
+            // Запускаем увеличение коэффициента
+            StartCoroutine(IncreaseCoefficient());
+        }
+    }
+
+    /// <summary>
+    /// Постепенное увеличение коэффициента
+    /// </summary>
+    private IEnumerator IncreaseCoefficient()
+    {
+        while (coefficient < 1)
+        {
+            yield return new WaitForSeconds(0.05f);
+            coefficient += 0.1f;
+        }
     }
 }

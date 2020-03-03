@@ -72,7 +72,7 @@ public class Window : MonoBehaviour, IPoolable
     {
         while (OpenWindow)
         {
-            yield return new WaitForSeconds(Random.Range(5f, 12.5f));
+            yield return new WaitForSeconds(Random.Range(5.5f, 12.5f));
 
             if (Twinkle)
             {
@@ -103,7 +103,7 @@ public class Window : MonoBehaviour, IPoolable
             var victim = PoolsManager.GetObjectFromPool(victims).GetComponent<Victims>();
 
             // Перемещаем персонажа в текущее окно
-            victim.transform.position = transform.position;
+            victim.transform.position = transform.position + new Vector3(0, victim.Offset, 0);
 
             // Записываем окно, из которого прыгает персонаж
             victim.Window = this;

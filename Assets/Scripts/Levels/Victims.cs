@@ -15,6 +15,11 @@ public class Victims : MonoBehaviour, IPoolable
     // Слой носилок на сцене
     private int layer;
 
+    [Header("Смещение в окне")]
+    [SerializeField] private float offset = 0;
+
+    public float Offset { get { return offset; } }
+
     // Окно, из которого прыгает персонаж
     public Window Window { get; set; }
 
