@@ -8,8 +8,13 @@ public class Stretcher : MonoBehaviour
     // Событие при сгорании носилок
     public UnityEvent BurnedOut = new UnityEvent();
 
-    // Делегат тушения носилок
+    // Тушение носилок
     public static Action SnuffOut;
+
+    // Прочность носилок
+    public int Strength { get; private set; } = 100;
+
+    public string Status { get; private set; }
 
     // Горят ли сейчас носилки
     public static bool IsBurns { get; private set; }
@@ -36,16 +41,17 @@ public class Stretcher : MonoBehaviour
         // Если огненная капля касается носилок
         if (collision.gameObject.GetComponent<Drop>())
         {
-            // Возвращаем объект в указанный пул объектов
-            PoolsManager.PutObjectToPool(ListingPools.Pools.Twinkle.ToString(), collision.gameObject);
-
-            // Поджигаем носилки
-            LightVisibility(true);
-
             if (IsBurns == false)
             {
+                // Возвращаем объект в указанный пул объектов
+                PoolsManager.PutObjectToPool(ListingPools.Pools.Twinkle.ToString(), collision.gameObject);
+
+                // Поджигаем носилки
+                LightVisibility(true);
+
                 // Запускаем отсчет до уничтожения носилок
                 StartCoroutine(DestroyStretcher());
+
                 // Активируем переменную огня
                 IsBurns = true;
             }
@@ -83,7 +89,17 @@ public class Stretcher : MonoBehaviour
     /// </summary>
     private IEnumerator DestroyStretcher()
     {
-        yield return new WaitForSeconds(6.0f);
+        while (Strength > 0)
+        {
+            yield return new WaitForSeconds(1.0f);
+
+            // Уменьшаем прочность носилок
+            Strength -= 17;
+
+            // Обновляем проценты в текстовом поле
+            StretcherStrength.StrengthChange?.Invoke();
+        }
+
         // Скрываем огонь на носилках
         LightVisibility(false);
 

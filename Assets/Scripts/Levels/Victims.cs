@@ -84,11 +84,14 @@ public class Victims : MonoBehaviour, IPoolable
     }
 
     /// <summary>
-    /// Активация переменной падения
+    /// Активация падения персонажа
     /// </summary>
     public void ActivateFall()
     {
         isFall = true;
+
+        // Уменьшаем количество оставшихся персонажей
+        VictimsCounting.QuantityChange?.Invoke();
     }
 
     /// <summary>

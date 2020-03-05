@@ -10,6 +10,8 @@ public class WindowsManager : MonoBehaviour
     [Header("Количество жителей")]
     [SerializeField] private int victims;
 
+    public int Victims { get { return victims; } }
+
     // Список открытых окон доступных для персонажей
     public static List<Window> windows = new List<Window>();
 
