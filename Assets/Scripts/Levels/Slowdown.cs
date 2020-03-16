@@ -7,12 +7,11 @@ public class Slowdown : MonoBehaviour
     // Коэффициент замедления падения
     public static float coefficient = 1;
 
-    // Делегат изменения коэффициента
+    // Изменение коэффициента падения
     public static Action<bool> SlowDown;
 
     private void Start()
     {
-        // Добавляем метод изменения коэффициента
         SlowDown += ChangeSlowdown;
     }
 
@@ -26,6 +25,7 @@ public class Slowdown : MonoBehaviour
         {
             // Останавливаем увеличение
             StopAllCoroutines();
+
             // Устанавливаем коэффициент
             coefficient = 0.2f;
         }
@@ -37,13 +37,13 @@ public class Slowdown : MonoBehaviour
     }
 
     /// <summary>
-    /// Постепенное увеличение коэффициента
+    /// Постепенное увеличение коэффициента падения
     /// </summary>
     private IEnumerator IncreaseCoefficient()
     {
         while (coefficient < 1)
         {
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.03f);
             coefficient += 0.1f;
         }
     }

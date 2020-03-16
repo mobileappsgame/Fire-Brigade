@@ -163,3 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8f88b7397ad14a4ebbf55d8340ab2ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  status: Green
+  weight: 25
+  delay: 4.2
+  offset: 0

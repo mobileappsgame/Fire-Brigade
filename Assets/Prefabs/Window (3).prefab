@@ -199,6 +199,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireFX: {fileID: 6760477262137639494}
   victims: RedMen
+  minSeconds: 5.5
+  maxSeconds: 12.5
+  exclamation: {fileID: 6632506525747184091}
 --- !u!1 &6760477262137639494
 GameObject:
   m_ObjectHideFlags: 0

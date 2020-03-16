@@ -5,35 +5,40 @@ using UnityEngine.Events;
 
 public class Stretcher : MonoBehaviour
 {
-    // Событие при сгорании носилок
-    public UnityEvent BurnedOut = new UnityEvent();
+    // Событие по уничтожению носилок
+    public UnityEvent OnDestroy = new UnityEvent();
 
-    // Тушение носилок
+    // Тушение огня на носилках
     public static Action SnuffOut;
 
     // Прочность носилок
     public int Strength { get; private set; } = 100;
 
-    public string Status { get; private set; }
+    // Цветовой статус носилок (изначально зеленый)
+    public static string Status { get; private set; } = Statuses.ColorStatuses.Green.ToString();
 
-    // Горят ли сейчас носилки
+    // Горят ли носилки
     public static bool IsBurns { get; private set; }
 
     [Header("Огоньки на носилках")]
     [SerializeField] private GameObject[] lights;
 
     // Перечисление анимаций носилок
-    private enum State { Green, Orange, Red, Yellow, Different, Destroy }
+    private enum State { Green, Orange, Red, Yellow, Different, Destroy, Broken }
 
-    // Ссылка на компонент
+    // Ссылка на запущенную корутину
+    public Coroutine Coroutine { get; set; } = null;
+
+    // Ссылки на компоненты
     private Animator animator;
+    private BoxCollider2D boxCollider;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        boxCollider = GetComponent<BoxCollider2D>();
 
-        // Добавляем проверку огоньков
-        SnuffOut += CheckQuantityLight;
+        SnuffOut += QuantityLights;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -45,15 +50,13 @@ public class Stretcher : MonoBehaviour
             {
                 // Возвращаем объект в указанный пул объектов
                 PoolsManager.PutObjectToPool(ListingPools.Pools.Twinkle.ToString(), collision.gameObject);
-
+                
                 // Поджигаем носилки
                 LightVisibility(true);
-
-                // Запускаем отсчет до уничтожения носилок
-                StartCoroutine(DestroyStretcher());
-
-                // Активируем переменную огня
                 IsBurns = true;
+
+                // Запускаем уменьшение прочности носилок
+                StartCoroutine(ReduceStrength(10));
             }
         }
     }
@@ -61,16 +64,19 @@ public class Stretcher : MonoBehaviour
     /// <summary>
     /// Установка видимости огоньков на носилках
     /// </summary>
+    /// <param name="state">Видимость огоньков</param>
     private void LightVisibility(bool state)
     {
         for (int i = 0; i < lights.Length; i++)
+        {
             lights[i].SetActive(state);
+        }
     }
 
     /// <summary>
     /// Проверка оставшихся огоньков на носилках
     /// </summary>
-    private void CheckQuantityLight()
+    private void QuantityLights()
     {
         for (int i = 0; i < lights.Length; i++)
         {
@@ -78,36 +84,83 @@ public class Stretcher : MonoBehaviour
             if (lights[i].activeInHierarchy) return;
         }
 
-        // Сбрасываем горение носилок
+        // Сбрасываем горение
         IsBurns = false;
-        // Останавливаем отсчет уничтожения
+
+        // Останавливаем уменьшение прочности
         StopAllCoroutines();
     }
 
     /// <summary>
-    /// Отсчет до уничтожения носилок от огня
+    /// Уменьшение прочности носилок
     /// </summary>
-    private IEnumerator DestroyStretcher()
+    /// <param name="value">Значение для вычитания</param>
+    private IEnumerator ReduceStrength(int value)
     {
         while (Strength > 0)
         {
             yield return new WaitForSeconds(1.0f);
-
-            // Уменьшаем прочность носилок
-            Strength -= 17;
-
-            // Обновляем проценты в текстовом поле
-            StretcherStrength.StrengthChange?.Invoke();
+            ChangeStrength(-value);
         }
+        
+        DestroyStretcher();
+    }
 
-        // Скрываем огонь на носилках
+    /// <summary>
+    /// Увеличение прочности носилок
+    /// </summary>
+    public IEnumerator IncreaseStrength()
+    {
+        while (Strength < 100 && IsBurns == false)
+        {
+            yield return new WaitForSeconds(1.0f);
+            ChangeStrength(2);
+        }
+    }
+
+    /// <summary>
+    /// Изменение прочности носилок
+    /// </summary>
+    /// <param name="value">Значение</param>
+    public void ChangeStrength(int value)
+    {
+        // Изменяем прочность носилок
+        Strength += value;
+        // Обновляем проценты в текстовом поле
+        StretcherStrength.StrengthChange?.Invoke();
+    }
+
+    /// <summary>
+    /// Уничтожение носилок
+    /// </summary>
+    private void DestroyStretcher()
+    {
+        // Скрываем все огоньки
         LightVisibility(false);
 
-        // Переключаем анимацию носилок на уничтожение
+        // Переключаем анимацию на уничтожение
         ChangeAnimation((int)State.Destroy);
 
-        // Вызываем событие сгоревших носилок
-        BurnedOut?.Invoke();
+        // Сообщаем об уничтожении
+        OnDestroy?.Invoke();
+    }
+
+    /// <summary>
+    /// Проверка прочности носилок
+    /// </summary>
+    public void CheckStrength()
+    {
+        if (Strength <= 0)
+        {
+            // Отображаем сломанные носилки
+            ChangeAnimation((int)State.Broken);
+
+            // Отключаем коллайдер носилок
+            boxCollider.enabled = false;
+
+            // Вызываем событие уничтоженных носилок
+            OnDestroy?.Invoke();
+        }
     }
 
     /// <summary>
@@ -117,5 +170,8 @@ public class Stretcher : MonoBehaviour
     public void ChangeAnimation(int number)
     {
         animator.SetInteger("State", number);
+
+        // Устанавливаем цветовой статус носилок
+        Status = ((Statuses.ColorStatuses)number).ToString();
     }
 }

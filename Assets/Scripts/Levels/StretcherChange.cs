@@ -2,23 +2,28 @@
 
 public class StretcherChange : MonoBehaviour
 {
-    [Header("Анимация панели выбора")]
-    [SerializeField] private Animator panelStretcher;
+    [Header("Панель выбора")]
+    [SerializeField] private Animator panel;
+
+    [Header("Компонент носилок")]
+    [SerializeField] private Stretcher stretcher;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Если персонажи касаются пожарной машины
         if (collision.gameObject.GetComponent<Control>())
         {
-            // Если аниматор отключен, активируем
-            if (panelStretcher.enabled == false)
-                panelStretcher.enabled = true;
+            // Активируем компонент анимации
+            if (panel.enabled == false) panel.enabled = true;
 
-            // Включаем состояние открытия
-            panelStretcher.SetBool("Opening", true);
+            // Открываем панель выбора
+            panel.SetBool("Opening", true);
 
-            // Вызываем изменение коэффициента падения
+            // Уменьшаем коэффициент замедления
             Slowdown.SlowDown?.Invoke(true);
+
+            // Ремонтируем (увеличиваем) прочность носилок
+            stretcher.Coroutine = StartCoroutine(stretcher.IncreaseStrength());
         }
     }
 
@@ -26,11 +31,15 @@ public class StretcherChange : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Control>())
         {
-            // Переключаемся на состояние закрытия
-            panelStretcher.SetBool("Opening", false);
+            // Закрываем панель выбора
+            panel.SetBool("Opening", false);
 
-            // Вызываем изменение коэффициента падения
+            // Увеличиваем коэффициент замедления
             Slowdown.SlowDown?.Invoke(false);
+
+            // Останавливаем увеличение прочности носилок
+            if (stretcher.Coroutine != null)
+                StopCoroutine(stretcher.Coroutine);
         }
     }
 }

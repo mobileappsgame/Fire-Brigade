@@ -7,17 +7,16 @@ public class VictimsCounting : MonoBehaviour
     // Изменение количества персонажей
     public static Action QuantityChange;
 
-    [Header("Компонент окон")]
+    [Header("Менеджер окон")]
     [SerializeField] private WindowsManager windows;
 
-    // Ссылка на компонент текста
+    // Ссылка на текст
     private Text quantity;
 
     private void Awake()
     {
         quantity = GetComponent<Text>();
 
-        // Добавляем вывод количества персонажей
         QuantityChange += ShowQuantity;
     }
 

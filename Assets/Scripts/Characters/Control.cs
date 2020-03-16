@@ -5,11 +5,10 @@ public class Control : MonoBehaviour
     [Header("Инвертирование управления")]
     [SerializeField] private bool inverted = false;
 
-    // Инвертирование управления
     private int Inverted { get { return inverted ? -1 : 1; } }
 
     // Скорость движения персонажей
-    private float speed = 19.5f;
+    private float speed = 18.5f;
 
     // Высота прыжка персонажей
     private float jump = 5f;
@@ -23,7 +22,7 @@ public class Control : MonoBehaviour
     // Ограничители для персонажей
     private float[] limiters = new float[2];
 
-    // Список ограничителей
+    // Перечисление ограничителей
     private enum Limiters { Left, Right }
 
     // Ссылки на компоненты
@@ -45,20 +44,20 @@ public class Control : MonoBehaviour
 
     private void FixedUpdate()
     {
-        CheckPosition();
+        SetMotionVector();
         MoveCharacters();
     }
 
     /// <summary>
-    /// Проверка позиции персонажей и установка вектора движения
+    /// Установка вектора движения персонажей
     /// </summary>
-    private void CheckPosition()
+    private void SetMotionVector()
     {
         // Если позиция персонажей выходит за ограничители
         if ((transform.position.x < limiters[(int)Limiters.Left] && Input.acceleration.x < 0) ||
                 (transform.position.x > limiters[(int)Limiters.Right] && Input.acceleration.x > 0))
         {
-            // Обнуляем направление
+            // Обнуляем вектор
             Direction *= 0;
         }
         else
@@ -72,7 +71,7 @@ public class Control : MonoBehaviour
     }
 
     /// <summary>
-    /// Перемещение персонажей и установка анимации
+    /// Перемещение персонажей
     /// </summary>
     private void MoveCharacters()
     {
@@ -80,15 +79,15 @@ public class Control : MonoBehaviour
         if (Direction.x < 0.015f && Direction.x > -0.015f)
         {
             // Устанавливаем стандартную анимацию
-            brigade.SetInteger("State", (int)Characters.Animations.Idle);
+            ChangeAnimation(Characters.Animations.Idle);
         }
         else
         {
-            // Иначе устанавливаем анимацию бега персонажей
-            brigade.SetInteger("State", (int)Characters.Animations.Run);
-
             // Перемещаем персонажей в указанном направлении с указанной скоростью
             rigdbody.transform.Translate(Direction * speed * Time.fixedDeltaTime);
+
+            // Устанавливаем анимацию бега персонажей
+            ChangeAnimation(Characters.Animations.Run);
         }
     }
 
@@ -101,9 +100,26 @@ public class Control : MonoBehaviour
         {
             // Создаем импульсный прыжок персонажей
             rigdbody.AddForce(Vector2.up * jump, ForceMode2D.Impulse);
-
             // Отключаем нахождение на земле
             IsGroung = false;
         }
+    }
+
+    /// <summary>
+    /// Переключение анимации персонажей
+    /// </summary>
+    /// <param name="animation">Анимация</param>
+    private void ChangeAnimation(Characters.Animations animation)
+    {
+        brigade.SetInteger("State", (int)animation);
+    }
+
+    /// <summary>
+    /// Переключение анимации персонажей
+    /// </summary>
+    /// <param name="animation">Номер анимации</param>
+    public void ChangeAnimation(int animation)
+    {
+        brigade.SetInteger("State", animation);
     }
 }

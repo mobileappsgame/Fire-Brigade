@@ -10,14 +10,19 @@ public class StretcherStrength : MonoBehaviour
     [Header("Компонент носилок")]
     [SerializeField] private Stretcher stretcher;
 
-    // Ссылка на компонент текста
+    // Текущее значение прочности
+    private int presentValue;
+
+    // Ссылки на компоненты
     private Text percent;
+    private Animator animator;
 
     private void Awake()
     {
         percent = GetComponent<Text>();
+        animator = GetComponent<Animator>();
 
-        // Добавляем вывод прочности носилок
+        presentValue = stretcher.Strength;
         StrengthChange += ShowPercent;
     }
 
@@ -31,7 +36,23 @@ public class StretcherStrength : MonoBehaviour
     /// </summary>
     private void ShowPercent()
     {
-        percent.text = stretcher.Strength > 0 ? stretcher.Strength.ToString() : "0";
-        percent.text += "%";
+        percent.text = (stretcher.Strength > 0 ? stretcher.Strength.ToString() : "0") + "%";
+        SubtractionAnimation();
+    }
+
+    /// <summary>
+    /// Анимация уменьшения прочности
+    /// </summary>
+    private void SubtractionAnimation()
+    {
+        if (stretcher.Strength < presentValue)
+        {
+            // Обновляем текущий процент
+            presentValue = stretcher.Strength;
+
+            // Анимация вычитания
+            animator.enabled = true;
+            animator.Rebind();
+        }
     }
 }

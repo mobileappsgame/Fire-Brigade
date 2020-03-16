@@ -25,7 +25,7 @@ public class Drop : MonoBehaviour, IPoolable
         gameObject.SetActive(true);
 
         // Определяем случайную скорость падения
-        speed = Random.Range(5f, 6.5f);
+        speed = Random.Range(5.2f, 6.5f);
     }
 
     private void FixedUpdate()

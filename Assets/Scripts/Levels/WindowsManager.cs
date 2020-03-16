@@ -7,6 +7,12 @@ public class WindowsManager : MonoBehaviour
     [Header("Максимум открытых окон")] // при старте уровня
     [SerializeField] private int maximum;
 
+    // Промежуток для создания жильцов
+    [Header("Минимальное время для жильцов")]
+    [SerializeField] private float minSeconds;
+    [Header("Максимальное время для жильцов")]
+    [SerializeField] private float maxSeconds;
+
     [Header("Количество жителей")]
     [SerializeField] private int victims;
 
@@ -71,7 +77,7 @@ public class WindowsManager : MonoBehaviour
         // Пока есть жители
         while (victims > 0)
         {
-            yield return new WaitForSeconds(Random.Range(3f, 6.5f));
+            yield return new WaitForSeconds(Random.Range(minSeconds, maxSeconds));
 
             if (windows.Count > 0)
             {
@@ -86,6 +92,9 @@ public class WindowsManager : MonoBehaviour
 
                 // Уменьшаем жильцов
                 victims--;
+
+                // Выводим количество оставшихся персонажей
+                VictimsCounting.QuantityChange?.Invoke();
             }
         }
     }

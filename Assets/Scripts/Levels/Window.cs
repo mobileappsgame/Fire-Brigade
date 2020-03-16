@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class Window : MonoBehaviour, IPoolable
 {
-    // Открытость окна с пожаром
+    // Открытость текущего окна
     public bool OpenWindow { get; set; } = false;
 
-    // Активность создания капель
+    // Активность создания огненных капель
     public bool Twinkle { get; set; } = false;
 
     [Header("Эффект пожара в окне")]
@@ -15,7 +15,16 @@ public class Window : MonoBehaviour, IPoolable
     [Header("Пул персонажей")] // ключ пула
     [SerializeField] private string victims;
 
-    // Ссылка на компонент
+    // Промежуток для создания капель
+    [Header("Минимальное время для капель")]
+    [SerializeField] private float minSeconds;
+    [Header("Максимальное время для капель")]
+    [SerializeField] private float maxSeconds;
+
+    [Header("Предупреждение о прыжке")]
+    [SerializeField] private GameObject exclamation;
+
+    // Ссылка на анимацию
     private Animator animator;
 
     private void Awake()
@@ -28,7 +37,7 @@ public class Window : MonoBehaviour, IPoolable
     /// </summary>
     public void ActivateObject()
     {
-        // Включаем капли
+        // Активируем капли
         Twinkle = true;
 
         // Если окно уже открыто
@@ -72,14 +81,14 @@ public class Window : MonoBehaviour, IPoolable
     {
         while (OpenWindow)
         {
-            yield return new WaitForSeconds(Random.Range(5.5f, 12.5f));
+            yield return new WaitForSeconds(Random.Range(minSeconds, maxSeconds));
 
             if (Twinkle)
             {
                 // Получаем объект из пула и получаем его компонент
                 var drop = PoolsManager.GetObjectFromPool(ListingPools.Pools.Twinkle.ToString()).GetComponent<Drop>();
 
-                // Перемещаем каплю к горящему окну (с небольщим смещением)
+                // Перемещаем каплю к горящему окну (с небольшим горизонтальным смещением)
                 drop.transform.position = fireFX.transform.position + new Vector3(-0.15f, Random.Range(-0.2f, 0.2f), 0);
 
                 // Активируем объект
@@ -105,7 +114,7 @@ public class Window : MonoBehaviour, IPoolable
             // Перемещаем персонажа в текущее окно
             victim.transform.position = transform.position + new Vector3(0, victim.Offset, 0);
 
-            // Записываем окно, из которого прыгает персонаж
+            // Записываем персонажу его окно
             victim.Window = this;
 
             // Активируем объект
@@ -119,5 +128,26 @@ public class Window : MonoBehaviour, IPoolable
     public void DeactivateObject()
     {
         gameObject.SetActive(false);
+    }
+
+    /// <summary>
+    /// Отображение/скрытие предупреждения о прыжке персонажа
+    /// </summary>
+    /// <param name="state">Видимость объекта</param>
+    public void ShowWarning(bool state)
+    {
+        exclamation.SetActive(state);
+    }
+
+    /// <summary>
+    /// Возвращение окна в список доступных для персонажей
+    /// </summary>
+    public IEnumerator ReestablishWindow()
+    {
+        yield return new WaitForSeconds(1.0f);
+        // Отправляем окно в список
+        AddToList();
+        // Восстанавливаем огненные капли
+        Twinkle = true;
     }
 }

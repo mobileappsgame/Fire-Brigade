@@ -9,7 +9,7 @@ public class Hydrant : MonoBehaviour
     [Header("Объект тушения")]
     [SerializeField] private GameObject snuffOut;
 
-    // Ссылка на основной компонент частиц
+    // Ссылка на компонент частиц
     private ParticleSystem.MainModule mainModule;
 
     private void Awake()
@@ -34,7 +34,7 @@ public class Hydrant : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Control>())
         {
-            // Восстанавливаем стандартный напор воды
+            // Восстанавливаем напор воды
             mainModule.startLifetime = 0.3f;
 
             // Отключаем объект тушения
