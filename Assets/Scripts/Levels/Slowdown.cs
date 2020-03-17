@@ -43,7 +43,7 @@ public class Slowdown : MonoBehaviour
     {
         while (coefficient < 1)
         {
-            yield return new WaitForSeconds(0.03f);
+            yield return new WaitForSeconds(0.05f);
             coefficient += 0.1f;
         }
     }

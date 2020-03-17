@@ -58,7 +58,7 @@ public class Victims : MonoBehaviour, IPoolable
         speed = Random.Range(4.3f, 5.2f);
 
         // Определяем случайную задержку до прыжка
-        delay += Random.Range(-1.3f, 1.5f);
+        delay += Random.Range(-1.0f, 1.5f);
         // Запускаем отсчет до прыжка из окна
         StartCoroutine(CountdownToJump());
     }
@@ -72,7 +72,6 @@ public class Victims : MonoBehaviour, IPoolable
         {
             yield return new WaitForSeconds(0.1f);
             delay -= 0.1f;
-            Debug.Log(delay);
         }
 
         // Отображаем предупреждение о прыжке
@@ -114,6 +113,14 @@ public class Victims : MonoBehaviour, IPoolable
                     stretcher.ChangeStrength(-weight);
                     // Проверяем прочность носилок
                     stretcher.CheckStrength();
+
+                    // Уменьшаем счет уровня
+                    Score.ChangingScore(-weight / 3);
+                }
+                else
+                {
+                    // Увеличиваем счет уровня
+                    Score.ChangingScore(weight / 2 + 15);
                 }
             }
         }
@@ -165,6 +172,9 @@ public class Victims : MonoBehaviour, IPoolable
 
                 // Возвращаем персонажа в пул
                 StartCoroutine(ReturnToPool());
+
+                // Уменьшаем счет уровня
+                Score.ChangingScore(-weight / 3);
             }
         }
     }

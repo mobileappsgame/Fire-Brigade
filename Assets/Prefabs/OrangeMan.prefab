@@ -164,6 +164,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   status: Orange
-  weight: 30
+  weight: 50
   delay: 3.6
   offset: -0.07

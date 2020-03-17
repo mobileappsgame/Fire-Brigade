@@ -164,6 +164,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   status: Yellow
-  weight: 30
+  weight: 45
   delay: 5.8
   offset: -0.07
