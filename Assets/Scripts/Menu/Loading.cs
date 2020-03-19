@@ -7,7 +7,7 @@ public class Loading : MonoBehaviour
 
     private void Awake()
     {
-        transitions = GetComponent<Transitions>();
+        transitions = Camera.main.GetComponent<Transitions>();
     }
 
     private void Start()
