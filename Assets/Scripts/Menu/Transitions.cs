@@ -3,19 +3,26 @@ using UnityEngine.SceneManagement;
 
 public class Transitions : MonoBehaviour
 {
-    public enum Scene { Menu = 1 }
-
     /// <summary>
     /// Переход на указанную сцену
     /// </summary>
-    /// <param name="scene">Сцена для перехода</param>
-    public void GoToScene(Scene scene)
-    {
-        SceneManager.LoadScene((int)scene);
-    }
-
+    /// <param name="scene">Номер сцены</param>
     public void GoToScene(int scene)
     {
-        SceneManager.LoadScene(scene);
+        SceneManager.LoadSceneAsync(scene);
+    }
+
+    /// <param name="scene">Название сцены</param>
+    public void GoToScene(string scene)
+    {
+        SceneManager.LoadSceneAsync(scene);
+    }
+
+    /// <summary>
+    /// Перезагрузка текущей сцены
+    /// </summary>
+    public void RestartScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

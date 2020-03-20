@@ -4,7 +4,7 @@ using UnityEngine;
 public class PoolsManager
 {
     // Пул объектов (словарь ключ - список)
-    private static Dictionary<string, List<GameObject>> poolsDictionary = new Dictionary<string, List<GameObject>>();
+    public static Dictionary<string, List<GameObject>> poolsDictionary = new Dictionary<string, List<GameObject>>();
 
     /// <summary>
     /// Начальное заполнение пула неактивными объектами

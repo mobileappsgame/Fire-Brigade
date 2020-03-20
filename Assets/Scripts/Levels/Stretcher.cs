@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class Stretcher : MonoBehaviour
 {
     // Событие по уничтожению носилок
-    public UnityEvent OnDestroy = new UnityEvent();
+    public UnityEvent OnDestroyStretcher = new UnityEvent();
 
     // Тушение огня на носилках
     public static Action SnuffOut;
@@ -142,7 +142,7 @@ public class Stretcher : MonoBehaviour
         ChangeAnimation((int)State.Destroy);
 
         // Сообщаем об уничтожении
-        OnDestroy?.Invoke();
+        OnDestroyStretcher?.Invoke();
     }
 
     /// <summary>
@@ -159,7 +159,7 @@ public class Stretcher : MonoBehaviour
             boxCollider.enabled = false;
 
             // Вызываем событие уничтоженных носилок
-            OnDestroy?.Invoke();
+            OnDestroyStretcher?.Invoke();
         }
     }
 
@@ -173,5 +173,10 @@ public class Stretcher : MonoBehaviour
 
         // Устанавливаем цветовой статус носилок
         Status = ((Statuses.ColorStatuses)number).ToString();
+    }
+
+    private void OnDestroy()
+    {
+        SnuffOut = null;
     }
 }

@@ -10,4 +10,9 @@ public class Pause : MonoBehaviour
     {
         Time.timeScale = state ? 0 : 1;
     }
+
+    private void OnDestroy()
+    {
+        SetPause(false);
+    }
 }

@@ -47,4 +47,9 @@ public class Slowdown : MonoBehaviour
             coefficient += 0.1f;
         }
     }
+
+    private void OnDestroy()
+    {
+        SlowDown = null;
+    }
 }

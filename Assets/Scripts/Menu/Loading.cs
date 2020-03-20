@@ -12,6 +12,9 @@ public class Loading : MonoBehaviour
 
     private void Start()
     {
+        // Игровой прогресс
+        if (!PlayerPrefs.HasKey("progress")) PlayerPrefs.SetInt("progress", 1);
+
         StartCoroutine(GoToMenu());
     }
 
@@ -21,6 +24,6 @@ public class Loading : MonoBehaviour
     private IEnumerator GoToMenu()
     {
         yield return new WaitForSeconds(2.0f);
-        transitions.GoToScene(Transitions.Scene.Menu);
+        transitions.GoToScene(1);
     }
 }

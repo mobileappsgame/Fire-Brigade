@@ -55,4 +55,9 @@ public class StretcherStrength : MonoBehaviour
             animator.Rebind();
         }
     }
+
+    private void OnDestroy()
+    {
+        StrengthChange = null;
+    }
 }

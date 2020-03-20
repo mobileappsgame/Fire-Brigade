@@ -32,4 +32,9 @@ public class VictimsCounting : MonoBehaviour
     {
         quantity.text = windows.Victims.ToString();
     }
+
+    private void OnDestroy()
+    {
+        QuantityChange = null;
+    }
 }

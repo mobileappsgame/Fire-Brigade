@@ -57,4 +57,9 @@ public class Score : MonoBehaviour
         // Перезапускаем анимацию
         animatorChange.Rebind();
     }
+
+    private void OnDestroy()
+    {
+        ChangingScore = null;
+    }
 }

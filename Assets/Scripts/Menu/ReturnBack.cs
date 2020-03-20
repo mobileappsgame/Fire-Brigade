@@ -17,8 +17,6 @@ public class ReturnBack : MonoBehaviour
     {
         // Если нажата кнопка возврата
         if (Input.GetKey(KeyCode.Escape))
-        {
             transitions.GoToScene(scene);
-        }
     }
 }
