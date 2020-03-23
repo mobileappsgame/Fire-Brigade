@@ -64,6 +64,26 @@
 		{
 			"Key": "list-levels",
 			"Value": "LEVELS"
+		},
+		{
+			"Key": "shop-description",
+			"Value": "FACILITATES THE WORK OF RESCUERS. NOW YOU CAN NOT SWITCH MODES."
+		},
+		{
+			"Key": "super-stretcher",
+			"Value": "SUPERIOR STRETCHER:"
+		},
+		{
+			"Key": "stretcher-buy",
+			"Value": "BUY"
+		},
+		{
+			"Key": "price-one",
+			"Value": "3 FOR 0.99$"
+		},
+		{
+			"Key": "price-two",
+			"Value": "10 FOR 1.59$"
 		}
 	]
 }

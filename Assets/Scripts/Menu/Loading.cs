@@ -28,8 +28,14 @@ public class Loading : MonoBehaviour
         // Общий счет
         if (!PlayerPrefs.HasKey("total-score")) PlayerPrefs.SetInt("total-score", 0);
 
+        // Текущий счет
+        if (!PlayerPrefs.HasKey("current-score")) PlayerPrefs.SetInt("current-score", 0);
+
         // Уровень носилок
         if (!PlayerPrefs.HasKey("stretcher")) PlayerPrefs.SetInt("stretcher", 1);
+
+        // Количество улучшенных носилок
+        if (!PlayerPrefs.HasKey("super-stretcher")) PlayerPrefs.SetInt("super-stretcher", 1);
 
         #endregion
 

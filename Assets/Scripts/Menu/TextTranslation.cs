@@ -21,7 +21,7 @@ public class TextTranslation : MonoBehaviour
     /// <summary>
     /// Вывод переведенного текста из словаря
     /// </summary>
-    public void TranslateText()
+    public virtual void TranslateText()
     {
         textComponent.text = Languages.translations[key];
     }

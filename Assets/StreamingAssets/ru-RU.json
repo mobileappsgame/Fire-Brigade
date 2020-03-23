@@ -64,6 +64,26 @@
 		{
 			"Key": "list-levels",
 			"Value": "УРОВНИ"
+		},
+		{
+			"Key": "shop-description",
+			"Value": "ОБЛЕГЧАЮТ РАБОТУ СПАСАТЕЛЯМ. ПОЗВОЛЯЮТ ЛОВИТЬ ЛЮБЫХ ЖИЛЬЦОВ."
+		},
+		{
+			"Key": "super-stretcher",
+			"Value": "УЛУЧШЕННЫЕ НОСИЛКИ:"
+		},
+		{
+			"Key": "stretcher-buy",
+			"Value": "КУПИТЬ"
+		},
+		{
+			"Key": "price-one",
+			"Value": "3 ЗА 0.99$"
+		},
+		{
+			"Key": "price-two",
+			"Value": "10 ЗА 1.59$"
 		}
 	]
 }
