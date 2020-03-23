@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   status: Red
+  pool: RedMen
   weight: 45
   delay: 6.2
   offset: -0.07

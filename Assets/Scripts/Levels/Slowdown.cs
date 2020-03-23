@@ -23,7 +23,6 @@ public class Slowdown : MonoBehaviour
     {
         if (activity)
         {
-            // Останавливаем увеличение
             StopAllCoroutines();
 
             // Устанавливаем коэффициент

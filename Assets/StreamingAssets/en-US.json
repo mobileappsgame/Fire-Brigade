@@ -1,0 +1,69 @@
+{
+	"language":
+	[
+		{
+			"Key": "play",
+			"Value": "PLAY"
+		},
+		{
+			"Key": "achievements",
+			"Value": "ACHIEVEMENTS"
+		},
+		{
+			"Key": "settings",
+			"Value": "SETTINGS"
+		},
+		{
+			"Key": "sounds-on",
+			"Value": "SOUNDS: ON"
+		},
+		{
+			"Key": "sounds-off",
+			"Value": "SOUNDS: OFF"
+		},
+		{
+			"Key": "language-eng",
+			"Value": "LANGUAGE: ENG"
+		},
+		{
+			"Key": "back",
+			"Value": "BACK"
+		},
+		{
+			"Key": "continue",
+			"Value": "CONTINUE"
+		},
+		{
+			"Key": "exit",
+			"Value": "EXIT GAME"
+		},
+		{
+			"Key": "levels",
+			"Value": "LIST OF LEVELS"
+		},
+		{
+			"Key": "shop",
+			"Value": "SHOP"
+		},
+		{
+			"Key": "total-score",
+			"Value": "TOTAL SCORE:"
+		},
+		{
+			"Key": "leaderboard",
+			"Value": "LEADERBOARD"
+		},
+		{
+			"Key": "level-stretcher",
+			"Value": "STRENGTH:"
+		},
+		{
+			"Key": "upgrade-stretcher",
+			"Value": "UPGRADE"
+		},
+		{
+			"Key": "list-levels",
+			"Value": "LEVELS"
+		}
+	]
+}

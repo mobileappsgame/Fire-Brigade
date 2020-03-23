@@ -9,7 +9,7 @@ public class Hydrant : MonoBehaviour
     [Header("Объект тушения")]
     [SerializeField] private GameObject snuffOut;
 
-    // Ссылка на компонент частиц
+    // Ссылка на основной компонент частиц
     private ParticleSystem.MainModule mainModule;
 
     private void Awake()

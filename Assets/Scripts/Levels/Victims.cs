@@ -17,6 +17,9 @@ public class Victims : MonoBehaviour, IPoolable
     [Header("Цветовой статус")]
     [SerializeField] private string status;
 
+    [Header("Пул объекта")] // ключ пула
+    [SerializeField] private string pool;
+
     [Header("Вес персонажа")]
     [SerializeField] private int weight;
 
@@ -57,7 +60,7 @@ public class Victims : MonoBehaviour, IPoolable
         // Определяем случайную скорость падения
         speed = Random.Range(4.3f, 5.2f);
 
-        // Определяем случайную задержку до прыжка
+        // Определяем задержку до прыжка
         delay += Random.Range(-1.0f, 1.5f);
         // Запускаем отсчет до прыжка из окна
         StartCoroutine(CountdownToJump());
@@ -88,7 +91,7 @@ public class Victims : MonoBehaviour, IPoolable
     {
         if (isFall)
         {
-            // Перемещаем персонажа вниз с указанной скоростью (и коэффициентом замедления)
+            // Перемещаем персонажа вниз с указанной скоростью и коэффициентом замедления
             rigbody.MovePosition(rigbody.position + Vector2.down * (speed * Slowdown.coefficient) * Time.fixedDeltaTime);
 
             // Пускаем луч вниз от персонажа
@@ -133,10 +136,11 @@ public class Victims : MonoBehaviour, IPoolable
     }
 
     /// <summary>
-    /// Определяем нижнюю границу персонажа (точка для испускания луча)
+    /// Определяем нижнюю границу персонажа
     /// </summary>
     private Vector2 DefinePoint()
     {
+        // Возвращаем точку для испускания луча
         return (Vector2)transform.position - new Vector2(0, 0.5f);
     }
 
@@ -195,7 +199,7 @@ public class Victims : MonoBehaviour, IPoolable
     private IEnumerator ReturnToPool()
     {
         yield return new WaitForSeconds(1.2f);
-        PoolsManager.PutObjectToPool(ListingPools.Pools.GreenMen.ToString(), gameObject);
+        PoolsManager.PutObjectToPool(pool, gameObject);
     }
 
     /// <summary>

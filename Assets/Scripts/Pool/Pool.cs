@@ -4,7 +4,7 @@ public class Pool : MonoBehaviour
 {
     private void Awake()
     {
-        // Заполняем пул подготовленными объектами
+        // Заполняем пул созданными объектами
         PoolsManager.FillPool(gameObject);
     }
 }

@@ -57,12 +57,11 @@ public class Control : MonoBehaviour
         if ((transform.position.x < limiters[(int)Limiters.Left] && Input.acceleration.x < 0) ||
                 (transform.position.x > limiters[(int)Limiters.Right] && Input.acceleration.x > 0))
         {
-            // Обнуляем вектор
             Direction *= 0;
         }
         else
         {
-            // Иначе устанавливаем направление в зависимости от наклона смартфона
+            // Устанавливаем направление в зависимости от наклона смартфона
             Direction = new Vector2(Input.acceleration.x * Inverted, 0);
         }
 
@@ -100,6 +99,7 @@ public class Control : MonoBehaviour
         {
             // Создаем импульсный прыжок персонажей
             rigdbody.AddForce(Vector2.up * jump, ForceMode2D.Impulse);
+
             // Отключаем нахождение на земле
             IsGroung = false;
         }
@@ -108,7 +108,7 @@ public class Control : MonoBehaviour
     /// <summary>
     /// Переключение анимации персонажей
     /// </summary>
-    /// <param name="animation">Анимация</param>
+    /// <param name="animation">Анимация персонажа</param>
     private void ChangeAnimation(Characters.Animations animation)
     {
         brigade.SetInteger("State", (int)animation);

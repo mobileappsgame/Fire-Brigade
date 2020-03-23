@@ -8,13 +8,12 @@ public class Level : MonoBehaviour
 
     public string Number { get { return number.ToString(); } }
 
-    [Header("Текстовый номер")]
+    [Header("Текстовый объект")]
     [SerializeField] private GameObject textNumber;
 
     [Header("Изображение замка")]
     [SerializeField] private GameObject imageLock;
 
-    // Ссылка на компонент
     private Button button;
 
     private void Awake()
@@ -29,6 +28,7 @@ public class Level : MonoBehaviour
         {
             // Скрываем замок
             imageLock.SetActive(false);
+
             // Показываем номер уровня
             textNumber.SetActive(true);
 

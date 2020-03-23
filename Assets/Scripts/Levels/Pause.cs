@@ -11,6 +11,9 @@ public class Pause : MonoBehaviour
         Time.timeScale = state ? 0 : 1;
     }
 
+    /// <summary>
+    /// Сброс паузы при выходе с уровня
+    /// </summary>
     private void OnDestroy()
     {
         SetPause(false);

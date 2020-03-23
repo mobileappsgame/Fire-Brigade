@@ -42,7 +42,7 @@ public class Score : MonoBehaviour
     /// <summary>
     /// Отображение счета на уровне
     /// </summary>
-    /// <param name="value"></param>
+    /// <param name="value">Значение</param>
     private void UpdateLevelScore(int value)
     {
         // Выводим счет уровня
@@ -52,7 +52,7 @@ public class Score : MonoBehaviour
         animatorChange.enabled = true;
         // Записываем количество очков в эффект изменения
         textChange.text = (value > 0 ? "+ " : "") + value.ToString();
-        // Устанавливаем обводку эффекта
+        // Устанавливаем обводку эффекта в зависимости от значения
         outlineChange.effectColor = value > 0 ? Color.green : Color.red;
         // Перезапускаем анимацию
         animatorChange.Rebind();

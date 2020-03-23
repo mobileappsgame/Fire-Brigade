@@ -5,7 +5,7 @@ public class Drop : MonoBehaviour, IPoolable
     [Header("Эффект огненных брызг")]
     [SerializeField] private ParticleSystem spray;
 
-    // Скорость падения капли
+    // Скорость падения
     private float speed;
 
     // Ссылка на компонент
@@ -25,12 +25,12 @@ public class Drop : MonoBehaviour, IPoolable
         gameObject.SetActive(true);
 
         // Определяем случайную скорость падения
-        speed = Random.Range(5.2f, 6.5f);
+        speed = Random.Range(5.1f, 6.5f);
     }
 
     private void FixedUpdate()
     {
-        // Движение капли вниз с указанной скоростью (и коэффициентом замедления)
+        // Движение капли вниз с указанной скоростью и коэффициентом замедления
         rigbody.MovePosition(rigbody.position + Vector2.down * (speed * Slowdown.coefficient) * Time.fixedDeltaTime);
     }
 
@@ -50,7 +50,6 @@ public class Drop : MonoBehaviour, IPoolable
     /// </summary>
     public void DeactivateObject()
     {
-        // Отключаем объект
         gameObject.SetActive(false);
     }
 }

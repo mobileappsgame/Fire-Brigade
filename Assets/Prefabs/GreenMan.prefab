@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   status: Green
+  pool: GreenMen
   weight: 40
   delay: 4.2
   offset: 0

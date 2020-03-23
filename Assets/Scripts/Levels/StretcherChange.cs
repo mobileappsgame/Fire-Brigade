@@ -37,7 +37,7 @@ public class StretcherChange : MonoBehaviour
             // Увеличиваем коэффициент замедления
             Slowdown.SlowDown?.Invoke(false);
 
-            // Останавливаем увеличение прочности носилок
+            // Останавливаем увеличение прочности
             if (stretcher.Coroutine != null)
                 StopCoroutine(stretcher.Coroutine);
         }

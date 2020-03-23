@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class Stretcher : MonoBehaviour
 {
     // Событие по уничтожению носилок
-    public UnityEvent OnDestroyStretcher = new UnityEvent();
+    public UnityEvent OnDestroyStretcher;
 
     // Тушение огня на носилках
     public static Action SnuffOut;
@@ -14,8 +14,8 @@ public class Stretcher : MonoBehaviour
     // Прочность носилок
     public int Strength { get; private set; } = 100;
 
-    // Цветовой статус носилок (изначально зеленый)
-    public static string Status { get; private set; } = Statuses.ColorStatuses.Green.ToString();
+    // Цветовой статус носилок
+    public static string Status { get; private set; }
 
     // Горят ли носилки
     public static bool IsBurns { get; private set; }
@@ -27,7 +27,7 @@ public class Stretcher : MonoBehaviour
     private enum State { Green, Orange, Red, Yellow, Different, Destroy, Broken }
 
     // Ссылка на запущенную корутину
-    public Coroutine Coroutine { get; set; } = null;
+    public Coroutine Coroutine { get; set; }
 
     // Ссылки на компоненты
     private Animator animator;
@@ -39,6 +39,9 @@ public class Stretcher : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
 
         SnuffOut += QuantityLights;
+
+        // Устанавливаем зеленый статус носилок
+        Status = Statuses.ColorStatuses.Green.ToString();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -80,7 +83,7 @@ public class Stretcher : MonoBehaviour
     {
         for (int i = 0; i < lights.Length; i++)
         {
-            // Если есть видимые огоньки, выходим из метода
+            // Если есть видимые огоньки, выходим
             if (lights[i].activeInHierarchy) return;
         }
 
@@ -166,7 +169,7 @@ public class Stretcher : MonoBehaviour
     /// <summary>
     /// Переключение анимации носилок
     /// </summary>
-    /// <param name="number">Значение параметра анимации</param>
+    /// <param name="number">Параметр анимации</param>
     public void ChangeAnimation(int number)
     {
         animator.SetInteger("State", number);

@@ -1,0 +1,69 @@
+{
+	"language":
+	[
+		{
+			"Key": "play",
+			"Value": "ИГРАТЬ"
+		},
+		{
+			"Key": "achievements",
+			"Value": "ДОСТИЖЕНИЯ"
+		},
+		{
+			"Key": "settings",
+			"Value": "НАСТРОЙКИ"
+		},
+		{
+			"Key": "sounds-on",
+			"Value": "ЗВУКИ: ВКЛ"
+		},
+		{
+			"Key": "sounds-off",
+			"Value": "ЗВУКИ: ВЫКЛ"
+		},
+		{
+			"Key": "language-rus",
+			"Value": "ЯЗЫК: РУССКИЙ"
+		},
+		{
+			"Key": "back",
+			"Value": "НАЗАД"
+		},
+		{
+			"Key": "continue",
+			"Value": "ПРОДОЛЖИТЬ"
+		},
+		{
+			"Key": "exit",
+			"Value": "ВЫЙТИ"
+		},
+		{
+			"Key": "levels",
+			"Value": "СПИСОК УРОВНЕЙ"
+		},
+		{
+			"Key": "shop",
+			"Value": "МАГАЗИН"
+		},
+		{
+			"Key": "total-score",
+			"Value": "ОБЩИЙ СЧЕТ:"
+		},
+		{
+			"Key": "leaderboard",
+			"Value": "ЛИДЕРЫ"
+		},
+		{
+			"Key": "level-stretcher",
+			"Value": "УРОВЕНЬ:"
+		},
+		{
+			"Key": "upgrade-stretcher",
+			"Value": "УЛУЧШИТЬ"
+		},
+		{
+			"Key": "list-levels",
+			"Value": "УРОВНИ"
+		}
+	]
+}

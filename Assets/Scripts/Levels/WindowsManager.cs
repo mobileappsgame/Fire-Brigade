@@ -8,9 +8,9 @@ public class WindowsManager : MonoBehaviour
     [SerializeField] private int maximum;
 
     // Промежуток для создания жильцов
-    [Header("Минимальное время для жильцов")]
+    [Header("Минимальное время")]
     [SerializeField] private float minSeconds;
-    [Header("Максимальное время для жильцов")]
+    [Header("Максимальное время")]
     [SerializeField] private float maxSeconds;
 
     [Header("Количество жителей")]
@@ -90,7 +90,7 @@ public class WindowsManager : MonoBehaviour
                 // Удаляем окно из списка доступных
                 windows.RemoveAt(window);
 
-                // Уменьшаем жильцов
+                // Уменьшаем количество жильцов
                 victims--;
 
                 // Выводим количество оставшихся персонажей

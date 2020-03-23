@@ -3,7 +3,6 @@ using UnityEngine.EventSystems;
 
 public class StretcherСhoice : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    // Ссылка на компонент
     private RectTransform rectTransform;
 
     private void Awake()

@@ -16,9 +16,9 @@ public class Window : MonoBehaviour, IPoolable
     [SerializeField] private string victims;
 
     // Промежуток для создания капель
-    [Header("Минимальное время для капель")]
+    [Header("Минимальное время")]
     [SerializeField] private float minSeconds;
-    [Header("Максимальное время для капель")]
+    [Header("Максимальное время")]
     [SerializeField] private float maxSeconds;
 
     [Header("Предупреждение о прыжке")]
