@@ -52,8 +52,8 @@ public class WindowsManager : MonoBehaviour
     /// </summary>
     private IEnumerator OpenWindows()
     {
-        // Пока в пуле есть доступные окна
-        while (PoolsManager.QuantityObjects(ListingPools.Pools.Windows.ToString()) > 0)
+        // Пока в пуле есть доступные окна и активен игровой режим
+        while (PoolsManager.QuantityObjects(ListingPools.Pools.Windows.ToString()) > 0 && LevelManager.Mode == "play")
         {
             var seconds = Random.Range(5, 12);
             yield return new WaitForSeconds(seconds);
@@ -74,8 +74,8 @@ public class WindowsManager : MonoBehaviour
     /// </summary>
     private IEnumerator CharacterJumping()
     {
-        // Пока есть жители
-        while (victims > 0)
+        // Пока есть жители и активен игровой режим
+        while (victims > 0 && LevelManager.Mode == "play")
         {
             yield return new WaitForSeconds(Random.Range(minSeconds, maxSeconds));
 

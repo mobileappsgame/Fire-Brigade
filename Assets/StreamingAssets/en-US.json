@@ -84,6 +84,66 @@
 		{
 			"Key": "price-two",
 			"Value": "10 FOR 1.59$"
+		},
+		{
+			"Key": "leaderboard-menu",
+			"Value": "LEADERBOARD"
+		},
+		{
+			"Key": "level-failed",
+			"Value": "LEVEL FAILED"
+		},
+		{
+			"Key": "level-passed",
+			"Value": "LEVEL COMPLETED"
+		},
+		{
+			"Key": "button-continue",
+			"Value": "CONTINUE"
+		},
+		{
+			"Key": "button-restart",
+			"Value": "RESTART"
+		},
+		{
+			"Key": "button-return",
+			"Value": "RETURN TO MENU"
+		},
+		{
+			"Key": "training-0",
+			"Value": "Welcome to the fire brigade!"
+		},
+		{
+			"Key": "training-1",
+			"Value": "We will conduct a short training."
+		},
+		{
+			"Key": "training-2",
+			"Value": "To control the characters, tilt the phone\n(left and right)."
+		},
+		{
+			"Key": "training-3",
+			"Value": "Catch jumping characters on a stretcher.\nYou will see a warning before jump."
+		},
+		{
+			"Key": "training-4",
+			"Value": "Different characters need different stretchers."
+		},
+		{
+			"Key": "training-5",
+			"Value": "You can quickly change the stretcher by approaching the fire truck."
+		},
+		{
+			"Key": "training-6",
+			"Value": "If the stretcher lights up, quickly run to the fire hydrant."
+		},
+		{
+			"Key": "training-7",
+			"Value": "So, it's time for the first task!"
+		},
+		{
+			"Key": "loading-level",
+			"Value": "LOADING..."
 		}
 	]
 }

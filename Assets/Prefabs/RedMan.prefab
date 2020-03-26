@@ -167,4 +167,4 @@ MonoBehaviour:
   pool: RedMen
   weight: 45
   delay: 6.2
-  offset: -0.07
+  offset: 0.04

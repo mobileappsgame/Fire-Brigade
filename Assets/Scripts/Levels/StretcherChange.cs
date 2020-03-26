@@ -8,6 +8,14 @@ public class StretcherChange : MonoBehaviour
     [Header("Компонент носилок")]
     [SerializeField] private Stretcher stretcher;
 
+    // Ссылка на компонент
+    private BoxCollider2D boxCollider;
+
+    private void Awake()
+    {
+        boxCollider = gameObject.GetComponent<BoxCollider2D>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Если персонажи касаются пожарной машины
@@ -41,5 +49,13 @@ public class StretcherChange : MonoBehaviour
             if (stretcher.Coroutine != null)
                 StopCoroutine(stretcher.Coroutine);
         }
+    }
+
+    /// <summary>
+    /// Включение/отключение коллайдера
+    /// </summary>
+    public void ChangeCollider(bool state)
+    {
+        boxCollider.enabled = state;
     }
 }

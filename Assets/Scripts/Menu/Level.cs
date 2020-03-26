@@ -12,7 +12,10 @@ public class Level : MonoBehaviour
     [SerializeField] private GameObject textNumber;
 
     [Header("Изображение замка")]
-    [SerializeField] private GameObject imageLock;
+    [SerializeField] private Image imageLock;
+
+    [Header("Пройденный уровень")]
+    [SerializeField] private Sprite done;
 
     private Button button;
 
@@ -24,13 +27,21 @@ public class Level : MonoBehaviour
     private void Start()
     {
         // Если игровой прогресс достаточный
-        if (PlayerPrefs.GetInt("progress") >= number)
+        if (PlayerPrefs.GetInt("progress") == number)
         {
             // Скрываем замок
-            imageLock.SetActive(false);
+            imageLock.gameObject.SetActive(false);
 
             // Показываем номер уровня
             textNumber.SetActive(true);
+
+            // Активируем кнопку
+            button.interactable = true;
+        }
+        else if (PlayerPrefs.GetInt("progress") > number)
+        {
+            // Показываем галочку
+            imageLock.sprite = done;
 
             // Активируем кнопку
             button.interactable = true;

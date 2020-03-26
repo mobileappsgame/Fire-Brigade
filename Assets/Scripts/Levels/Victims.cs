@@ -14,6 +14,9 @@ public class Victims : MonoBehaviour, IPoolable
     // Слой носилок на сцене
     private int layer;
 
+    // Уровень носилок
+    private int stretcherLevel;
+
     [Header("Цветовой статус")]
     [SerializeField] private string status;
 
@@ -47,6 +50,9 @@ public class Victims : MonoBehaviour, IPoolable
 
         // Получаем номер слоя носилок
         layer = LayerMask.GetMask("Stretcher");
+
+        // Получаем уровень носилок
+        stretcherLevel = PlayerPrefs.GetInt("stretcher");
     }
 
     /// <summary>
@@ -108,22 +114,25 @@ public class Victims : MonoBehaviour, IPoolable
                 // Активируем триггер спасения
                 animator.SetTrigger("Save");
 
-                // Если цветовые статусы не совпадают
-                if (status != Stretcher.Status)
+                // Если цветовые статусы не совпадают и используются обычные носилки
+                if (status != Stretcher.Status && Stretcher.IsSuper == false)
                 {
                     var stretcher = hit.collider.GetComponent<Stretcher>();
                     // Уменьшаем прочность носилок
-                    stretcher.ChangeStrength(-weight);
+                    stretcher.ChangeStrength(-weight + (int)Mathf.Pow(stretcherLevel, 2));
                     // Проверяем прочность носилок
                     stretcher.CheckStrength();
 
+                    // Уменьшаем количество оставшихся ошибок
+                    LevelManager.quantityErrors?.Invoke(-1);
+
                     // Уменьшаем счет уровня
-                    Score.ChangingScore(-weight / 3);
+                    Score.ChangingScore?.Invoke(-weight / 3);
                 }
                 else
                 {
                     // Увеличиваем счет уровня
-                    Score.ChangingScore(weight / 2 + 15);
+                    Score.ChangingScore?.Invoke(weight / 2 + 15);
                 }
             }
         }
@@ -177,9 +186,15 @@ public class Victims : MonoBehaviour, IPoolable
                 // Возвращаем персонажа в пул
                 StartCoroutine(ReturnToPool());
 
+                // Уменьшаем количество оставшихся ошибок
+                LevelManager.quantityErrors?.Invoke(-1);
+
                 // Уменьшаем счет уровня
-                Score.ChangingScore(-weight / 3);
+                Score.ChangingScore?.Invoke(-weight / 3);
             }
+
+            // Уменьшаем жильцов и проверяем количество
+            LevelManager.quantityVictims?.Invoke(1);
         }
     }
 

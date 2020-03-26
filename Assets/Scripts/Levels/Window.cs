@@ -83,7 +83,10 @@ public class Window : MonoBehaviour, IPoolable
         {
             yield return new WaitForSeconds(Random.Range(minSeconds, maxSeconds));
 
-            if (Twinkle)
+            // Вероятность падения капли
+            var probability = Random.Range(1, 2);
+
+            if (Twinkle && probability == 1)
             {
                 // Получаем объект из пула и получаем его компонент
                 var drop = PoolsManager.GetObjectFromPool(ListingPools.Pools.Twinkle.ToString()).GetComponent<Drop>();
