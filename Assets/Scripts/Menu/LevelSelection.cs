@@ -17,10 +17,10 @@ public class LevelSelection : MonoBehaviour
     /// <summary>
     /// Открытие выбранного уровня
     /// </summary>
-    /// <param name="level">Кнопка уровня</param>
+    /// <param name="level">кнопка уровня</param>
     public void OpenLevel(Level level)
     {
-        // Активируем анимацию загрузки
+        // Активируем анимацию
         loading.SetActive(true);
         loading.GetComponent<Animator>().Rebind();
 

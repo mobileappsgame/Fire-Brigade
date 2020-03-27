@@ -36,8 +36,6 @@ public class Hydrant : MonoBehaviour
         {
             // Восстанавливаем напор воды
             mainModule.startLifetime = 0.3f;
-
-            // Отключаем объект тушения
             snuffOut.SetActive(false);
         }  
     }

@@ -19,7 +19,7 @@ public class Languages : FileProcessing
     /// </summary>
     public void LanguageSetting()
     {
-        // Читаем файл с переводом игры
+        // Читаем файл с переводом
         var json = ReadJsonFile(PlayerPrefs.GetString("language"));
 
         // Преобразовываем json в объект
@@ -37,15 +37,11 @@ public class Languages : FileProcessing
         // Очищаем словарь
         translations.Clear();
 
-        // Заполняем словарь
         for (int i = 0; i < language.language.Length; i++)
         {
             var key = language.language[i].Key;
-
-            // При отсутствии ключа
-            if (!translations.ContainsKey(key))
-                // Добавляем перевод в словарь
-                translations.Add(key, language.language[i].Value);
+            // При отсутствии ключа, добавляем перевод в словарь
+            if (!translations.ContainsKey(key)) translations.Add(key, language.language[i].Value);
         }
     }
 }

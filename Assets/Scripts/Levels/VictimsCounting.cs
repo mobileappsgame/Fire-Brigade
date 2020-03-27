@@ -10,13 +10,12 @@ public class VictimsCounting : MonoBehaviour
     [Header("Менеджер окон")]
     [SerializeField] private WindowsManager windows;
 
-    // Ссылка на текст
+    // Ссылка на компонент
     private Text quantity;
 
     private void Awake()
     {
         quantity = GetComponent<Text>();
-
         QuantityChange += ShowQuantity;
     }
 

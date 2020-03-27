@@ -30,12 +30,11 @@ public class Upgrade : MonoBehaviour
         // Текущий уровень носилок
         var currentLevel = PlayerPrefs.GetInt("stretcher");
 
-        // Если текущий счет достаточный, активируем кнопку
-        if (PlayerPrefs.GetInt("current-score") >= upgradeCost[currentLevel])
-            button.interactable = true;
-        else
-            // Иначе отключаем
-            button.interactable = false;
+        // Достаточно ли текущего счета для улучшения
+        var enough = PlayerPrefs.GetInt("current-score") >= upgradeCost[currentLevel];
+
+        // Настраиваем кнопку
+        button.interactable = enough ? true : false;
     }
 
     /// <summary>
@@ -48,7 +47,6 @@ public class Upgrade : MonoBehaviour
 
         // Уменьшаем текущее количество очков
         PlayerPrefs.SetInt("current-score", PlayerPrefs.GetInt("current-score") - upgradeCost[currentLevel]);
-
         // Увеличиваем уровень носилок
         PlayerPrefs.SetInt("stretcher", currentLevel + 1);
 

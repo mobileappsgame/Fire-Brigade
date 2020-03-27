@@ -4,58 +4,59 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
-    // Счет на уровне
-    private int score = 0;
+    // Текущий счет уровня
+    public int ScoreLevel { get; private set; } = 0;
 
     // Изменение счета
     public static Action<int> ChangingScore;
 
-    [Header("Эффект изменения")]
+    [Header("Текст изменения")]
     [SerializeField] private Text textChange;
 
     // Ссылки на компоненты
     private Text textScore;
-    private Animator animatorChange;
-    private Outline outlineChange;
+    private Animator animator;
+    private Outline outline;
 
     private void Awake()
     {
         textScore = GetComponent<Text>();
-        animatorChange = textChange.GetComponent<Animator>();
-        outlineChange = textChange.GetComponent<Outline>();
+        animator = textChange.GetComponent<Animator>();
+        outline = textChange.GetComponent<Outline>();
 
         ChangingScore += ChangeScore;
     }
 
     /// <summary>
-    /// Изменение счета
+    /// Изменение текущего счета
     /// </summary>
-    /// <param name="value">Значение</param>
+    /// <param name="value">значение</param>
     private void ChangeScore(int value)
     {
-        score += value;
-        if (score < 0) score = 0;
+        ScoreLevel += value;
+
+        // Запрещаем отрицательный счет
+        if (ScoreLevel < 0) ScoreLevel = 0;
 
         UpdateLevelScore(value);
     }
 
     /// <summary>
-    /// Отображение счета на уровне
+    /// Отображение текущего счета
     /// </summary>
-    /// <param name="value">Значение</param>
+    /// <param name="value">значение</param>
     private void UpdateLevelScore(int value)
     {
         // Выводим счет уровня
-        textScore.text = score.ToString();
+        textScore.text = ScoreLevel.ToString();
 
-        // Активируем анимацию
-        animatorChange.enabled = true;
+        animator.enabled = true;
         // Записываем количество очков в эффект изменения
         textChange.text = (value > 0 ? "+ " : "") + value.ToString();
         // Устанавливаем обводку эффекта в зависимости от значения
-        outlineChange.effectColor = value > 0 ? Color.green : Color.red;
+        outline.effectColor = value > 0 ? Color.green : Color.red;
         // Перезапускаем анимацию
-        animatorChange.Rebind();
+        animator.Rebind();
     }
 
     private void OnDestroy()

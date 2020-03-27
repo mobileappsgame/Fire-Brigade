@@ -6,6 +6,7 @@ public class TextTranslation : MonoBehaviour
     [Header("Ключ перевода")]
     [SerializeField] protected string key;
 
+    // Ссылка на компонент
     protected Text textComponent;
 
     protected void Awake()
@@ -29,7 +30,7 @@ public class TextTranslation : MonoBehaviour
     /// <summary>
     /// Изменение ключа перевода
     /// </summary>
-    /// <param name="value">Новый ключ</param>
+    /// <param name="value">новый ключ</param>
     public void ChangeKey(string value)
     {
         key = value;

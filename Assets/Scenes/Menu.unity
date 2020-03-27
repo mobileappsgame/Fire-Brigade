@@ -347,7 +347,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b92e047cb5f233449176bda886cd0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  auto: 1
   key: settings
 --- !u!1 &114143436
 GameObject:
@@ -558,7 +557,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b92e047cb5f233449176bda886cd0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  auto: 1
   key: play
 --- !u!1 &330852907
 GameObject:
@@ -799,7 +797,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b92e047cb5f233449176bda886cd0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  auto: 1
   key: achievements
 --- !u!1 &646250076
 GameObject:
@@ -1540,7 +1537,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b92e047cb5f233449176bda886cd0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  auto: 0
   key: sounds-on
 --- !u!114 &822951861
 MonoBehaviour:
@@ -1848,7 +1844,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b92e047cb5f233449176bda886cd0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  auto: 1
   key: back
 --- !u!1 &928961367
 GameObject:
@@ -2480,7 +2475,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b92e047cb5f233449176bda886cd0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  auto: 0
   key: language-rus
 --- !u!114 &1323110121
 MonoBehaviour:
@@ -3120,7 +3114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33fe21e9390d0b84ebb15770d4740ed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelExit: {fileID: 971772549}
+  exit: {fileID: 971772549}
 --- !u!114 &1452769532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3429,7 +3423,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b92e047cb5f233449176bda886cd0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  auto: 1
   key: continue
 --- !u!1 &1631532686
 GameObject:
@@ -3803,7 +3796,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b92e047cb5f233449176bda886cd0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  auto: 1
   key: exit
 --- !u!1 &1887922708
 GameObject:

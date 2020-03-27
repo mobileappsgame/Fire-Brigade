@@ -56,6 +56,7 @@ public class Training : MonoBehaviour
         {
             // Записываем прохождение обучения
             PlayerPrefs.SetString("training", "yes");
+
             // Возвращаемся в список уровней
             Camera.main.GetComponent<Transitions>().GoToScene(2);
         } 
@@ -64,8 +65,8 @@ public class Training : MonoBehaviour
     /// <summary>
     /// Установка позиции обучающих объектов
     /// </summary>
-    /// <param name="mask">Позиция маски</param>
-    /// <param name="characters">Позиция персонажей</param>
+    /// <param name="mask">позиция маски</param>
+    /// <param name="characters">позиция персонажей</param>
     private void SetObjectPositions(Vector3 mask, Vector3 characters)
     {
         this.mask.transform.position = mask;

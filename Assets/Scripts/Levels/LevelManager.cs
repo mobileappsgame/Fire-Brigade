@@ -7,7 +7,7 @@ public class LevelManager : MonoBehaviour
     // Текущий игровой режим
     public static string Mode { get; set; } = "play";
 
-    [Header("Доступных ошибок")]
+    [Header("Максимум ошибок")]
     [SerializeField] private int errors;
 
     // Изменение количества ошибок
@@ -29,41 +29,41 @@ public class LevelManager : MonoBehaviour
     {
         results = Camera.main.GetComponent<Results>();
 
-        // Получаем колиество жильцов
+        // Получаем количество жильцов
         victims = windowsManager.Victims;
 
         quantityErrors += ChangeErrors;
-        quantityVictims += CheckQuantityVictims;
+        quantityVictims += ChangeVictims;
     }
 
     /// <summary>
     /// Изменение количества ошибок
     /// </summary>
-    /// <param name="value">Значение</param>
+    /// <param name="value">значение</param>
     public void ChangeErrors(int value)
     {
         errors += value;
 
-        // Если ошибок не осталось, завершаем уровень
+        // Если ошибок не осталось, завершаем уровень проигрышем
         if (errors <= 0) StartCoroutine(CompleteLevel("lose"));
     }
 
     /// <summary>
-    /// Проверка количества жильцов и ошибок
+    /// Изменение количества жильцов
     /// </summary>
-    /// <param name="value">Значение</param>
-    private void CheckQuantityVictims(int value)
+    /// <param name="value">значение</param>
+    private void ChangeVictims(int value)
     {
         victims -= value;
 
-        // Если жильцы закончились, завершаем уровень
+        // Если жильцы закончились и ошибок немного, завершаем уровень победой
         if (victims <= 0 && errors > 0) StartCoroutine(CompleteLevel("victory"));
     }
 
     /// <summary>
     /// Завершение текущего уровня
     /// </summary>
-    /// <param name="mode">Режим завершения</param>
+    /// <param name="mode">режим завершения</param>
     private IEnumerator CompleteLevel(string mode)
     {
         if (Mode == "play")
@@ -71,7 +71,6 @@ public class LevelManager : MonoBehaviour
             yield return new WaitForSeconds(1.0f);
 
             Mode = mode;
-            // Выводим результаты
             results.ShowResult();
         }
     }

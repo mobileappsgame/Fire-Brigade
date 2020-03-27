@@ -21,13 +21,12 @@ public class StretcherChange : MonoBehaviour
         // Если персонажи касаются пожарной машины
         if (collision.gameObject.GetComponent<Control>())
         {
-            // Активируем компонент анимации
-            if (panel.enabled == false) panel.enabled = true;
+            panel.enabled = true;
 
             // Открываем панель выбора
             panel.SetBool("Opening", true);
 
-            // Уменьшаем коэффициент замедления
+            // Замедляем коэффициент падения
             Slowdown.SlowDown?.Invoke(true);
 
             // Ремонтируем (увеличиваем) прочность носилок
@@ -42,17 +41,16 @@ public class StretcherChange : MonoBehaviour
             // Закрываем панель выбора
             panel.SetBool("Opening", false);
 
-            // Увеличиваем коэффициент замедления
+            // Восстанавливаем коэффициент падения
             Slowdown.SlowDown?.Invoke(false);
 
             // Останавливаем увеличение прочности
-            if (stretcher.Coroutine != null)
-                StopCoroutine(stretcher.Coroutine);
+            if (stretcher.Coroutine != null) StopCoroutine(stretcher.Coroutine);
         }
     }
 
     /// <summary>
-    /// Включение/отключение коллайдера
+    /// Включение/отключение коллайдера, вызывающего панель выбора носилок
     /// </summary>
     public void ChangeCollider(bool state)
     {

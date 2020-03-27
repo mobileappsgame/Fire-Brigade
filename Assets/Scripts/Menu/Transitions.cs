@@ -6,13 +6,13 @@ public class Transitions : MonoBehaviour
     /// <summary>
     /// Переход на указанную сцену
     /// </summary>
-    /// <param name="scene">Номер сцены</param>
+    /// <param name="scene">номер сцены</param>
     public void GoToScene(int scene)
     {
         SceneManager.LoadSceneAsync(scene);
     }
 
-    /// <param name="scene">Название сцены</param>
+    /// <param name="scene">название сцены</param>
     public void GoToScene(string scene)
     {
         SceneManager.LoadSceneAsync(scene);

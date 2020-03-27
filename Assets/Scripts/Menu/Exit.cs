@@ -3,15 +3,14 @@
 public class Exit : MonoBehaviour
 {
     [Header("Панель выхода")]
-    [SerializeField] private GameObject panelExit;
+    [SerializeField] private GameObject exit;
 
     private void Update()
     {
         // Если нажата кнопка возврата и панель выхода неактивна
-        if (Input.GetKey(KeyCode.Escape) && panelExit.activeSelf == false)
+        if (Input.GetKey(KeyCode.Escape) && exit.activeSelf == false)
         {
-            // Активируем панель
-            panelExit.SetActive(true);
+            exit.SetActive(true);
         }
     }
 

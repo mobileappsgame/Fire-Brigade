@@ -5561,6 +5561,7 @@ GameObject:
   - component: {fileID: 1837930631}
   - component: {fileID: 1837930630}
   - component: {fileID: 1837930629}
+  - component: {fileID: 1837930633}
   m_Layer: 5
   m_Name: Training
   m_TagString: Untagged
@@ -5648,6 +5649,26 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1837930633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837930628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45cd2261d7248d6478bd48f432ab27d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  learningElements:
+  - {fileID: 1791577495}
+  - {fileID: 1953293070}
+  - {fileID: 1324818792}
+  mask: {fileID: 1791577495}
+  characters: {fileID: 1953293070}
+  fire: {fileID: 1324818792}
+  textTranslation: {fileID: 245463123}
 --- !u!1 &1867187607
 GameObject:
   m_ObjectHideFlags: 0
@@ -5774,7 +5795,6 @@ GameObject:
   - component: {fileID: 1896135443}
   - component: {fileID: 1896135442}
   - component: {fileID: 1896135441}
-  - component: {fileID: 1896135440}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -5802,22 +5822,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1896135440
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1896135438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45cd2261d7248d6478bd48f432ab27d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mask: {fileID: 1791577495}
-  characters: {fileID: 1953293070}
-  fire: {fileID: 1324818792}
-  textTranslation: {fileID: 245463123}
 --- !u!114 &1896135441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5861,7 +5865,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1896135440}
+      - m_Target: {fileID: 1837930633}
         m_MethodName: RefreshStage
         m_Mode: 1
         m_Arguments:

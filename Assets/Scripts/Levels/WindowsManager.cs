@@ -7,10 +7,8 @@ public class WindowsManager : MonoBehaviour
     [Header("Максимум открытых окон")] // при старте уровня
     [SerializeField] private int maximum;
 
-    // Промежуток для создания жильцов
-    [Header("Минимальное время")]
+    [Header("Промежуток появления жильцов")]
     [SerializeField] private float minSeconds;
-    [Header("Максимальное время")]
     [SerializeField] private float maxSeconds;
 
     [Header("Количество жителей")]
@@ -43,12 +41,13 @@ public class WindowsManager : MonoBehaviour
 
         // Запускаем открытие других окон
         StartCoroutine(OpenWindows());
-        // Активируем прыжки персонажей
+
+        // Запускаем прыжки персонажей
         StartCoroutine(CharacterJumping());
     }
 
     /// <summary>
-    /// Переодическое открытие доступных окон (появление пожара)
+    /// Переодическое открытие закрытых окон (появление пожара)
     /// </summary>
     private IEnumerator OpenWindows()
     {
@@ -70,7 +69,7 @@ public class WindowsManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Переодическое появление жильцов в доступных окнах
+    /// Переодическое появление жильцов в открытых окнах
     /// </summary>
     private IEnumerator CharacterJumping()
     {
@@ -87,12 +86,10 @@ public class WindowsManager : MonoBehaviour
                 // Показываем персонажа в окне
                 windows[window].ShowVictims();
 
-                // Удаляем окно из списка доступных
+                // Удаляем окно из доступных
                 windows.RemoveAt(window);
 
-                // Уменьшаем количество жильцов
                 victims--;
-
                 // Выводим количество оставшихся персонажей
                 VictimsCounting.QuantityChange?.Invoke();
             }

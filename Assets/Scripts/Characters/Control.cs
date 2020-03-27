@@ -7,7 +7,7 @@ public class Control : MonoBehaviour
 
     private int Inverted { get { return inverted ? -1 : 1; } }
 
-    // Скорость движения персонажей
+    // Скорость персонажей
     private float speed = 18.5f;
 
     // Высота прыжка персонажей
@@ -38,7 +38,7 @@ public class Control : MonoBehaviour
     private void Start()
     {
         // Получаем границы экрана и устанавливаем ограничители для персонажей
-        limiters[(int)Limiters.Left] = Camera.main.ViewportToWorldPoint(new Vector2(0.05f, 0)).x;
+        limiters[(int)Limiters.Left] = Camera.main.ViewportToWorldPoint(new Vector2(-0.02f, 0)).x;
         limiters[(int)Limiters.Right] = Camera.main.ViewportToWorldPoint(new Vector2(0.87f, 0)).x;
     }
 
@@ -77,15 +77,12 @@ public class Control : MonoBehaviour
         // Если направление нулевое (с небольшой погрешностью)
         if (Direction.x < 0.015f && Direction.x > -0.015f)
         {
-            // Устанавливаем стандартную анимацию
             ChangeAnimation(Characters.Animations.Idle);
         }
         else
         {
             // Перемещаем персонажей в указанном направлении с указанной скоростью
             rigdbody.transform.Translate(Direction * speed * Time.fixedDeltaTime);
-
-            // Устанавливаем анимацию бега персонажей
             ChangeAnimation(Characters.Animations.Run);
         }
     }
@@ -99,8 +96,6 @@ public class Control : MonoBehaviour
         {
             // Создаем импульсный прыжок персонажей
             rigdbody.AddForce(Vector2.up * jump, ForceMode2D.Impulse);
-
-            // Отключаем нахождение на земле
             IsGroung = false;
         }
     }
@@ -108,16 +103,13 @@ public class Control : MonoBehaviour
     /// <summary>
     /// Переключение анимации персонажей
     /// </summary>
-    /// <param name="animation">Анимация персонажа</param>
+    /// <param name="animation">анимация из перечисления</param>
     private void ChangeAnimation(Characters.Animations animation)
     {
         brigade.SetInteger("State", (int)animation);
     }
 
-    /// <summary>
-    /// Переключение анимации персонажей
-    /// </summary>
-    /// <param name="animation">Номер анимации</param>
+    /// <param name="animation">номер анимации</param>
     public void ChangeAnimation(int animation)
     {
         brigade.SetInteger("State", animation);

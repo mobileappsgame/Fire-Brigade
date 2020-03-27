@@ -15,12 +15,12 @@ public class Stretcher : MonoBehaviour
     public int Strength { get; private set; } = 100;
 
     // Уровень носилок
-    private int stretcherLevel;
+    public int StretcherLevel { get; private set; }
 
     // Цветовой статус носилок
     public static string Status { get; private set; }
 
-    // Предщыдущий номер анимации носилок (для возврата после улучшения)
+    // Предыдущий номер анимации (для возврата после улучшения)
     private int previousNumber;
 
     // Горят ли носилки
@@ -35,10 +35,10 @@ public class Stretcher : MonoBehaviour
     // Перечисление анимаций носилок
     private enum State { Green, Orange, Red, Yellow, Different, Destroy, Broken }
 
-    [Header("Компонент выбора")]
+    [Header("Выбор носилок")]
     [SerializeField] private StretcherChange stretcherChange;
 
-    // Ссылка на запущенную корутину
+    // Ссылка на активную корутину
     public Coroutine Coroutine { get; set; }
 
     // Ссылки на компоненты
@@ -56,7 +56,7 @@ public class Stretcher : MonoBehaviour
         Status = Statuses.ColorStatuses.Green.ToString();
 
         // Получаем уровень носилок
-        stretcherLevel = PlayerPrefs.GetInt("stretcher");
+        StretcherLevel = PlayerPrefs.GetInt("stretcher");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -64,6 +64,7 @@ public class Stretcher : MonoBehaviour
         // Если огненная капля касается носилок
         if (collision.gameObject.GetComponent<Drop>())
         {
+            // Если носилки не горят и не улучшенные
             if (IsBurns == false && IsSuper == false)
             {
                 // Возвращаем объект в указанный пул объектов
@@ -73,8 +74,8 @@ public class Stretcher : MonoBehaviour
                 LightVisibility(true);
                 IsBurns = true;
 
-                // Запускаем уменьшение прочности носилок
-                Coroutine = StartCoroutine(ReduceStrength(10 - stretcherLevel));
+                // Запускаем уменьшение прочности носилок (с учетом уровня носилок)
+                Coroutine = StartCoroutine(ReduceStrength(10 - StretcherLevel));
             }
         }
     }
@@ -82,7 +83,7 @@ public class Stretcher : MonoBehaviour
     /// <summary>
     /// Установка видимости огоньков на носилках
     /// </summary>
-    /// <param name="state">Видимость огоньков</param>
+    /// <param name="state">видимость</param>
     private void LightVisibility(bool state)
     {
         for (int i = 0; i < lights.Length; i++)
@@ -98,7 +99,7 @@ public class Stretcher : MonoBehaviour
     {
         for (int i = 0; i < lights.Length; i++)
         {
-            // Если есть видимые огоньки, выходим
+            // Если есть видимые огоньки, выходим из метода
             if (lights[i].activeInHierarchy) return;
         }
 
@@ -112,7 +113,7 @@ public class Stretcher : MonoBehaviour
     /// <summary>
     /// Уменьшение прочности носилок
     /// </summary>
-    /// <param name="value">Значение для вычитания</param>
+    /// <param name="value">значение для вычитания</param>
     private IEnumerator ReduceStrength(int value)
     {
         while (Strength > 0)
@@ -139,10 +140,9 @@ public class Stretcher : MonoBehaviour
     /// <summary>
     /// Изменение прочности носилок
     /// </summary>
-    /// <param name="value">Значение</param>
+    /// <param name="value">значение</param>
     public void ChangeStrength(int value)
     {
-        // Изменяем прочность носилок
         Strength += value;
 
         // Удаляем излишек прочности
@@ -176,8 +176,6 @@ public class Stretcher : MonoBehaviour
         {
             // Отображаем сломанные носилки
             ChangeAnimation((int)State.Broken);
-
-            // Отключаем коллайдер носилок
             boxCollider.enabled = false;
 
             // Вызываем событие уничтоженных носилок
@@ -188,15 +186,13 @@ public class Stretcher : MonoBehaviour
     /// <summary>
     /// Переключение анимации носилок
     /// </summary>
-    /// <param name="number">Параметр анимации</param>
+    /// <param name="number">параметр анимации</param>
     public void ChangeAnimation(int number)
     {
         // Записываем предыдущий номер анимации носилок
         previousNumber = animator.GetInteger("State");
 
         animator.SetInteger("State", number);
-
-        // Устанавливаем цветовой статус носилок
         Status = ((Statuses.ColorStatuses)number).ToString();
     }
 
@@ -208,7 +204,7 @@ public class Stretcher : MonoBehaviour
         IsSuper = true;
         ChangeStrength(50);
 
-        // Отключаем панель выбора
+        // Отключаем панель выбора носилок
         stretcherChange.ChangeCollider(false);
 
         yield return new WaitForSeconds(20.0f);

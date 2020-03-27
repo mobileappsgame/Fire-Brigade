@@ -11,7 +11,7 @@ public class SuperiorStretcher : MonoBehaviour
     }
 
     /// <summary>
-    /// Проверка количества 
+    /// Проверка количества улучшенных носилок
     /// </summary>
     public void CheckQuantity()
     {

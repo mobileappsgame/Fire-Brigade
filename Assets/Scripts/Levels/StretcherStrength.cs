@@ -4,14 +4,14 @@ using UnityEngine.UI;
 
 public class StretcherStrength : MonoBehaviour
 {
-    // Изменение прочности носилок
-    public static Action StrengthChange;
-
     [Header("Компонент носилок")]
     [SerializeField] private Stretcher stretcher;
 
     // Текущее значение прочности
     private int presentValue;
+
+    // Изменение прочности носилок
+    public static Action StrengthChange;
 
     // Ссылки на компоненты
     private Text percent;

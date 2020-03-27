@@ -9,7 +9,7 @@ public class PoolsManager
     /// <summary>
     /// Начальное заполнение пула неактивными объектами
     /// </summary>
-    /// <param name="pool">Родительский объект, содержащий неактивные объекты для пула</param>
+    /// <param name="pool">родительский объект, содержащий неактивные объекты для пула</param>
     public static void FillPool(GameObject pool)
     {
         // Ключ по названию родительского объекта
@@ -30,7 +30,7 @@ public class PoolsManager
     /// <summary>
     /// Получение количества объектов в пуле
     /// </summary>
-    /// <param name="key">Ключ пула в словаре</param>
+    /// <param name="key">ключ пула в словаре</param>
     public static int QuantityObjects(string key)
     {
         return poolsDictionary[key].Count;
@@ -39,8 +39,8 @@ public class PoolsManager
     /// <summary>
     /// Получение объекта из пула
     /// </summary>
-    /// <param name="key">Ключ пула в словаре</param>
-    /// <param name="number">Номер объекта, который нужно получить из пула</param>
+    /// <param name="key">ключ пула в словаре</param>
+    /// <param name="number">номер объекта, который нужно получить из пула</param>
     public static GameObject GetObjectFromPool(string key, int number = 0)
     {
         // Получаем количество объектов в пуле
@@ -61,8 +61,8 @@ public class PoolsManager
     /// <summary>
     /// Возвращение объекта в пул
     /// </summary>
-    /// <param name="key">Ключ пула в словаре</param>
-    /// <param name="target">Объект для помещения в пул</param>
+    /// <param name="key">ключ пула в словаре</param>
+    /// <param name="target">объект для помещения в пул</param>
     public static void PutObjectToPool(string key, GameObject target)
     {
         // Добавляем объект в словарь

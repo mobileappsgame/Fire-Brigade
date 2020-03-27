@@ -8,14 +8,14 @@ public class Level : MonoBehaviour
 
     public string Number { get { return number.ToString(); } }
 
-    [Header("Текстовый объект")]
+    [Header("Номер уровня")]
     [SerializeField] private GameObject textNumber;
 
-    [Header("Изображение замка")]
-    [SerializeField] private Image imageLock;
+    [Header("Статус уровня")]
+    [SerializeField] private Image imageLevel;
 
-    [Header("Пройденный уровень")]
-    [SerializeField] private Sprite done;
+    [Header("Спрайты статусов")]
+    [SerializeField] private Sprite[] statuses;
 
     private Button button;
 
@@ -29,10 +29,8 @@ public class Level : MonoBehaviour
         // Если игровой прогресс достаточный
         if (PlayerPrefs.GetInt("progress") == number)
         {
-            // Скрываем замок
-            imageLock.gameObject.SetActive(false);
-
-            // Показываем номер уровня
+            // Скрываем замок и показываем номер
+            imageLevel.gameObject.SetActive(false);
             textNumber.SetActive(true);
 
             // Активируем кнопку
@@ -40,8 +38,8 @@ public class Level : MonoBehaviour
         }
         else if (PlayerPrefs.GetInt("progress") > number)
         {
-            // Показываем галочку
-            imageLock.sprite = done;
+            // Меняем замок на галочку
+            imageLevel.sprite = statuses[1];
 
             // Активируем кнопку
             button.interactable = true;

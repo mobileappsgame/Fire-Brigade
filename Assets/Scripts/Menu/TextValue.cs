@@ -11,7 +11,7 @@ public class TextValue : TextTranslation
     }
 
     /// <summary>
-    /// Вывод переведенного текста из словаря с необходимым значением
+    /// Вывод переведенного текста из словаря с добавлением сохраненного значения
     /// </summary>
     public override void TranslateText()
     {

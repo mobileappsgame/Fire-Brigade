@@ -15,16 +15,14 @@ public class Window : MonoBehaviour, IPoolable
     [Header("Пул персонажей")] // ключ пула
     [SerializeField] private string victims;
 
-    // Промежуток для создания капель
-    [Header("Минимальное время")]
+    [Header("Промежуток для капель")]
     [SerializeField] private float minSeconds;
-    [Header("Максимальное время")]
     [SerializeField] private float maxSeconds;
 
     [Header("Предупреждение о прыжке")]
     [SerializeField] private GameObject exclamation;
 
-    // Ссылка на анимацию
+    // Ссылка на компонент
     private Animator animator;
 
     private void Awake()
@@ -37,10 +35,9 @@ public class Window : MonoBehaviour, IPoolable
     /// </summary>
     public void ActivateObject()
     {
-        // Активируем капли
         Twinkle = true;
 
-        // Если окно уже открыто
+        // Если окно изначально открыто
         if (OpenWindow)
         {
             // Отображаем пожар сразу
@@ -48,7 +45,6 @@ public class Window : MonoBehaviour, IPoolable
         }
         else
         {
-            // Открываем окно
             OpenWindow = true;
             // Запускаем постепенный пожар
             animator.SetBool("Fire", true);
@@ -84,7 +80,7 @@ public class Window : MonoBehaviour, IPoolable
             yield return new WaitForSeconds(Random.Range(minSeconds, maxSeconds));
 
             // Вероятность падения капли
-            var probability = Random.Range(1, 2);
+            var probability = Random.Range(1, 3);
 
             if (Twinkle && probability == 1)
             {
@@ -106,15 +102,14 @@ public class Window : MonoBehaviour, IPoolable
     public void ShowVictims()
     {
         // Если в указанном пуле есть персонажи
-        if (PoolsManager.QuantityObjects(ListingPools.Pools.GreenMen.ToString()) > 0)
+        if (PoolsManager.QuantityObjects(victims) > 0)
         {
-            // Отключаем капли
             Twinkle = false;
 
             // Получаем объект персонажа из пула и получаем его компонент
             var victim = PoolsManager.GetObjectFromPool(victims).GetComponent<Victims>();
 
-            // Перемещаем персонажа в текущее окно
+            // Перемещаем персонажа в текущее окно (с указанным смещением)
             victim.transform.position = transform.position + new Vector3(0, victim.Offset, 0);
 
             // Записываем персонажу его окно
@@ -126,17 +121,9 @@ public class Window : MonoBehaviour, IPoolable
     }
 
     /// <summary>
-    /// Деактивация объекта при возвращении в пул
-    /// </summary>
-    public void DeactivateObject()
-    {
-        gameObject.SetActive(false);
-    }
-
-    /// <summary>
     /// Отображение/скрытие предупреждения о прыжке персонажа
     /// </summary>
-    /// <param name="state">Видимость объекта</param>
+    /// <param name="state">видимость объекта</param>
     public void ShowWarning(bool state)
     {
         exclamation.SetActive(state);
@@ -148,9 +135,16 @@ public class Window : MonoBehaviour, IPoolable
     public IEnumerator ReestablishWindow()
     {
         yield return new WaitForSeconds(1.0f);
-        // Отправляем окно в список
+
         AddToList();
-        // Восстанавливаем огненные капли
         Twinkle = true;
+    }
+
+    /// <summary>
+    /// Деактивация объекта при возвращении в пул
+    /// </summary>
+    public void DeactivateObject()
+    {
+        gameObject.SetActive(false);
     }
 }

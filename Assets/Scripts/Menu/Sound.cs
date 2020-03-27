@@ -2,7 +2,7 @@
 
 public class Sound : MonoBehaviour
 {
-    // Ссылка на компонент перевода
+    // Ссылка на компонент
     private TextTranslation textTranslation;
 
     private void Awake()
@@ -16,7 +16,7 @@ public class Sound : MonoBehaviour
     }
 
     /// <summary>
-    /// Установка перевода в зависимости от параметра звука
+    /// Установка перевода в зависимости от сохраненного параметра
     /// </summary>
     private void SetupTranslation()
     {

@@ -11,17 +11,25 @@ public class Victims : MonoBehaviour, IPoolable
     // Находится ли персонаж на земле
     private bool isGround = false;
 
-    // Слой носилок на сцене
-    private int layer;
-
-    // Уровень носилок
-    private int stretcherLevel;
-
     [Header("Цветовой статус")]
     [SerializeField] private string status;
 
     [Header("Пул объекта")] // ключ пула
     [SerializeField] private string pool;
+
+    [Header("Бег по этажу")]
+    [SerializeField] private bool isRun;
+
+    // Значение бега по умолчанию
+    private bool runDefault;
+    // Направление движения
+    private int direction = 1;
+
+    [Header("Ограничители бега")]
+    [SerializeField] private Transform[] runningLimiters;
+
+    // Ограничители для бега по этажу
+    private float[] limitersX = new float[2];
 
     [Header("Вес персонажа")]
     [SerializeField] private int weight;
@@ -48,11 +56,18 @@ public class Victims : MonoBehaviour, IPoolable
         animator = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
 
-        // Получаем номер слоя носилок
-        layer = LayerMask.GetMask("Stretcher");
+        // Запоминаем значение бега
+        runDefault = isRun;
+    }
 
-        // Получаем уровень носилок
-        stretcherLevel = PlayerPrefs.GetInt("stretcher");
+    private void Start()
+    {
+        if (runningLimiters.Length > 0)
+        {
+            // Записываем позицию ограничителей
+            limitersX[0] = runningLimiters[0].position.x;
+            limitersX[1] = runningLimiters[1].position.x;
+        }
     }
 
     /// <summary>
@@ -60,15 +75,14 @@ public class Victims : MonoBehaviour, IPoolable
     /// </summary>
     public void ActivateObject()
     {
-        // Активируем объект
         gameObject.SetActive(true);
 
-        // Определяем случайную скорость падения
+        // Определяем скорость падения
         speed = Random.Range(4.3f, 5.2f);
 
         // Определяем задержку до прыжка
         delay += Random.Range(-1.0f, 1.5f);
-        // Запускаем отсчет до прыжка из окна
+        // Запускаем отсчет до прыжка
         StartCoroutine(CountdownToJump());
     }
 
@@ -83,7 +97,7 @@ public class Victims : MonoBehaviour, IPoolable
             delay -= 0.1f;
         }
 
-        // Отображаем предупреждение о прыжке
+        // Отображаем предупреждение
         Window.ShowWarning(true);
 
         yield return new WaitForSeconds(delay);
@@ -95,52 +109,86 @@ public class Victims : MonoBehaviour, IPoolable
 
     private void FixedUpdate()
     {
-        if (isFall)
-        {
-            // Перемещаем персонажа вниз с указанной скоростью и коэффициентом замедления
-            rigbody.MovePosition(rigbody.position + Vector2.down * (speed * Slowdown.coefficient) * Time.fixedDeltaTime);
+        if (isRun) RunningOnFloor();
 
-            // Пускаем луч вниз от персонажа
-            RaycastHit2D hit = Physics2D.Raycast(DefinePoint(), Vector2.down, 0.05f, layer);
-
-            // Если найдены носилки и они не горят
-            if (hit.collider && Stretcher.IsBurns != true)
-            {
-                // Отключаем падение
-                isFall = false;
-
-                // Создаем небольшой отскок от носилок
-                rigbody.AddForce(Vector2.up * 16, ForceMode2D.Impulse);
-                // Активируем триггер спасения
-                animator.SetTrigger("Save");
-
-                // Если цветовые статусы не совпадают и используются обычные носилки
-                if (status != Stretcher.Status && Stretcher.IsSuper == false)
-                {
-                    var stretcher = hit.collider.GetComponent<Stretcher>();
-                    // Уменьшаем прочность носилок
-                    stretcher.ChangeStrength(-weight + (int)Mathf.Pow(stretcherLevel, 2));
-                    // Проверяем прочность носилок
-                    stretcher.CheckStrength();
-
-                    // Уменьшаем количество оставшихся ошибок
-                    LevelManager.quantityErrors?.Invoke(-1);
-
-                    // Уменьшаем счет уровня
-                    Score.ChangingScore?.Invoke(-weight / 3);
-                }
-                else
-                {
-                    // Увеличиваем счет уровня
-                    Score.ChangingScore?.Invoke(weight / 2 + 15);
-                }
-            }
-        }
+        if (isFall) CharacterFall();
 
         if (isGround)
         {
             // Даем спасенному персонажу убежать за экран
             rigbody.MovePosition(rigbody.position + Vector2.right * speed * Time.fixedDeltaTime);
+        }
+    }
+
+    /// <summary>
+    /// Бег персонажа по этажу
+    /// </summary>
+    private void RunningOnFloor()
+    {
+        // Перемещаем персонажа в указанном направлении с коэффициентом замедления
+        transform.Translate(Vector3.right * direction * Slowdown.coefficient * Time.fixedDeltaTime);
+
+        // Если персонаж достигает ограничителя, разворачиваем его
+        if (transform.position.x < limitersX[0] || transform.position.x > limitersX[1])
+        {
+            direction *= -1;
+            sprite.flipX = !sprite.flipX;
+        }
+    }
+
+    /// <summary>
+    /// Активация падения персонажа
+    /// </summary>
+    public void ActivateFall()
+    {
+        isRun = false;
+        isFall = true;
+
+        // Возвращаем текущее окно в список доступных
+        StartCoroutine(Window.ReestablishWindow());
+    }
+
+    /// <summary>
+    /// Падение персонажа
+    /// </summary>
+    private void CharacterFall()
+    {
+        // Перемещаем персонажа вниз с указанной скоростью и коэффициентом замедления
+        rigbody.MovePosition(rigbody.position + Vector2.down * (speed * Slowdown.coefficient) * Time.fixedDeltaTime);
+
+        // Пускаем луч вниз от персонажа
+        RaycastHit2D hit = Physics2D.Raycast(DefinePoint(), Vector2.down, 0.05f, LayerMask.GetMask("Stretcher"));
+
+        // Если найдены носилки и они не горят
+        if (hit.collider && Stretcher.IsBurns != true)
+        {
+            isFall = false;
+
+            // Создаем небольшой отскок от носилок
+            rigbody.AddForce(Vector2.up * 16, ForceMode2D.Impulse);
+            // Активируем триггер спасения
+            animator.SetTrigger("Save");
+
+            // Если цветовые статусы не совпадают и используются обычные носилки
+            if (status != Stretcher.Status && Stretcher.IsSuper == false)
+            {
+                var stretcher = hit.collider.GetComponent<Stretcher>();
+
+                // Уменьшаем прочность носилок (с учетом уровня носилок)
+                stretcher.ChangeStrength(-weight + (int)Mathf.Pow(stretcher.StretcherLevel, 2));
+                // Проверяем прочность
+                stretcher.CheckStrength();
+
+                // Записываем совершенную ошибку
+                LevelManager.quantityErrors?.Invoke(-1);
+                // Немного увеличиваем счет уровня
+                Score.ChangingScore?.Invoke(weight / 10);
+            }
+            else
+            {
+                // Увеличиваем счет уровня с бонусом
+                Score.ChangingScore?.Invoke(weight / 2 + 15);
+            }
         }
     }
 
@@ -153,27 +201,16 @@ public class Victims : MonoBehaviour, IPoolable
         return (Vector2)transform.position - new Vector2(0, 0.5f);
     }
 
-    /// <summary>
-    /// Активация падения персонажа
-    /// </summary>
-    public void ActivateFall()
-    {
-        isFall = true;
-
-        // Возвращаем окно в список доступных
-        StartCoroutine(Window.ReestablishWindow());
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // Если падающий персонаж касается дороги
         if (collision.gameObject.GetComponent<Road>())
         {
-            // Если персонаж был пойман на носилки
+            // Если персонаж был пойман
             if (isFall == false)
             {
-                // Активируем нахождение на земле
                 isGround = true;
+                sprite.flipX = false;
             }   
             else
             {
@@ -186,14 +223,13 @@ public class Victims : MonoBehaviour, IPoolable
                 // Возвращаем персонажа в пул
                 StartCoroutine(ReturnToPool());
 
-                // Уменьшаем количество оставшихся ошибок
+                // Записываем совершенную ошибку
                 LevelManager.quantityErrors?.Invoke(-1);
-
                 // Уменьшаем счет уровня
                 Score.ChangingScore?.Invoke(-weight / 3);
             }
 
-            // Уменьшаем жильцов и проверяем количество
+            // Уменьшаем жильцов и проверяем их количество
             LevelManager.quantityVictims?.Invoke(1);
         }
     }
@@ -222,17 +258,13 @@ public class Victims : MonoBehaviour, IPoolable
     /// </summary>
     public void DeactivateObject()
     {
-        // Сбрасываем переменные
+        // Сброс значений
         isFall = false;
         isGround = false;
-
-        // Восстанавливаем слой
+        isRun = runDefault;
         sprite.sortingOrder = 7;
 
-        // Сбрасываем анимацию
         animator.Rebind();
-
-        // Отключаем объект
         gameObject.SetActive(false);
     }
 }

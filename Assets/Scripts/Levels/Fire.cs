@@ -9,7 +9,7 @@ public class Fire : MonoBehaviour
         {
             gameObject.SetActive(false);
 
-            // Проверяем оставшиеся огоньки
+            // Проверяем количество оставшихся огоньков
             Stretcher.SnuffOut?.Invoke();
         }
     }

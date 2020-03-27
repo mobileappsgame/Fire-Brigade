@@ -14,7 +14,6 @@ public class Loading : MonoBehaviour
     private void Start()
     {
         #region SaveData
-
         // Перевод интерфейса игры
         if (!PlayerPrefs.HasKey("language"))
             PlayerPrefs.SetString("language", (Application.systemLanguage == SystemLanguage.Russian) ? "ru-RU" : "en-US");
@@ -39,10 +38,7 @@ public class Loading : MonoBehaviour
 
         // Прохождение обучения
         if (!PlayerPrefs.HasKey("training")) PlayerPrefs.SetString("training", "no");
-
         #endregion
-
-        PlayerPrefs.SetInt("progress", 1);
 
         StartCoroutine(GoToMenu());
     }

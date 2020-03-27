@@ -18,25 +18,25 @@ public class Slowdown : MonoBehaviour
     /// <summary>
     /// Изменение коэффициента замедления
     /// </summary>
-    /// <param name="activity">Активность замедления</param>
+    /// <param name="activity">активность замедления</param>
     private void ChangeSlowdown(bool activity)
     {
         if (activity)
         {
             StopAllCoroutines();
 
-            // Устанавливаем коэффициент
-            coefficient = 0.2f;
+            // Замедляем падение
+            coefficient = 0.25f;
         }
         else
         {
-            // Запускаем увеличение коэффициента
+            // Запускаем восстановление коэффициента
             StartCoroutine(IncreaseCoefficient());
         }
     }
 
     /// <summary>
-    /// Постепенное увеличение коэффициента падения
+    /// Постепенное восстановление коэффициента падения
     /// </summary>
     private IEnumerator IncreaseCoefficient()
     {

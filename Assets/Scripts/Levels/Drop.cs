@@ -21,7 +21,6 @@ public class Drop : MonoBehaviour, IPoolable
     /// </summary>
     public void ActivateObject()
     {
-        // Активируем объект
         gameObject.SetActive(true);
 
         // Определяем случайную скорость падения
@@ -30,7 +29,7 @@ public class Drop : MonoBehaviour, IPoolable
 
     private void FixedUpdate()
     {
-        // Движение капли вниз с указанной скоростью и коэффициентом замедления
+        // Перемещаем каплю вниз с указанной скоростью и коэффициентом замедления
         rigbody.MovePosition(rigbody.position + Vector2.down * (speed * Slowdown.coefficient) * Time.fixedDeltaTime);
     }
 
@@ -41,7 +40,6 @@ public class Drop : MonoBehaviour, IPoolable
     {
         // Перемещаем эффект брызг к огненной капле
         spray.transform.position = transform.position;
-        // Воспроизводим эффект
         spray.Play();
     }
 

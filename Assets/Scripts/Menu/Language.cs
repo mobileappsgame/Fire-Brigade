@@ -21,7 +21,7 @@ public class Language : MonoBehaviour
     }
 
     /// <summary>
-    /// Установка перевода в зависимости от параметра языка
+    /// Установка перевода в зависимости от языка
     /// </summary>
     private void SetupTranslation()
     {
@@ -43,13 +43,10 @@ public class Language : MonoBehaviour
         // Переключаем язык на другой
         PlayerPrefs.SetString("language", language == "ru-RU" ? "en-US" : "ru-RU");
 
-        // Загружаем переводы из файла
         languages.LanguageSetting();
-
         SetupTranslation();
 
         // Обновляем переводы всех пунктов меню
-        for (int i = 0; i < texts.Length; i++)
-            texts[i].TranslateText();
+        for (int i = 0; i < texts.Length; i++) texts[i].TranslateText();
     }
 }
