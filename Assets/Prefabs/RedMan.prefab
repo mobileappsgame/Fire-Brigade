@@ -280,6 +280,7 @@ MonoBehaviour:
   status: Red
   pool: RedMen
   isRun: 1
+  runSpeed: 1
   runningLimiters:
   - {fileID: 6860057772761418848}
   - {fileID: 2761157341080580015}

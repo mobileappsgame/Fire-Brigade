@@ -48,7 +48,7 @@ public class Window : MonoBehaviour, IPoolable
             OpenWindow = true;
 
             // Запускаем постепенный пожар
-            animator.SetBool("Fire", true);
+            animator.SetTrigger("Fire");
         }
     }
 

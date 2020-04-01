@@ -20,11 +20,14 @@ public class Victims : MonoBehaviour, IPoolable
     [Header("Бег по этажу")]
     [SerializeField] private bool isRun;
 
+    [Header("Скорость бега")]
+    [SerializeField] private float runSpeed;
+
     // Значение бега для сброса
     private bool runningValue;
 
     // Направление движения
-    private int direction = 1;
+    private int direction;
 
     [Header("Ограничители бега")]
     [SerializeField] private Transform[] runningLimiters;
@@ -70,6 +73,11 @@ public class Victims : MonoBehaviour, IPoolable
             // Записываем позицию ограничителей
             limitersX[0] = runningLimiters[0].position.x;
             limitersX[1] = runningLimiters[1].position.x;
+
+            // Определяем начальное направление бега
+            var way = Random.Range(-1f, 1f);
+            direction = way > 0 ? 1 : -1;
+            sprite.flipX = way > 0 ? false : true;
         }
     }
 
@@ -129,7 +137,7 @@ public class Victims : MonoBehaviour, IPoolable
     private void RunningOnFloor()
     {
         // Перемещаем персонажа в указанном направлении с коэффициентом замедления
-        transform.Translate(Vector3.right * direction * Slowdown.coefficient * Time.fixedDeltaTime);
+        transform.Translate(Vector3.right * direction * runSpeed * Slowdown.coefficient * Time.fixedDeltaTime);
 
         // Если персонаж достигает ограничителя, разворачиваем его
         if (transform.position.x < limitersX[0] || transform.position.x > limitersX[1])

@@ -425,8 +425,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maximum: 3
-  minSeconds: 3.3
-  maxSeconds: 6.1
+  minSeconds: 3.2
+  maxSeconds: 6
 --- !u!1001 &128574788
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14577,7 +14577,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1441411771}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.38, y: -3.63, z: 0}
+  m_LocalPosition: {x: 7.17, y: -3.63, z: 0}
   m_LocalScale: {x: 0.8, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 618372630}

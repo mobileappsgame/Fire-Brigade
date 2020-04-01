@@ -166,7 +166,8 @@ MonoBehaviour:
   status: Yellow
   pool: YellowMen
   isRun: 1
+  runSpeed: 2.3
   runningLimiters: []
   weight: 45
-  delay: 5.8
+  delay: 8.3
   offset: -0.07
