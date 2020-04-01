@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class SuperiorStretcher : MonoBehaviour
+public class SuperStretcher : MonoBehaviour
 {
     [Header("Компонент носилок")]
     [SerializeField] private Stretcher stretcher;
@@ -24,7 +24,7 @@ public class SuperiorStretcher : MonoBehaviour
     public void UseImprovement()
     {
         // Запускаем отсчет до возвращения стандартных носилок
-        StartCoroutine(stretcher.SuperiorStretcher());
+        _ = StartCoroutine(stretcher.SuperiorStretcher());
 
         // Уменьшаем количество улучшенных носилок
         PlayerPrefs.SetInt("super-stretcher", PlayerPrefs.GetInt("super-stretcher") - 1);

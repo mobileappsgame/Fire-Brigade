@@ -5,13 +5,13 @@ public class Control : MonoBehaviour
     [Header("Инвертирование управления")]
     [SerializeField] private bool inverted = false;
 
-    private int Inverted { get { return inverted ? -1 : 1; } }
+    private int Inverted => inverted ? -1 : 1;
 
     // Скорость персонажей
-    private float speed = 18.5f;
+    private float speed = 19.5f;
 
     // Высота прыжка персонажей
-    private float jump = 5f;
+    private float jump = 4.5f;
 
     // Находится ли персонажи на земле
     public bool IsGroung { get; set; } = false;
@@ -19,11 +19,8 @@ public class Control : MonoBehaviour
     // Направление движения персонажей
     public Vector2 Direction { get; private set; }
 
-    // Ограничители для персонажей
+    // Ограничители (точки по х) для персонажей
     private float[] limiters = new float[2];
-
-    // Перечисление ограничителей
-    private enum Limiters { Left, Right }
 
     // Ссылки на компоненты
     private Animator brigade;
@@ -38,8 +35,8 @@ public class Control : MonoBehaviour
     private void Start()
     {
         // Получаем границы экрана и устанавливаем ограничители для персонажей
-        limiters[(int)Limiters.Left] = Camera.main.ViewportToWorldPoint(new Vector2(-0.02f, 0)).x;
-        limiters[(int)Limiters.Right] = Camera.main.ViewportToWorldPoint(new Vector2(0.87f, 0)).x;
+        limiters[0] = Camera.main.ViewportToWorldPoint(new Vector2(-0.01f, 0)).x;
+        limiters[1] = Camera.main.ViewportToWorldPoint(new Vector2(0.89f, 0)).x;
     }
 
     private void FixedUpdate()
@@ -54,8 +51,8 @@ public class Control : MonoBehaviour
     private void SetMotionVector()
     {
         // Если позиция персонажей выходит за ограничители
-        if ((transform.position.x < limiters[(int)Limiters.Left] && Input.acceleration.x < 0) ||
-                (transform.position.x > limiters[(int)Limiters.Right] && Input.acceleration.x > 0))
+        if ((transform.position.x < limiters[0] && Input.acceleration.x < 0)
+        || (transform.position.x > limiters[1] && Input.acceleration.x > 0))
         {
             Direction *= 0;
         }
@@ -103,7 +100,7 @@ public class Control : MonoBehaviour
     /// <summary>
     /// Переключение анимации персонажей
     /// </summary>
-    /// <param name="animation">анимация из перечисления</param>
+    /// <param name="animation">анимация по перечислению</param>
     private void ChangeAnimation(Characters.Animations animation)
     {
         brigade.SetInteger("State", (int)animation);

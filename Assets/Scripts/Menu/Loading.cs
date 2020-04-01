@@ -40,7 +40,13 @@ public class Loading : MonoBehaviour
         if (!PlayerPrefs.HasKey("training")) PlayerPrefs.SetString("training", "no");
         #endregion
 
-        StartCoroutine(GoToMenu());
+        PlayerPrefs.SetInt("progress", 1);
+        PlayerPrefs.SetInt("total-score", 0);
+        PlayerPrefs.SetInt("current-score", 0);
+        PlayerPrefs.SetInt("stretcher", 1);
+        PlayerPrefs.SetInt("super-stretcher", 5);
+
+        _ = StartCoroutine(GoToMenu());
     }
 
     /// <summary>

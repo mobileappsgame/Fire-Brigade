@@ -10,14 +10,19 @@ public class Results : MonoBehaviour
     // Перечисление элементов меню
     private enum MenuItems { Blackout, Characters, Menu, Results, Victory, Lose }
 
-    [Header("Компонент счета")]
-    [SerializeField] private Score score;
-
-    [Header("Текст счета")]
+    [Header("Итоговый счет")]
     [SerializeField] private Text scoreText;
 
+    // Ссылка на компонент
+    private LevelManager levelManager;
+
+    private void Awake()
+    {
+        levelManager = Camera.main.GetComponent<LevelManager>();
+    }
+
     /// <summary>
-    /// Вывод результата уровня
+    /// Отображение результата уровня
     /// </summary>
     public void ShowResult()
     {
@@ -27,41 +32,62 @@ public class Results : MonoBehaviour
         menuItems[(int)MenuItems.Menu].SetActive(true);
         menuItems[(int)MenuItems.Results].SetActive(true);
 
-        if (LevelManager.Mode == "victory")
+        if (LevelManager.GameMode == "victory")
         {
-            // Домнажаем набранные очки
-            Score.ChangingScore(score.ScoreLevel * 5);
+            // Удваиваем набранные очки
+            levelManager.ChangeScore(levelManager.Score);
 
+            // Отображаем панель победы
             menuItems[(int)MenuItems.Victory].SetActive(true);
+            
+            var progress = PlayerPrefs.GetInt("progress");
+            // Если прогресс викторины не превышает номер уровня, увеличиваем прогресс
+            if (progress <= LevelSelection.LevelNumber) PlayerPrefs.SetInt("progress", progress + 1);
 
-            // Увеличиваем прогресс викторины, общий и текущий счет
-            PlayerPrefs.SetInt("progress", PlayerPrefs.GetInt("progress") + 1);
-            PlayerPrefs.SetInt("total-score", PlayerPrefs.GetInt("total-score") + score.ScoreLevel);
-            PlayerPrefs.SetInt("current-score", PlayerPrefs.GetInt("current-score") + score.ScoreLevel);
+            // Увеличиваем общий и текущий счет
+            PlayerPrefs.SetInt("total-score", PlayerPrefs.GetInt("total-score") + levelManager.Score);
+            PlayerPrefs.SetInt("current-score", PlayerPrefs.GetInt("current-score") + levelManager.Score);
 
-            // Отображаем счетчик набранных очков
-            StartCoroutine(ScoreCounter());
+            // Отображаем счетчик очков
+            _ = StartCoroutine(ScoreCounter());
         }
         else
         {
+            // Отображаем панель проигрыша
             menuItems[(int)MenuItems.Lose].SetActive(true);
         }
     }
 
     /// <summary>
-    /// Счетчик набранных очков от нуля
+    /// Счетчик набранных очков
     /// </summary>
     private IEnumerator ScoreCounter()
     {
-        // Начальное значение очков
-        var scoreLevel = 0;
+        // Счетчик очков
+        var counter = 0;
+        // Шаг увеличения
+        var counterStep = 10;
+        // Набранные очки за уровень
+        var scoreLevel = levelManager.Score;
 
-        while (scoreLevel < score.ScoreLevel)
+        while (scoreLevel > 0)
         {
-            yield return new WaitForSeconds(0.005f);
+            yield return new WaitForSeconds(0.003f);
 
-            scoreLevel++;
-            scoreText.text = scoreLevel.ToString();
+            // Уменьшаем счет, увеличиваем счетчик
+            if (scoreLevel >= counterStep)
+            {
+                counter += counterStep;
+                scoreLevel -= counterStep;
+            }
+            else
+            {
+                counter += scoreLevel;
+                scoreLevel = 0;
+            }
+            
+            // Выводим счет на экран
+            scoreText.text = counter.ToString();
         }
     }
 }

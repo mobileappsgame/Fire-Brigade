@@ -1,17 +1,13 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class StretcherStrength : MonoBehaviour
+public class InfoStrength : MonoBehaviour
 {
     [Header("Компонент носилок")]
     [SerializeField] private Stretcher stretcher;
 
     // Текущее значение прочности
     private int presentValue;
-
-    // Изменение прочности носилок
-    public static Action StrengthChange;
 
     // Ссылки на компоненты
     private Text percent;
@@ -22,8 +18,11 @@ public class StretcherStrength : MonoBehaviour
         percent = GetComponent<Text>();
         animator = GetComponent<Animator>();
 
+        // Получаем прочность носилок
         presentValue = stretcher.Strength;
-        StrengthChange += ShowPercent;
+
+        // Подписываем в событие метод обновления прочности
+        stretcher.StrengthChanged += ShowPercent;
     }
 
     private void Start()
@@ -36,8 +35,11 @@ public class StretcherStrength : MonoBehaviour
     /// </summary>
     private void ShowPercent()
     {
+        // Выводим прочность носилок
         percent.text = (stretcher.Strength > 0 ? stretcher.Strength.ToString() : "0") + "%";
-        SubtractionAnimation();
+
+        // Если значение уменьшилось, отображаем анимацию вычитания
+        if (stretcher.Strength < presentValue) SubtractionAnimation();
     }
 
     /// <summary>
@@ -45,19 +47,11 @@ public class StretcherStrength : MonoBehaviour
     /// </summary>
     private void SubtractionAnimation()
     {
-        if (stretcher.Strength < presentValue)
-        {
-            // Обновляем текущий процент
-            presentValue = stretcher.Strength;
+        // Обновляем текущий процент
+        presentValue = stretcher.Strength;
 
-            // Анимация вычитания
-            animator.enabled = true;
-            animator.Rebind();
-        }
-    }
-
-    private void OnDestroy()
-    {
-        StrengthChange = null;
-    }
+        // Анимация вычитания
+        animator.enabled = true;
+        animator.Rebind();
+    }    
 }

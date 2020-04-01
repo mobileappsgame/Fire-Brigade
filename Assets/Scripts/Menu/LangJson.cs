@@ -9,8 +9,6 @@ public class LangJson
 [Serializable]
 public class Phrase
 {
-    // Ключ фразы
     public string Key;
-    // Перевод фразы
     public string Value;
 }

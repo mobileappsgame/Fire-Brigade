@@ -1,39 +1,61 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
     // Текущий игровой режим
-    public static string Mode { get; set; } = "play";
+    public static string GameMode { get; private set; }
+
+    [Header("Всего жителей")]
+    [SerializeField] private int victims;
+
+    public int Victims { get => victims; set { victims = value; } }
+
+    // Текущее количество жителей
+    public int CurrentVictims { get; private set; }
+
+    public delegate void ValueChanged();
+    // Событие по изменению количества жителей
+    public event ValueChanged VictimsChanged;
 
     [Header("Максимум ошибок")]
     [SerializeField] private int errors;
 
-    // Изменение количества ошибок
-    public static Action<int> quantityErrors;
+    // Текущее количество ошибок
+    private int currentErrors = 0;
 
-    // Количество жильцов
-    private int victims;
+    // Текущий счет уровня
+    public int Score { get; private set; }
 
-    // Проверка количеста жильцов
-    public static Action<int> quantityVictims;
-
-    [Header("Менеджер окон")]
-    [SerializeField] private WindowsManager windowsManager;
+    public delegate void ScoreChanged(int value);
+    // Событие по изменению игрового счета
+    public event ScoreChanged ScoresChanged;
 
     // Ссылка на компонент
     private Results results;
 
     private void Awake()
     {
+        GameMode = "play";
+        CurrentVictims = victims;
+
         results = Camera.main.GetComponent<Results>();
+    }
 
-        // Получаем количество жильцов
-        victims = windowsManager.Victims;
+    /// <summary>
+    /// Уменьшение количества жильцов
+    /// </summary>
+    public void ReduceQuantityVictims()
+    {
+        CurrentVictims--;
 
-        quantityErrors += ChangeErrors;
-        quantityVictims += ChangeVictims;
+        // Сообщаем об изменении
+        VictimsChanged?.Invoke();
+
+        // Если жильцы закончились и ошибок меньше допустимого
+        if (CurrentVictims <= 0 && currentErrors < errors)
+            // Завершаем текущий уровень победой
+            _ = StartCoroutine(CompleteLevel("victory"));
     }
 
     /// <summary>
@@ -42,22 +64,27 @@ public class LevelManager : MonoBehaviour
     /// <param name="value">значение</param>
     public void ChangeErrors(int value)
     {
-        errors += value;
+        currentErrors += value;
 
-        // Если ошибок не осталось, завершаем уровень проигрышем
-        if (errors <= 0) StartCoroutine(CompleteLevel("lose"));
+        // Если набрано максимум ошибок
+        if (currentErrors >= errors)
+            // Завершаем уровень проигрышем
+            _ = StartCoroutine(CompleteLevel("lose"));
     }
 
     /// <summary>
-    /// Изменение количества жильцов
+    /// Изменение счета уровня
     /// </summary>
-    /// <param name="value">значение</param>
-    private void ChangeVictims(int value)
+    /// <param name="value">значение для изменения</param>
+    public void ChangeScore(int value)
     {
-        victims -= value;
+        Score += value;
 
-        // Если жильцы закончились и ошибок немного, завершаем уровень победой
-        if (victims <= 0 && errors > 0) StartCoroutine(CompleteLevel("victory"));
+        // Сбрасываем отрицательное значение
+        if (Score < 0) Score = 0;
+
+        // Сообщаем об изменении
+        ScoresChanged?.Invoke(value);
     }
 
     /// <summary>
@@ -66,18 +93,19 @@ public class LevelManager : MonoBehaviour
     /// <param name="mode">режим завершения</param>
     private IEnumerator CompleteLevel(string mode)
     {
-        if (Mode == "play")
+        if (GameMode == "play")
         {
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(1.2f);
 
-            Mode = mode;
+            GameMode = mode;
             results.ShowResult();
         }
     }
 
     private void OnDestroy()
     {
-        quantityErrors = null;
-        quantityVictims = null;
+        // Сброс подписчиков
+        VictimsChanged = null;
+        ScoresChanged = null;
     }
 }

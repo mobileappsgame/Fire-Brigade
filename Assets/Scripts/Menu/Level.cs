@@ -6,7 +6,7 @@ public class Level : MonoBehaviour
     [Header("Номер уровня")]
     [SerializeField] private int number;
 
-    public string Number { get { return number.ToString(); } }
+    public int Number => number;
 
     [Header("Номер уровня")]
     [SerializeField] private GameObject textNumber;
@@ -17,6 +17,7 @@ public class Level : MonoBehaviour
     [Header("Спрайты статусов")]
     [SerializeField] private Sprite[] statuses;
 
+    // Ссылка на компонент
     private Button button;
 
     private void Awake()

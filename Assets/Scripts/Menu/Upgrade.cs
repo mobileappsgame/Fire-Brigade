@@ -31,7 +31,7 @@ public class Upgrade : MonoBehaviour
         var currentLevel = PlayerPrefs.GetInt("stretcher");
 
         // Достаточно ли текущего счета для улучшения
-        var enough = PlayerPrefs.GetInt("current-score") >= upgradeCost[currentLevel];
+        var enough = (currentLevel < 5) && (PlayerPrefs.GetInt("current-score") >= upgradeCost[currentLevel]);
 
         // Настраиваем кнопку
         button.interactable = enough ? true : false;
@@ -52,5 +52,7 @@ public class Upgrade : MonoBehaviour
 
         // Обновляем перевод
         level.TranslateText();
+
+        CheckCurrentScore();
     }
 }

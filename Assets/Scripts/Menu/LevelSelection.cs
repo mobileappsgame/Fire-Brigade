@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class LevelSelection : MonoBehaviour
 {
+    // Номер уровня
+    public static int LevelNumber;
+
     [Header("Анимация загрузки")]
     [SerializeField] private GameObject loading;
 
@@ -24,8 +27,11 @@ public class LevelSelection : MonoBehaviour
         loading.SetActive(true);
         loading.GetComponent<Animator>().Rebind();
 
+        // Записываем номер уровня
+        LevelNumber = level.Number;
+
         // Запускаем переход на сцену
-        StartCoroutine(LaunchLoading(level.Number));
+        _ = StartCoroutine(LaunchLoading(level.Number.ToString()));
     }
 
     /// <summary>

@@ -1,7 +1,15 @@
 ﻿using UnityEngine;
 
-public class Fire : MonoBehaviour
+public class Flame : MonoBehaviour
 {
+    // Ссылка на компонент
+    private Flames flames;
+
+    private void Start()
+    {
+        flames = GetComponentInParent<Flames>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Если огонек с носилок касается воды из гидранта
@@ -9,8 +17,8 @@ public class Fire : MonoBehaviour
         {
             gameObject.SetActive(false);
 
-            // Проверяем количество оставшихся огоньков
-            Stretcher.SnuffOut?.Invoke();
+            // Проверяем количество огней
+            flames.CheckQuantityFlames();
         }
     }
 }

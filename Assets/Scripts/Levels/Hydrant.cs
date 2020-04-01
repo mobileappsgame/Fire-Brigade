@@ -26,8 +26,17 @@ public class Hydrant : MonoBehaviour
             mainModule.startLifetime = 0.54f;
 
             // Активируем объект тушения
-            StartCoroutine(ActiveSnuffOut());
+            _ = StartCoroutine(ActiveSnuffOut());
         }  
+    }
+
+    /// <summary>
+    /// Активация объекта тушения огня
+    /// </summary>
+    private IEnumerator ActiveSnuffOut()
+    {
+        yield return new WaitForSeconds(0.7f);
+        snuffOut.SetActive(true);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -38,14 +47,5 @@ public class Hydrant : MonoBehaviour
             mainModule.startLifetime = 0.3f;
             snuffOut.SetActive(false);
         }  
-    }
-
-    /// <summary>
-    /// Активация объекта тушения огня на носилках
-    /// </summary>
-    private IEnumerator ActiveSnuffOut()
-    {
-        yield return new WaitForSeconds(0.7f);
-        snuffOut.SetActive(true);
     }
 }

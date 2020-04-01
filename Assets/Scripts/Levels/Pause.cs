@@ -13,7 +13,6 @@ public class Pause : MonoBehaviour
 
     private void OnDestroy()
     {
-        // Сбрасываем паузу
         SetPause(false);
     }
 }

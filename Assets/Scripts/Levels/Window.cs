@@ -46,6 +46,7 @@ public class Window : MonoBehaviour, IPoolable
         else
         {
             OpenWindow = true;
+
             // Запускаем постепенный пожар
             animator.SetBool("Fire", true);
         }
@@ -67,7 +68,7 @@ public class Window : MonoBehaviour, IPoolable
         fireFX.SetActive(true);
 
         // Запускаем создание огненных капель
-        StartCoroutine(DropsFalling());
+        _ = StartCoroutine(DropsFalling());
     }
 
     /// <summary>
@@ -75,7 +76,8 @@ public class Window : MonoBehaviour, IPoolable
     /// </summary>
     private IEnumerator DropsFalling()
     {
-        while (OpenWindow)
+        // Если окно открыто и активен игровой режим
+        while (OpenWindow && LevelManager.GameMode == "play")
         {
             yield return new WaitForSeconds(Random.Range(minSeconds, maxSeconds));
 
@@ -134,7 +136,7 @@ public class Window : MonoBehaviour, IPoolable
     /// </summary>
     public IEnumerator ReestablishWindow()
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(1.7f);
 
         AddToList();
         Twinkle = true;

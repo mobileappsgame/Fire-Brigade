@@ -4,20 +4,23 @@ using UnityEngine;
 
 public class WindowsManager : MonoBehaviour
 {
-    [Header("Максимум открытых окон")] // при старте уровня
+    [Header("Максимум открытых окон")] // при старте
     [SerializeField] private int maximum;
 
     [Header("Промежуток появления жильцов")]
     [SerializeField] private float minSeconds;
     [SerializeField] private float maxSeconds;
 
-    [Header("Количество жителей")]
-    [SerializeField] private int victims;
-
-    public int Victims { get { return victims; } }
-
     // Список открытых окон доступных для персонажей
     public static List<Window> windows = new List<Window>();
+
+    // Ссылка на компонент
+    private LevelManager levelManager;
+
+    private void Awake()
+    {
+        levelManager = Camera.main.GetComponent<LevelManager>();
+    }
 
     private void Start()
     {
@@ -40,10 +43,10 @@ public class WindowsManager : MonoBehaviour
         }
 
         // Запускаем открытие других окон
-        StartCoroutine(OpenWindows());
+        _ = StartCoroutine(OpenWindows());
 
-        // Запускаем прыжки персонажей
-        StartCoroutine(CharacterJumping());
+        // Запускаем появление жителей в окнах
+        _ = StartCoroutine(CharacterJumping());
     }
 
     /// <summary>
@@ -52,7 +55,7 @@ public class WindowsManager : MonoBehaviour
     private IEnumerator OpenWindows()
     {
         // Пока в пуле есть доступные окна и активен игровой режим
-        while (PoolsManager.QuantityObjects(ListingPools.Pools.Windows.ToString()) > 0 && LevelManager.Mode == "play")
+        while (PoolsManager.QuantityObjects(ListingPools.Pools.Windows.ToString()) > 0 && LevelManager.GameMode == "play")
         {
             var seconds = Random.Range(5, 12);
             yield return new WaitForSeconds(seconds);
@@ -74,7 +77,7 @@ public class WindowsManager : MonoBehaviour
     private IEnumerator CharacterJumping()
     {
         // Пока есть жители и активен игровой режим
-        while (victims > 0 && LevelManager.Mode == "play")
+        while (levelManager.Victims > 0 && LevelManager.GameMode == "play")
         {
             yield return new WaitForSeconds(Random.Range(minSeconds, maxSeconds));
 
@@ -89,10 +92,13 @@ public class WindowsManager : MonoBehaviour
                 // Удаляем окно из доступных
                 windows.RemoveAt(window);
 
-                victims--;
-                // Выводим количество оставшихся персонажей
-                VictimsCounting.QuantityChange?.Invoke();
+                levelManager.Victims--;
             }
         }
+    }
+
+    private void OnDestroy()
+    {
+        windows.Clear();
     }
 }

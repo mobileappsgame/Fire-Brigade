@@ -5,6 +5,9 @@ public class Training : MonoBehaviour
     [Header("Маска для выделения")]
     [SerializeField] private GameObject mask;
 
+    [Header("Панель выбора")]
+    [SerializeField] private GameObject stretcher;
+
     [Header("Игровые персонажи")]
     [SerializeField] private GameObject characters;
 
@@ -39,7 +42,8 @@ public class Training : MonoBehaviour
                     SetObjectPositions(new Vector3(-2, 0.04f, 0), characters.transform.position);
                     break;
                 case 5:
-                    SetObjectPositions(new Vector3(-8.1f, -1.8f, 0), new Vector3(-8.1f, characters.transform.position.y, 0));
+                    stretcher.SetActive(true);
+                    SetObjectPositions(new Vector3(-8.1f, -0.9f, 0), new Vector3(-8.1f, characters.transform.position.y, 0));
                     break;
                 case 6:
                     fire.SetActive(true);
