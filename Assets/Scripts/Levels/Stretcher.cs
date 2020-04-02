@@ -66,14 +66,22 @@ public class Stretcher : MonoBehaviour
                 // Возвращаем каплю в указанный пул объектов
                 PoolsManager.PutObjectToPool(ListingPools.Pools.Twinkle.ToString(), collision.gameObject);
 
-                // Поджигаем носилки
-                flames.FlameVisibility(true);
-                IsBurns = true;
-
-                // Запускаем уменьшение прочности носилок (с учетом уровня носилок)
-                ActiveCoroutine = StartCoroutine(ReduceStrength(10 - StretcherLevel));
+                SetFireStretcher();
             }
         }
+    }
+
+    /// <summary>
+    /// Возгорание носилок
+    /// </summary>
+    public void SetFireStretcher()
+    {
+        // Поджигаем носилки
+        flames.FlameVisibility(true);
+        IsBurns = true;
+
+        // Запускаем уменьшение прочности носилок (с учетом уровня носилок)
+        ActiveCoroutine = StartCoroutine(ReduceStrength(10 - StretcherLevel));
     }
 
     /// <summary>
