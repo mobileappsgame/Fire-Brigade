@@ -7482,7 +7482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7adf33c6f94b0144b5cb2380e3ada59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeCost: 0000000064000000941100000a28000074400000
+  upgradeCost: 0000000064000000e80300008813000010270000
   level: {fileID: 931607620}
 --- !u!1 &1926487302
 GameObject:

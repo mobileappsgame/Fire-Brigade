@@ -9,10 +9,12 @@ public class FireRoad : MonoBehaviour
 
         if (stretcher)
         {
-            // Если носилки не горят и не улучшенные
-            if (stretcher.IsBurns == false && stretcher.IsSuper == false)
+            // Если носилки не улучшенные
+            if (stretcher.IsSuper == false)
+            {
                 // Поджигаем носилки
-                stretcher.SetFireStretcher();
+                stretcher.SetFireStretcher(stretcher.IsBurns);
+            }
         }
     }
 }

@@ -3844,7 +3844,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   victims: 15
-  errors: 3
+  errors: 5
 --- !u!114 &519420037
 MonoBehaviour:
   m_ObjectHideFlags: 0

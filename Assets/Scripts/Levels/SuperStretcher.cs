@@ -1,9 +1,21 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class SuperStretcher : MonoBehaviour
 {
     [Header("Компонент носилок")]
     [SerializeField] private Stretcher stretcher;
+
+    [Header("Дочерние объекты")]
+    [SerializeField] private Image[] objects;
+
+    // Ссылка на компонент
+    private Button button;
+
+    private void Awake()
+    {
+        button = GetComponent<Button>();
+    }
 
     private void Start()
     {
@@ -15,7 +27,15 @@ public class SuperStretcher : MonoBehaviour
     /// </summary>
     public void CheckQuantity()
     {
-        gameObject.SetActive(PlayerPrefs.GetInt("super-stretcher") > 0 ? true : false);
+        button.interactable = PlayerPrefs.GetInt("super-stretcher") > 0 ? true : false;
+
+        // Если кнопка отключена
+        if (button.interactable == false)
+        {
+            // Увеличиваем прозрачность дочерних объектов кнопки
+            foreach (var item in objects)
+                item.color = new Color(1, 1, 1, 0.4f);
+        }
     }
 
     /// <summary>

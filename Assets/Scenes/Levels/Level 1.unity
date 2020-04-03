@@ -2086,6 +2086,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stretcher: {fileID: 1949609367}
+  objects:
+  - {fileID: 1211203531}
+  - {fileID: 577532089}
+  - {fileID: 1901899136}
+  - {fileID: 303884695}
 --- !u!1 &365726807
 GameObject:
   m_ObjectHideFlags: 0
@@ -3325,7 +3330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   victims: 10
-  errors: 3
+  errors: 5
 --- !u!114 &519420037
 MonoBehaviour:
   m_ObjectHideFlags: 0

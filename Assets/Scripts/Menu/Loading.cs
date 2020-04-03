@@ -34,17 +34,17 @@ public class Loading : MonoBehaviour
         if (!PlayerPrefs.HasKey("stretcher")) PlayerPrefs.SetInt("stretcher", 1);
 
         // Количество улучшенных носилок
-        if (!PlayerPrefs.HasKey("super-stretcher")) PlayerPrefs.SetInt("super-stretcher", 1);
+        if (!PlayerPrefs.HasKey("super-stretcher")) PlayerPrefs.SetInt("super-stretcher", 2);
 
         // Прохождение обучения
         if (!PlayerPrefs.HasKey("training")) PlayerPrefs.SetString("training", "no");
         #endregion
 
-        PlayerPrefs.SetInt("progress", 1);
-        PlayerPrefs.SetInt("total-score", 0);
-        PlayerPrefs.SetInt("current-score", 0);
+        PlayerPrefs.SetInt("progress", 12);
+        PlayerPrefs.SetInt("total-score", 5000);
+        PlayerPrefs.SetInt("current-score", 5000);
         PlayerPrefs.SetInt("stretcher", 1);
-        PlayerPrefs.SetInt("super-stretcher", 5);
+        PlayerPrefs.SetInt("super-stretcher", 0);
 
         _ = StartCoroutine(GoToMenu());
     }

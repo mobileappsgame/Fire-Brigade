@@ -14,6 +14,9 @@ public class Training : MonoBehaviour
     [Header("Огоньки на носилках")]
     [SerializeField] private GameObject fire;
 
+    [Header("Огоньки на дороге")]
+    [SerializeField] private GameObject fireRoad;
+
     [Header("Компонент перевода")]
     [SerializeField] private TextTranslation textTranslation;
 
@@ -27,7 +30,7 @@ public class Training : MonoBehaviour
     {
         stage++;
 
-        if (stage <= 7)
+        if (stage <= 8)
         {
             // Выводим следующий текст обучения
             textTranslation.ChangeKey("training-" + stage.ToString());
@@ -50,8 +53,13 @@ public class Training : MonoBehaviour
                     SetObjectPositions(new Vector3(7, -2.7f, 0), new Vector3(6.3f, characters.transform.position.y, 0));
                     break;
                 case 7:
+                    fireRoad.SetActive(true);
+                    SetObjectPositions(new Vector3(1.8f, -3.35f, 0), new Vector3(-0.3f, characters.transform.position.y, 0));
+                    break;
+                case 8:
                     mask.SetActive(false);
                     fire.SetActive(false);
+                    fireRoad.SetActive(false);
                     SetObjectPositions(mask.transform.position, new Vector3(0, characters.transform.position.y, 0));
                     break;
             }

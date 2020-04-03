@@ -60,13 +60,14 @@ public class Stretcher : MonoBehaviour
         // Если огненная капля касается носилок
         if (collision.gameObject.GetComponent<Drop>())
         {
-            // Если носилки не горят и не улучшенные
-            if (IsBurns == false && IsSuper == false)
+            // Если носилки не улучшенные
+            if (IsSuper == false)
             {
                 // Возвращаем каплю в указанный пул объектов
                 PoolsManager.PutObjectToPool(ListingPools.Pools.Twinkle.ToString(), collision.gameObject);
 
-                SetFireStretcher();
+                // Поджигаем носилки
+                SetFireStretcher(IsBurns);
             }
         }
     }
@@ -74,14 +75,15 @@ public class Stretcher : MonoBehaviour
     /// <summary>
     /// Возгорание носилок
     /// </summary>
-    public void SetFireStretcher()
+    public void SetFireStretcher(bool isBurns)
     {
+        if (isBurns == false)
+            // Запускаем уменьшение прочности носилок (с учетом уровня носилок)
+            ActiveCoroutine = StartCoroutine(ReduceStrength(10 - StretcherLevel));
+
         // Поджигаем носилки
         flames.FlameVisibility(true);
         IsBurns = true;
-
-        // Запускаем уменьшение прочности носилок (с учетом уровня носилок)
-        ActiveCoroutine = StartCoroutine(ReduceStrength(10 - StretcherLevel));
     }
 
     /// <summary>
