@@ -390,7 +390,7 @@ GameObject:
   - component: {fileID: 116480156}
   - component: {fileID: 116480157}
   m_Layer: 0
-  m_Name: Ashes (3)
+  m_Name: Ashes (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -404,7 +404,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 116480155}
   m_LocalRotation: {x: 0, y: 0, z: -0.08715578, w: 0.9961947}
-  m_LocalPosition: {x: 2.4490001, y: -4.739, z: 0}
+  m_LocalPosition: {x: 2.517, y: -4.569, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1436855410}
@@ -505,8 +505,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maximum: 5
-  minSeconds: 2.7
-  maxSeconds: 5.3
+  minSeconds: 3.2
+  maxSeconds: 5.1
 --- !u!1001 &128574788
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -827,7 +827,7 @@ GameObject:
   - component: {fileID: 165420171}
   - component: {fileID: 165420172}
   m_Layer: 0
-  m_Name: Ashes (4)
+  m_Name: Ashes (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -841,7 +841,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 165420170}
   m_LocalRotation: {x: 0, y: 0, z: 0.043619405, w: 0.9990483}
-  m_LocalPosition: {x: 3.4810002, y: -4.696, z: 0}
+  m_LocalPosition: {x: 3.549, y: -4.526, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1436855410}
@@ -2358,7 +2358,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 6
-  m_Sprite: {fileID: 21300000, guid: 8f2d0039cb21ff144ba90086b268098c, type: 3}
+  m_Sprite: {fileID: 3427114271967980436, guid: 1dea6bf25aecd2f4c970b2722972b5ab,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -2887,6 +2888,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stretcher: {fileID: 1949609367}
+  objects:
+  - {fileID: 1211203531}
+  - {fileID: 577532089}
+  - {fileID: 1901899136}
+  - {fileID: 303884695}
 --- !u!1 &365726807
 GameObject:
   m_ObjectHideFlags: 0
@@ -3248,7 +3254,7 @@ PrefabInstance:
     - target: {fileID: 4963849528470480905, guid: 9cd2689e440b38f46bcfeab3e5cf58bc,
         type: 3}
       propertyPath: m_Name
-      value: FireRoad (4)
+      value: FireRoad (2)
       objectReference: {fileID: 0}
     - target: {fileID: 4963849528470480907, guid: 9cd2689e440b38f46bcfeab3e5cf58bc,
         type: 3}
@@ -3263,7 +3269,7 @@ PrefabInstance:
     - target: {fileID: 4963849528470480908, guid: 9cd2689e440b38f46bcfeab3e5cf58bc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.39
+      value: -4.3
       objectReference: {fileID: 0}
     - target: {fileID: 4963849528470480908, guid: 9cd2689e440b38f46bcfeab3e5cf58bc,
         type: 3}
@@ -4506,8 +4512,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95652dc84a9d32f49aecf99673607f70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  victims: 50
-  errors: 3
+  victims: 45
+  errors: 5
 --- !u!114 &519420037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7332,7 +7338,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 6
-  m_Sprite: {fileID: 21300000, guid: 8f2d0039cb21ff144ba90086b268098c, type: 3}
+  m_Sprite: {fileID: 3427114271967980436, guid: 1dea6bf25aecd2f4c970b2722972b5ab,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -7400,7 +7407,7 @@ PrefabInstance:
     - target: {fileID: 4963849528470480905, guid: 9cd2689e440b38f46bcfeab3e5cf58bc,
         type: 3}
       propertyPath: m_Name
-      value: FireRoad (3)
+      value: FireRoad (1)
       objectReference: {fileID: 0}
     - target: {fileID: 4963849528470480907, guid: 9cd2689e440b38f46bcfeab3e5cf58bc,
         type: 3}
@@ -7415,7 +7422,7 @@ PrefabInstance:
     - target: {fileID: 4963849528470480908, guid: 9cd2689e440b38f46bcfeab3e5cf58bc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.26
+      value: -4.1700006
       objectReference: {fileID: 0}
     - target: {fileID: 4963849528470480908, guid: 9cd2689e440b38f46bcfeab3e5cf58bc,
         type: 3}
@@ -9916,7 +9923,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeee29211d031fe4a9592c9c05d498c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inverted: 1
+  inverted: 0
 --- !u!95 &1179656316
 Animator:
   serializedVersion: 3
@@ -10316,7 +10323,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8f2d0039cb21ff144ba90086b268098c, type: 3}
+  m_Sprite: {fileID: 3427114271967980436, guid: 1dea6bf25aecd2f4c970b2722972b5ab,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -20303,7 +20311,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8f2d0039cb21ff144ba90086b268098c, type: 3}
+  m_Sprite: {fileID: 3427114271967980436, guid: 1dea6bf25aecd2f4c970b2722972b5ab,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

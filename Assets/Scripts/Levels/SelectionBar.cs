@@ -18,8 +18,11 @@ public class SelectionBar : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // Получаем компонент персонажей у коснувшегося объекта
+        var characters = collision.gameObject.GetComponent<Control>();
+
         // Если персонажи касаются пожарной машины и не используются улучшенные носилки
-        if (collision.gameObject.GetComponent<Control>() && stretcher.IsSuper != true)
+        if (characters && stretcher.IsSuper != true)
         {
             // Открываем панель выбора
             selectionBar.enabled = true;
@@ -28,6 +31,9 @@ public class SelectionBar : MonoBehaviour
             // Замедляем коэффициент падения
             slowdown.ChangeSlowdown(true);
 
+            // Указываем, что персонажи переключают носилки
+            characters.isSwitched = true;
+
             // Ремонтируем (увеличиваем) прочность носилок
             stretcher.ActiveCoroutine = StartCoroutine(stretcher.IncreaseStrength(1 + stretcher.StretcherLevel));
         }
@@ -35,6 +41,9 @@ public class SelectionBar : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        // Получаем компонент персонажей у коснувшегося объекта
+        var characters = collision.gameObject.GetComponent<Control>();
+
         if (collision.gameObject.GetComponent<Control>())
         {
             // Закрываем панель выбора
@@ -42,6 +51,8 @@ public class SelectionBar : MonoBehaviour
 
             // Восстанавливаем коэффициент падения
             slowdown.ChangeSlowdown(false);
+
+            characters.isSwitched = false;
 
             // Останавливаем постепенное увеличение прочности
             if (stretcher.ActiveCoroutine != null) StopCoroutine(stretcher.ActiveCoroutine);

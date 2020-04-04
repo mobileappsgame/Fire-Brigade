@@ -11,9 +11,12 @@ public class Control : MonoBehaviour
     private float speed = 19.5f;
 
     // Высота прыжка персонажей
-    private float jump = 4.5f;
+    private float jump = 4.7f;
 
-    // Находится ли персонажи на земле
+    // Переключают ли персонажи носилки
+    public bool isSwitched { get; set; } = false;
+
+    // Находятся ли персонажи на земле
     public bool IsGroung { get; set; } = false;
 
     // Направление движения персонажей
@@ -50,17 +53,30 @@ public class Control : MonoBehaviour
     /// </summary>
     private void SetMotionVector()
     {
-        // Если позиция персонажей выходит за ограничители
-        if ((transform.position.x < limiters[0] && Input.acceleration.x < 0)
-        || (transform.position.x > limiters[1] && Input.acceleration.x > 0))
+        // Если инвертирование отключено
+        if (inverted == false)
         {
-            Direction *= 0;
+            // Если позиция персонажей выходит за ограничители
+            if ((transform.position.x < limiters[0] && Input.acceleration.x < 0)
+            || (transform.position.x > limiters[1] && Input.acceleration.x > 0))
+            {
+                Direction *= 0;
+                return;
+            }
         }
         else
         {
-            // Устанавливаем направление в зависимости от наклона смартфона
-            Direction = new Vector2(Input.acceleration.x * Inverted, 0);
+            // Если позиция персонажей выходит за ограничители
+            if ((transform.position.x < limiters[0] && Input.acceleration.x > 0)
+            || (transform.position.x > limiters[1] && Input.acceleration.x < 0))
+            {
+                Direction *= 0;
+                return;
+            }
         }
+
+        // Устанавливаем направление в зависимости от наклона смартфона
+        Direction = new Vector2(Input.acceleration.x * Inverted, 0);
 
         // Если длина вектора превышает единицу, округляем
         if (Direction.sqrMagnitude > 1) Direction.Normalize();
@@ -89,7 +105,7 @@ public class Control : MonoBehaviour
     /// </summary>
     private void OnMouseDown()
     {
-        if (IsGroung)
+        if (IsGroung && !isSwitched)
         {
             // Создаем импульсный прыжок персонажей
             rigdbody.AddForce(Vector2.up * jump, ForceMode2D.Impulse);

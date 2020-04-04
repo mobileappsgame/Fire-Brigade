@@ -22,7 +22,7 @@ public class Slowdown : MonoBehaviour
             StopAllCoroutines();
 
             // Замедляем падение
-            coefficient = 0.35f;
+            coefficient = 0.45f;
         }
         else
         {

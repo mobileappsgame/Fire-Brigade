@@ -2,8 +2,12 @@
 
 public class Sound : MonoBehaviour
 {
-    // Ссылка на компонент
+    // Активность звука в игре
+    public static bool soundActivity;
+
+    // Ссылки на компоненты
     private TextTranslation textTranslation;
+    private Music backgroundMusic;
 
     private void Awake()
     {
@@ -12,6 +16,12 @@ public class Sound : MonoBehaviour
 
     private void Start()
     {
+        // Находим объект фоновой музыки
+        backgroundMusic = FindObjectOfType<Music>();
+
+        // Текущее значение параметра
+        soundActivity = PlayerPrefs.GetString("sounds") == "on" ? true : false;
+
         SetupTranslation();
     }
 
@@ -20,11 +30,7 @@ public class Sound : MonoBehaviour
     /// </summary>
     private void SetupTranslation()
     {
-        // Текущее значение параметра
-        var sounds = PlayerPrefs.GetString("sounds");
-
-        // Устанавливаем ключ перевода
-        textTranslation.ChangeKey(sounds == "on" ? "sounds-on" : "sounds-off");
+        textTranslation.ChangeKey(soundActivity ? "sounds-on" : "sounds-off");
     }
 
     /// <summary>
@@ -32,11 +38,13 @@ public class Sound : MonoBehaviour
     /// </summary>
     public void SwitchSound()
     {
-        // Текущее значение параметра
-        var sounds = PlayerPrefs.GetString("sounds");
-
         // Переключение звука на противоположное значение
-        PlayerPrefs.SetString("sounds", sounds == "on" ? "off" : "on");
+        PlayerPrefs.SetString("sounds", soundActivity ? "off" : "on");
+
+        // Обновляем текущее значение параметра
+        soundActivity = PlayerPrefs.GetString("sounds") == "on" ? true : false;
+
+        backgroundMusic.MusicSetting();
 
         // Обновляем перевод
         SetupTranslation();
