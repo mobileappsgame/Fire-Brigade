@@ -13,12 +13,25 @@ public class Results : MonoBehaviour
     [Header("Итоговый счет")]
     [SerializeField] private Text scoreText;
 
-    // Ссылка на компонент
+    [Header("Фоновая музыка")]
+    [SerializeField] private Music backgroundMusic;
+
+    [Header("Звуки результата")]
+    [SerializeField] private AudioClip[] audioClips;
+
+    // Перечисление звуков результата
+    private enum AudioClips { Victory, Lose }
+
+    // Ссылки на компоненты
     private LevelManager levelManager;
+    private AudioSource audioSource;
+    private PlayingSound playingSound;
 
     private void Awake()
     {
         levelManager = Camera.main.GetComponent<LevelManager>();
+        audioSource = menuItems[(int)MenuItems.Results].GetComponent<AudioSource>();
+        playingSound = menuItems[(int)MenuItems.Results].GetComponent<PlayingSound>();
     }
 
     /// <summary>
@@ -26,6 +39,9 @@ public class Results : MonoBehaviour
     /// </summary>
     public void ShowResult()
     {
+        // Отключаем фоновую музыку
+        _ = StartCoroutine(backgroundMusic.ChangeVolume(-0.1f, x => x > 0));
+
         // Отображаем элементы меню
         menuItems[(int)MenuItems.Blackout].SetActive(true);
         menuItems[(int)MenuItems.Characters].SetActive(true);
@@ -39,7 +55,11 @@ public class Results : MonoBehaviour
 
             // Отображаем панель победы
             menuItems[(int)MenuItems.Victory].SetActive(true);
-            
+
+            // Устанавливаем звук и воспроизводим
+            audioSource.clip = audioClips[(int)AudioClips.Victory];
+            playingSound.PlaySound();
+
             var progress = PlayerPrefs.GetInt("progress");
             // Если прогресс викторины не превышает номер уровня, увеличиваем прогресс
             if (progress <= LevelSelection.LevelNumber) PlayerPrefs.SetInt("progress", progress + 1);
@@ -55,6 +75,10 @@ public class Results : MonoBehaviour
         {
             // Отображаем панель проигрыша
             menuItems[(int)MenuItems.Lose].SetActive(true);
+
+            // Устанавливаем звук и воспроизводим
+            audioSource.clip = audioClips[(int)AudioClips.Lose];
+            playingSound.PlaySound();
         }
     }
 

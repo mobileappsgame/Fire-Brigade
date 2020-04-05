@@ -53,6 +53,7 @@ public class Victims : MonoBehaviour, IPoolable
     private Rigidbody2D rigbody;
     private Animator animator;
     private SpriteRenderer sprite;
+    private PlayingSound playingSound;
     private LevelManager levelManager;
 
     private void Awake()
@@ -60,6 +61,7 @@ public class Victims : MonoBehaviour, IPoolable
         rigbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
+        playingSound = transform.parent.GetComponentInParent<PlayingSound>();
         levelManager = Camera.main.GetComponent<LevelManager>();
 
         // Запоминаем значение
@@ -183,6 +185,9 @@ public class Victims : MonoBehaviour, IPoolable
                 // Создаем небольшой отскок от носилок
                 rigbody.AddForce(new Vector2(0.5f, 1.0f) * 3, ForceMode2D.Impulse);
 
+                // Воспроизводим звук
+                stretcher.PlayingSound.PlaySound();
+
                 // Сравниваем статусы
                 CompareStatuses(stretcher);
             }
@@ -240,6 +245,9 @@ public class Victims : MonoBehaviour, IPoolable
             {
                 // Активируем триггер смерти
                 animator.SetTrigger("Dead");
+
+                // Проигрываем звук
+                playingSound.PlaySound();
 
                 // Возвращаем персонажа в пул
                 _ = StartCoroutine(ReturnToPool());

@@ -9,12 +9,27 @@ public class LevelSelection : MonoBehaviour
     [Header("Анимация загрузки")]
     [SerializeField] private GameObject loading;
 
-    // Ссылка на компонент
+    // Возврат с уровня (для включения музыки)
+    public static bool ReturnLevel;
+
+    // Ссылки на компоненты
     private Transitions transitions;
+    private Music backgroundMusic;
 
     private void Awake()
     {
         transitions = Camera.main.GetComponent<Transitions>();
+        backgroundMusic = FindObjectOfType<Music>();
+    }
+
+    private void Start()
+    {
+        if (Sound.soundActivity && ReturnLevel)
+        {
+            ReturnLevel = false;
+            // Постепенно увеличиваем громкость фоновой музыки
+            _ = StartCoroutine(backgroundMusic.ChangeVolume(0.1f, x => x < 0.9));
+        }
     }
 
     /// <summary>
@@ -39,7 +54,12 @@ public class LevelSelection : MonoBehaviour
     /// </summary>
     private IEnumerator LaunchLoading(string number)
     {
-        yield return new WaitForSeconds(1.2f);
+        // Постепенно уменьшаем громкость фоновой музыки
+        _ = StartCoroutine(backgroundMusic.ChangeVolume(-0.1f, x => x > 0));
+        // Указываем, что был переход на уровень
+        ReturnLevel = true;
+
+        yield return new WaitForSeconds(1.0f);
         transitions.GoToScene("Level " + number);
     }
 }

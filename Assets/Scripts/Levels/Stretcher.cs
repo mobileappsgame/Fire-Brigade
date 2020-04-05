@@ -38,12 +38,14 @@ public class Stretcher : MonoBehaviour
     // Ссылки на компоненты
     private Animator animator;
     private BoxCollider2D boxCollider;
+    public PlayingSound PlayingSound { get; private set; }
     private Flames flames;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
+        PlayingSound = GetComponent<PlayingSound>();
 
         flames = GetComponentInChildren<Flames>();
         flames.Extinguished += PutOutStretcher;
