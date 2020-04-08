@@ -11,7 +11,7 @@ public class Control : MonoBehaviour
     private float speed = 19.5f;
 
     // Высота прыжка персонажей
-    private float jump = 4.7f;
+    private float jump = 5.5f;
 
     // Переключают ли персонажи носилки
     public bool isSwitched { get; set; } = false;
@@ -108,7 +108,7 @@ public class Control : MonoBehaviour
         if (IsGroung && !isSwitched)
         {
             // Создаем импульсный прыжок персонажей
-            rigdbody.AddForce(Vector2.up * jump, ForceMode2D.Impulse);
+            rigdbody.AddForce(new Vector2(0.5f * Direction.x, 1 * jump), ForceMode2D.Impulse);
             IsGroung = false;
         }
     }

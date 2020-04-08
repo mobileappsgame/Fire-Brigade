@@ -54,13 +54,12 @@ public class Training : MonoBehaviour
                     break;
                 case 7:
                     fireRoad.SetActive(true);
+                    fire.SetActive(false);
                     SetObjectPositions(new Vector3(1.8f, -3.35f, 0), new Vector3(-0.3f, characters.transform.position.y, 0));
                     break;
                 case 8:
                     mask.SetActive(false);
-                    fire.SetActive(false);
                     fireRoad.SetActive(false);
-                    SetObjectPositions(mask.transform.position, new Vector3(0, characters.transform.position.y, 0));
                     break;
             }
         }
