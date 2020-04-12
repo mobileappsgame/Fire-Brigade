@@ -24,13 +24,13 @@ public class Drop : MonoBehaviour, IPoolable
         gameObject.SetActive(true);
 
         // Определяем скорость падения
-        speed = Random.Range(5.1f, 6.5f);
+        speed = Random.Range(5.0f, 6.5f);
     }
 
     private void FixedUpdate()
     {
         // Перемещаем каплю вниз с указанной скоростью и коэффициентом замедления
-        rigbody.MovePosition(rigbody.position + Vector2.down * (speed * Slowdown.coefficient) * Time.fixedDeltaTime);
+        rigbody.MovePosition(rigbody.position + (Vector2.down * (speed * Slowdown.coefficient) * Time.fixedDeltaTime));
     }
 
     /// <summary>

@@ -148,6 +148,18 @@
 		{
 			"Key": "loading-level",
 			"Value": "LOADING..."
+		},
+		{
+			"Key": "victims",
+			"Value": "SAVED:"
+		},
+		{
+			"Key": "rank",
+			"Value": "RANK"
+		},
+		{
+			"Key": "no-data",
+			"Value": "NO DATA..."
 		}
 	]
 }

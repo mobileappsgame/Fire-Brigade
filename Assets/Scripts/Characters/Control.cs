@@ -8,16 +8,16 @@ public class Control : MonoBehaviour
     private int Inverted => inverted ? -1 : 1;
 
     // Скорость персонажей
-    private float speed = 19.5f;
+    private readonly float speed = 19.5f;
 
     // Высота прыжка персонажей
-    private float jump = 5.5f;
+    private readonly float jump = 5.5f;
 
     // Переключают ли персонажи носилки
-    public bool isSwitched { get; set; } = false;
+    public bool IsSwitched { get; set; }
 
     // Находятся ли персонажи на земле
-    public bool IsGroung { get; set; } = false;
+    public bool IsGroung { get; set; }
 
     // Направление движения персонажей
     public Vector2 Direction { get; private set; }
@@ -49,11 +49,10 @@ public class Control : MonoBehaviour
     }
 
     /// <summary>
-    /// Установка вектора движения персонажей
+    /// Установка направления персонажей
     /// </summary>
     private void SetMotionVector()
     {
-        // Если инвертирование отключено
         if (inverted == false)
         {
             // Если позиция персонажей выходит за ограничители
@@ -66,7 +65,7 @@ public class Control : MonoBehaviour
         }
         else
         {
-            // Если позиция персонажей выходит за ограничители
+            // Если используется инвертирование, проверяем обратные ограничители
             if ((transform.position.x < limiters[0] && Input.acceleration.x > 0)
             || (transform.position.x > limiters[1] && Input.acceleration.x < 0))
             {
@@ -87,7 +86,7 @@ public class Control : MonoBehaviour
     /// </summary>
     private void MoveCharacters()
     {
-        // Если направление нулевое (с небольшой погрешностью)
+        // Если направление нулевое (с погрешностью)
         if (Direction.x < 0.015f && Direction.x > -0.015f)
         {
             ChangeAnimation(Characters.Animations.Idle);
@@ -105,7 +104,8 @@ public class Control : MonoBehaviour
     /// </summary>
     private void OnMouseDown()
     {
-        if (IsGroung && !isSwitched)
+        // Если персонаж на земле и не обменивается
+        if (IsGroung == true && IsSwitched == false)
         {
             // Создаем импульсный прыжок персонажей
             rigdbody.AddForce(new Vector2(0.5f * Direction.x, 1 * jump), ForceMode2D.Impulse);

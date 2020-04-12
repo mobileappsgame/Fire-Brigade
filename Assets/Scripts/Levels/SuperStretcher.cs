@@ -32,7 +32,7 @@ public class SuperStretcher : MonoBehaviour
         // Если кнопка отключена
         if (button.interactable == false)
         {
-            // Увеличиваем прозрачность дочерних объектов кнопки
+            // Увеличиваем прозрачность дочерних объектов
             foreach (var item in objects)
                 item.color = new Color(1, 1, 1, 0.4f);
         }

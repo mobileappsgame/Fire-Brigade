@@ -6,6 +6,9 @@ public class Hydrant : MonoBehaviour
     [Header("Эффект воды")]
     [SerializeField] private ParticleSystem water;
 
+    [Header("Эффект брызг")]
+    [SerializeField] private Transform spray;
+
     [Header("Объект тушения")]
     [SerializeField] private GameObject snuffOut;
 
@@ -27,7 +30,7 @@ public class Hydrant : MonoBehaviour
 
             // Активируем объект тушения
             _ = StartCoroutine(ActiveSnuffOut());
-        }  
+        }
     }
 
     /// <summary>
@@ -37,6 +40,9 @@ public class Hydrant : MonoBehaviour
     {
         yield return new WaitForSeconds(0.7f);
         snuffOut.SetActive(true);
+
+        // Перемещаем брызги к объекту тушения
+        spray.localPosition = new Vector2(-1.16f, -1f);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -46,6 +52,9 @@ public class Hydrant : MonoBehaviour
             // Восстанавливаем напор воды
             mainModule.startLifetime = 0.3f;
             snuffOut.SetActive(false);
+
+            // Возвращаем брызги в стандартную позицию
+            spray.localPosition = new Vector2(-0.814f, -0.458f);
         }  
     }
 }

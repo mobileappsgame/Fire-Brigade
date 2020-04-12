@@ -103,7 +103,5 @@ public class InAppManager : MonoBehaviour, IStoreListener
     /// <summary>
     /// Покупка товара не удалась
     /// </summary>
-    public void OnPurchaseFailed(Product i, PurchaseFailureReason p)
-    {
-    }
+    public void OnPurchaseFailed(Product i, PurchaseFailureReason p) {}
 }

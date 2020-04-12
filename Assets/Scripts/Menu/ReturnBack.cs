@@ -3,7 +3,7 @@
 public class ReturnBack : MonoBehaviour
 {
     [Header("Сцена для возврата")]
-    [SerializeField] private int scene;
+    [SerializeField] private Transitions.Scenes scene;
 
     // Ссылка на компонент
     private Transitions transitions;

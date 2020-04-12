@@ -44,7 +44,6 @@ public class Flames : MonoBehaviour
 
     private void OnDestroy()
     {
-        // Очищаем подписчиков
         Extinguished = null;
     }
 }

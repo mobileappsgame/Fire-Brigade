@@ -4,10 +4,10 @@ using UnityEngine;
 public class Window : MonoBehaviour, IPoolable
 {
     // Открытость текущего окна
-    public bool OpenWindow { get; set; } = false;
+    public bool OpenWindow { get; set; }
 
     // Активность создания огненных капель
-    public bool Twinkle { get; set; } = false;
+    public bool Twinkle { get; set; }
 
     [Header("Эффект пожара в окне")]
     [SerializeField] private GameObject fireFX;
@@ -37,7 +37,7 @@ public class Window : MonoBehaviour, IPoolable
     {
         Twinkle = true;
 
-        // Если окно изначально открыто
+        // Если окно открыто
         if (OpenWindow)
         {
             // Отображаем пожар сразу
@@ -46,7 +46,6 @@ public class Window : MonoBehaviour, IPoolable
         else
         {
             OpenWindow = true;
-
             // Запускаем постепенный пожар
             animator.SetTrigger("Fire");
         }
@@ -77,7 +76,7 @@ public class Window : MonoBehaviour, IPoolable
     private IEnumerator DropsFalling()
     {
         // Если окно открыто и активен игровой режим
-        while (OpenWindow && LevelManager.GameMode == "play")
+        while (OpenWindow && LevelManager.GameMode == LevelManager.GameModes.Play)
         {
             yield return new WaitForSeconds(Random.Range(minSeconds, maxSeconds));
 

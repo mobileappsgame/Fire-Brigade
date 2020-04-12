@@ -182,6 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   water: {fileID: 7798038503289024479}
+  spray: {fileID: 7798038501382697550}
   snuffOut: {fileID: 1305385230}
 --- !u!1 &7798038501382697545
 GameObject:
@@ -4977,7 +4978,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7798038503289024472}
   serializedVersion: 6
-  lengthInSec: 1.5
+  lengthInSec: 0.3
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -5802,7 +5803,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 200
+      scalar: 250
       minScalar: 120
       maxCurve:
         serializedVersion: 2

@@ -18743,6 +18743,11 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1774593938309662684, guid: b9106aebfe5f3bf488a08a97d200d8cd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1774593938309662686, guid: b9106aebfe5f3bf488a08a97d200d8cd,
         type: 3}
       propertyPath: m_SortingOrder

@@ -48,7 +48,10 @@ public class Results : MonoBehaviour
         menuItems[(int)MenuItems.Menu].SetActive(true);
         menuItems[(int)MenuItems.Results].SetActive(true);
 
-        if (LevelManager.GameMode == "victory")
+        // Обновляем общее количество пойманных персонажей
+        PlayerPrefs.SetInt("victims", PlayerPrefs.GetInt("victims") + levelManager.SavedVictims);
+
+        if (LevelManager.GameMode == LevelManager.GameModes.Victory)
         {
             // Удваиваем набранные очки
             levelManager.ChangeScore(levelManager.Score);
@@ -67,6 +70,13 @@ public class Results : MonoBehaviour
             // Увеличиваем общий и текущий счет
             PlayerPrefs.SetInt("total-score", PlayerPrefs.GetInt("total-score") + levelManager.Score);
             PlayerPrefs.SetInt("current-score", PlayerPrefs.GetInt("current-score") + levelManager.Score);
+
+            if (levelManager.CurrentErrors == 0)
+            {
+                // Открываем достижение по прохождению без ошибок
+                if (Application.internetReachability != NetworkReachability.NotReachable)
+                    PlayServices.UnlockingAchievement(GPGSIds.achievement_5);
+            }
 
             // Отображаем счетчик очков
             _ = StartCoroutine(ScoreCounter());

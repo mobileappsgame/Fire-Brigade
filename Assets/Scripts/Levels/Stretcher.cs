@@ -62,7 +62,7 @@ public class Stretcher : MonoBehaviour
         // Если огненная капля касается носилок
         if (collision.gameObject.GetComponent<Drop>())
         {
-            // Если носилки не улучшенные
+            // Если носилки обычные
             if (IsSuper == false)
             {
                 // Возвращаем каплю в указанный пул объектов
@@ -96,6 +96,9 @@ public class Stretcher : MonoBehaviour
         IsBurns = false;
         // Сбрасываем уменьшение прочности
         StopCoroutine(ActiveCoroutine);
+
+        // Записываем тушение носилок
+        PlayerPrefs.SetString("fire-stretcher", "yes");
     }
 
     /// <summary>
@@ -189,6 +192,9 @@ public class Stretcher : MonoBehaviour
         IsSuper = true;
         Strength = 100;
 
+        // Записываем использование улучшенных носилок
+        PlayerPrefs.SetString("use-bonus", "yes");
+
         yield return new WaitForSeconds(20.0f);
 
         // Восстанавливаем предыдущие носилки
@@ -198,7 +204,6 @@ public class Stretcher : MonoBehaviour
 
     private void OnDestroy()
     {
-        // Сбрасываем подписчиков
         OnDestroyStretcher = null;
         StrengthChanged = null;
     }

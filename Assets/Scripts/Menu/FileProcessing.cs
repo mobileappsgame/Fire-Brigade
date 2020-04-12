@@ -34,4 +34,18 @@ public class FileProcessing : MonoBehaviour
     {
         obj = JsonUtility.FromJson<T>(json);
     }
+
+    /// <summary>
+    /// Преобразование объекта в json файл
+    /// </summary>
+    /// <param name="fileName">имя файла</param>
+    /// <param name="obj">объект для записи</param>
+    protected void WriteToFile<T>(string fileName, ref T obj)
+    {
+        // Получаем путь до json файла
+        var path = Path.Combine(Application.streamingAssetsPath, fileName + ".json");
+
+        // Записываем данные в файл
+        File.WriteAllText(path, JsonUtility.ToJson(obj));
+    }
 }

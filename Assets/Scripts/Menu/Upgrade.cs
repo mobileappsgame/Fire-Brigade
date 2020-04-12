@@ -50,6 +50,10 @@ public class Upgrade : MonoBehaviour
         // Увеличиваем уровень носилок
         PlayerPrefs.SetInt("stretcher", currentLevel + 1);
 
+        // Открываем достижение по улучшению носилок
+        if (Application.internetReachability != NetworkReachability.NotReachable)
+            PlayServices.UnlockingAchievement(GPGSIds.achievement_3);
+
         // Обновляем перевод
         level.TranslateText();
 

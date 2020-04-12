@@ -4,12 +4,12 @@ using UnityEngine;
 public class Victims : MonoBehaviour, IPoolable
 {
     // Падает ли персонаж
-    private bool isFall = false;
-    // Скорость падения персонажа
+    private bool isFall;
+    // Скорость падения
     private float speed;
 
-    // Находится ли персонаж на земле
-    private bool isGround = false;
+    // Персонаж на земле
+    private bool isGround;
 
     [Header("Цветовой статус")]
     [SerializeField] private string status;
@@ -178,7 +178,7 @@ public class Victims : MonoBehaviour, IPoolable
             var stretcher = hit.collider.gameObject.GetComponent<Stretcher>();
 
             // Если носилки не горят
-            if (stretcher.IsBurns != true)
+            if (stretcher.IsBurns == false)
             {
                 isFall = false;
 
@@ -187,6 +187,9 @@ public class Victims : MonoBehaviour, IPoolable
 
                 // Воспроизводим звук
                 stretcher.PlayingSound.PlaySound();
+
+                // Увеличиваем число спасенных
+                levelManager.SavedVictims++;
 
                 // Сравниваем статусы
                 CompareStatuses(stretcher);

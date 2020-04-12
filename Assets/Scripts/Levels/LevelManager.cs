@@ -3,8 +3,11 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
+    // Перечисление режимов игры
+    public enum GameModes { Play, Victory, Lose }
+
     // Текущий игровой режим
-    public static string GameMode { get; private set; }
+    public static GameModes GameMode;
 
     [Header("Всего жителей")]
     [SerializeField] private int victims;
@@ -14,6 +17,9 @@ public class LevelManager : MonoBehaviour
     // Текущее количество жителей
     public int CurrentVictims { get; private set; }
 
+    // Количество спасенных жителей
+    public int SavedVictims { get; set; }
+
     public delegate void ValueChanged();
     // Событие по изменению количества жителей
     public event ValueChanged VictimsChanged;
@@ -22,7 +28,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private int errors;
 
     // Текущее количество ошибок
-    private int currentErrors = 0;
+    public int CurrentErrors { get; private set; } = 0;
 
     // Текущий счет уровня
     public int Score { get; private set; }
@@ -36,7 +42,7 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
-        GameMode = "play";
+        GameMode = GameModes.Play;
         CurrentVictims = victims;
 
         results = Camera.main.GetComponent<Results>();
@@ -53,9 +59,9 @@ public class LevelManager : MonoBehaviour
         VictimsChanged?.Invoke();
 
         // Если жильцы закончились и ошибок меньше допустимого
-        if (CurrentVictims <= 0 && currentErrors < errors)
+        if (CurrentVictims <= 0 && CurrentErrors < errors)
             // Завершаем текущий уровень победой
-            _ = StartCoroutine(CompleteLevel("victory"));
+            _ = StartCoroutine(CompleteLevel(GameModes.Victory));
     }
 
     /// <summary>
@@ -64,12 +70,12 @@ public class LevelManager : MonoBehaviour
     /// <param name="value">значение</param>
     public void ChangeErrors(int value)
     {
-        currentErrors += value;
+        CurrentErrors += value;
 
         // Если набрано максимум ошибок
-        if (currentErrors >= errors)
+        if (CurrentErrors >= errors)
             // Завершаем уровень проигрышем
-            _ = StartCoroutine(CompleteLevel("lose"));
+            _ = StartCoroutine(CompleteLevel(GameModes.Lose));
     }
 
     /// <summary>
@@ -91,9 +97,9 @@ public class LevelManager : MonoBehaviour
     /// Завершение текущего уровня
     /// </summary>
     /// <param name="mode">режим завершения</param>
-    private IEnumerator CompleteLevel(string mode)
+    private IEnumerator CompleteLevel(GameModes mode)
     {
-        if (GameMode == "play")
+        if (GameMode == GameModes.Play)
         {
             yield return new WaitForSeconds(1.2f);
 
@@ -104,7 +110,6 @@ public class LevelManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        // Сброс подписчиков
         VictimsChanged = null;
         ScoresChanged = null;
     }

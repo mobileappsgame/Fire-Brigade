@@ -148,6 +148,18 @@
 		{
 			"Key": "loading-level",
 			"Value": "ЗАГРУЗКА..."
+		},
+		{
+			"Key": "victims",
+			"Value": "СПАСЕНО:"
+		},
+		{
+			"Key": "rank",
+			"Value": "МЕСТО"
+		},
+		{
+			"Key": "no-data",
+			"Value": "НЕТ ДАННЫХ..."
 		}
 	]
 }

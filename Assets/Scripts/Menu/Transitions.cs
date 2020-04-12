@@ -3,19 +3,26 @@ using UnityEngine.SceneManagement;
 
 public class Transitions : MonoBehaviour
 {
+    // Перечисление неигровых сцен
+    public enum Scenes { Menu = 1, Levels, Leaderboard, Training }
+
     /// <summary>
     /// Переход на указанную сцену
     /// </summary>
     /// <param name="scene">номер сцены</param>
     public void GoToScene(int scene)
     {
-        SceneManager.LoadSceneAsync(scene);
+        _ = SceneManager.LoadSceneAsync(scene);
     }
 
-    /// <param name="scene">название сцены</param>
+    public void GoToScene(Scenes scene)
+    {
+        _ = SceneManager.LoadSceneAsync((int)scene);
+    }
+
     public void GoToScene(string scene)
     {
-        SceneManager.LoadSceneAsync(scene);
+        _ = SceneManager.LoadSceneAsync(scene);
     }
 
     /// <summary>

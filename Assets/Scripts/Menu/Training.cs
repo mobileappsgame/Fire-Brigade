@@ -69,7 +69,7 @@ public class Training : MonoBehaviour
             PlayerPrefs.SetString("training", "yes");
 
             // Возвращаемся в список уровней
-            Camera.main.GetComponent<Transitions>().GoToScene(2);
+            Camera.main.GetComponent<Transitions>().GoToScene(Transitions.Scenes.Levels);
         } 
     }
 
