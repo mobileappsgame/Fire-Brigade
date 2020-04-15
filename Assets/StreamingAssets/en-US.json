@@ -67,11 +67,11 @@
 		},
 		{
 			"Key": "shop-description",
-			"Value": "FACILITATES THE WORK OF RESCUERS. NOW YOU CAN NOT SWITCH MODES."
+			"Value": "MAKE THE WORK OF RESCUERS EASIER. LETS YOU CATCH ANY TENANTS."
 		},
 		{
 			"Key": "super-stretcher",
-			"Value": "SUPERIOR STRETCHER:"
+			"Value": "SUPER STRETCHER:"
 		},
 		{
 			"Key": "stretcher-buy",
@@ -111,39 +111,39 @@
 		},
 		{
 			"Key": "training-0",
-			"Value": "Welcome to the fire brigade!"
+			"Value": "WELCOME TO THE FIRE BRIGADE!"
 		},
 		{
 			"Key": "training-1",
-			"Value": "We will conduct a short training."
+			"Value": "LET'S HAVE A QUICK BRIEFING."
 		},
 		{
 			"Key": "training-2",
-			"Value": "To control the characters, tilt the phone\n(left and right)."
+			"Value": "TO CONTROL THE CHARACTERS, TILT THE\nPHONE (LEFT AND RIGHT)."
 		},
 		{
 			"Key": "training-3",
-			"Value": "Catch jumping characters on a stretcher.\nYou will see a warning before jump."
+			"Value": "CATCH THE JUMPING CHARACTERS WITH A STRETCHER.\nYOU WILL SEE A WARNING BEFORE EACH JUMP."
 		},
 		{
 			"Key": "training-4",
-			"Value": "Different characters need different stretchers."
+			"Value": "DIFFERENT CHARACTERS NEED DIFFERENT STRETCHERS."
 		},
 		{
 			"Key": "training-5",
-			"Value": "You can quickly change the stretcher by approaching the fire truck."
+			"Value": "YOU CAN QUICKLY CHANGE THE STRETCHER BY\nAPPROACHING THE FIRE TRUCK."
 		},
 		{
 			"Key": "training-6",
-			"Value": "If the stretcher lights up, quickly run to the fire hydrant."
+			"Value": "IF THE STRETCHER CATCHES ON FIRE,\nQUICKLY RUN TO THE FIRE HYDRANT."
 		},
 		{
 			"Key": "training-7",
-			"Value": "If something is burning on the road, click on the characters to jump."
+			"Value": "IF SOMETHING IS ON FIRE ON THE ROAD,\nTAP THE CHARACTERS TO JUMP."
 		},
 		{
 			"Key": "training-8",
-			"Value": "So, it's time for the first task!"
+			"Value": "COME ON, IT'S TIME TO LEAVE FOR YOUR FIRST MISSION!"
 		},
 		{
 			"Key": "loading-level",

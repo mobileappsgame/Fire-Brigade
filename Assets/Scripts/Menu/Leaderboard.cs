@@ -36,8 +36,9 @@ public class Leaderboard : FileProcessing
             // Отображаем загрузку
             loading.SetActive(true);
 
-            // Отправляем свой результат в таблицу лидеров
-            PlayServices.PostingScoreLeaderboard(PlayerPrefs.GetInt("total-score") * PlayerPrefs.GetInt("victims"));
+            // Подсчитываем и отправляем свой результат в таблицу лидеров
+            var score = PlayerPrefs.GetInt("total-score") * PlayerPrefs.GetInt("victims");
+            PlayServices.PostingScoreLeaderboard(score);
 
             // Загружаем результаты
             LoadScoresLeaderboard();
@@ -62,8 +63,10 @@ public class Leaderboard : FileProcessing
             LeaderboardTimeSpan.AllTime,
             (data) =>
             {
-                // Записываем позицию текущего игрока
+                // Записываем и выводим позицию текущего игрока
                 leaders.Rating = data.PlayerScore.rank;
+                myRating.text = data.PlayerScore.rank.ToString();
+
                 // Загружаем информацию по другим игрокам
                 LoadUsersLeaderboard(data.Scores);
             }
@@ -84,25 +87,25 @@ public class Leaderboard : FileProcessing
         // Загружаем информацию по пользователям
         Social.LoadUsers(userIds.ToArray(), (users) =>
         {
-            // Очищаем результаты
-            leaders.Users.Clear();
+            // Скрываем загрузку
+            loading.SetActive(false);
 
             for (int i = 0; i < scores.Length; i++)
             {
                 // Создаем пользователя и ищем его id массиве
                 IUserProfile user = FindUser(users, scores[i].userID);
-                // Добавляем результат в список
-                leaders.Users.Add(new User() { Name = (user != null) ? user.userName : "Unknown", Result = scores[i].value });
+
+                // Выводим результаты в текстовое поле
+                leaderboard.text += i + 1 + " - " + ((user != null) ? user.userName.ToUpper() : "UNKNOWN") + " (" + scores[i].value.ToString() + ")";
+                if (i < 9) leaderboard.text += "\n";
+
+                // Записываем в json имена и результаты игроков
+                leaders.Names[i] = (user != null) ? user.userName.ToUpper() : "UNKNOWN";
+                leaders.Results[i] = scores[i].value;
             }
 
             // Записываем результаты в файл
             WriteToFile("leaderboard", ref leaders);
-
-            // Скрываем загрузку
-            loading.SetActive(false);
-
-            // Выводим результаты на экран
-            ShowResultsFile();
         });
     }
 
@@ -128,15 +131,15 @@ public class Leaderboard : FileProcessing
     /// </summary>
     private void ShowResultsFile()
     {
-        if (leaders.Users.Count > 0)
+        if (leaders.Rating > 0)
         {
             // Выводим результат текущего игрока
             myRating.text = leaders.Rating.ToString();
 
-            for (int i = 0; i < leaders.Users.Count; i++)
+            for (int i = 0; i < leaders.Results.Length; i++)
             {
-                // Выводим лучшие результаты остальных игроков
-                leaderboard.text += (i + 1) + " - " + leaders.Users[i].Name.ToUpper() + " (" + leaders.Users[i].Result.ToString() + ")";
+                // Выводим сохраненные данные
+                leaderboard.text += (i + 1) + " - " + leaders.Names[i] + " (" + leaders.Results[i] + ")";
                 if (i < 9) leaderboard.text += "\n";
             }
         }

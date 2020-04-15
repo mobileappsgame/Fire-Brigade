@@ -12,12 +12,12 @@ public class Transitions : MonoBehaviour
     /// <param name="scene">номер сцены</param>
     public void GoToScene(int scene)
     {
-        _ = SceneManager.LoadSceneAsync(scene);
+        SceneManager.LoadScene(scene);
     }
 
     public void GoToScene(Scenes scene)
     {
-        _ = SceneManager.LoadSceneAsync((int)scene);
+        SceneManager.LoadScene((int)scene);
     }
 
     public void GoToScene(string scene)

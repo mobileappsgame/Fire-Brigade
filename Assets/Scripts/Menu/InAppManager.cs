@@ -11,21 +11,16 @@ public class InAppManager : MonoBehaviour, IStoreListener
     private IStoreController controller;
     private IExtensionProvider extensions;
 
-    private void Awake()
+    // Идентификаторы товаров
+    private readonly string stretcherX3 = "stretcher_3";
+    private readonly string stretcherX10 = "stretcher_10";
+
+    private void Start()
     {
         var builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance());
 
-        builder.AddProduct("3_stretcher", ProductType.Consumable, new IDs
-        {
-            {"3_stretcher_google", GooglePlay.Name},
-            {"3_stretcher_mac", MacAppStore.Name}
-        });
-
-        builder.AddProduct("10_stretcher", ProductType.Consumable, new IDs
-        {
-            {"10_stretcher_google", GooglePlay.Name},
-            {"10_stretcher_mac", MacAppStore.Name}
-        });
+        builder.AddProduct(stretcherX3, ProductType.Consumable);
+        builder.AddProduct(stretcherX10, ProductType.Consumable);
 
         UnityPurchasing.Initialize(this, builder);
     }
@@ -50,8 +45,7 @@ public class InAppManager : MonoBehaviour, IStoreListener
     /// <summary>
     /// Покупка товара с указанным идентификатором
     /// </summary>
-    /// <param name="productId">id товара</param>
-    public void BuyProductID(string productId)
+    private void BuyProductID(string productId)
     {
         if (IsInitialized())
         {
@@ -69,6 +63,23 @@ public class InAppManager : MonoBehaviour, IStoreListener
     }
 
     /// <summary>
+    /// Покупка указанного товара
+    /// </summary>
+    /// <param name="quantity">количество носилок</param>
+    public void BuyProduct(int quantity)
+    {
+        switch (quantity)
+        {
+            case 3:
+                BuyProductID(stretcherX3);
+                break;
+            case 10:
+                BuyProductID(stretcherX10);
+                break;
+        }
+    }
+
+    /// <summary>
     /// Ошибка инициализации Unity IAP
     /// </summary>
     public void OnInitializeFailed(InitializationFailureReason error) {}
@@ -78,11 +89,11 @@ public class InAppManager : MonoBehaviour, IStoreListener
     /// </summary>
     public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs e)
     {
-        if (string.Equals(e.purchasedProduct.definition.id, "3_stretcher", StringComparison.Ordinal))
+        if (string.Equals(e.purchasedProduct.definition.id, stretcherX3, StringComparison.Ordinal))
         {
             PurchaseCompleted(3);
         }
-        else if (string.Equals(e.purchasedProduct.definition.id, "10_stretcher", StringComparison.Ordinal))
+        else if (string.Equals(e.purchasedProduct.definition.id, stretcherX10, StringComparison.Ordinal))
         {
             PurchaseCompleted(10);
         }

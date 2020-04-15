@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using AppodealAds.Unity.Api;
 
 public class Results : MonoBehaviour
 {
@@ -89,6 +90,14 @@ public class Results : MonoBehaviour
             // Устанавливаем звук и воспроизводим
             audioSource.clip = audioClips[(int)AudioClips.Lose];
             playingSound.PlaySound();
+        }
+
+        // Если доступен интернет и загружена реклама
+        if (Application.internetReachability != NetworkReachability.NotReachable)
+        {
+            if (Appodeal.isLoaded(Appodeal.INTERSTITIAL))
+                // Отображаем полноэкранный баннер
+                Appodeal.show(Appodeal.INTERSTITIAL);
         }
     }
 
