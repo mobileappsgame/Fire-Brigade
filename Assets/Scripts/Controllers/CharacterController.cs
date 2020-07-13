@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
-using UnityEngine.EventSystems;
 using Cubra.Levels;
 
 namespace Cubra.Controllers
 {
-    public class CharacterController : MonoBehaviour, IPointerDownHandler
+    public class CharacterController : MonoBehaviour
     {
         [Header("Инвертирование управления")]
         [SerializeField] private bool _inverted;
@@ -105,7 +104,7 @@ namespace Cubra.Controllers
         /// <summary>
         /// Прыжок персонажей
         /// </summary>
-        public void OnPointerDown(PointerEventData eventData)
+        private void OnMouseDown()
         {
             // Если персонаж на земле и не обменивается
             if (IsGroung == true && IsSwitched == false)

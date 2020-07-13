@@ -143,6 +143,16 @@ PrefabInstance:
       propertyPath: runningLimiters.Array.data[1]
       value: 
       objectReference: {fileID: 869707060}
+    - target: {fileID: 8339457258664310916, guid: 76eb5e600fa47604e96d47394fb88131,
+        type: 3}
+      propertyPath: _limiters.Array.data[0]
+      value: 
+      objectReference: {fileID: 629789160}
+    - target: {fileID: 8339457258664310916, guid: 76eb5e600fa47604e96d47394fb88131,
+        type: 3}
+      propertyPath: _limiters.Array.data[1]
+      value: 
+      objectReference: {fileID: 869707060}
     - target: {fileID: 9151306692711931974, guid: 76eb5e600fa47604e96d47394fb88131,
         type: 3}
       propertyPath: m_Name
@@ -269,7 +279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b92e047cb5f233449176bda886cd0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: level-passed
+  _key: level-passed
 --- !u!95 &3214813
 Animator:
   serializedVersion: 3
@@ -334,6 +344,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 1, b: 0.04225135, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -379,6 +390,16 @@ PrefabInstance:
     - target: {fileID: 7734040548300680064, guid: 76eb5e600fa47604e96d47394fb88131,
         type: 3}
       propertyPath: runningLimiters.Array.data[1]
+      value: 
+      objectReference: {fileID: 869707060}
+    - target: {fileID: 8339457258664310916, guid: 76eb5e600fa47604e96d47394fb88131,
+        type: 3}
+      propertyPath: _limiters.Array.data[0]
+      value: 
+      objectReference: {fileID: 629789160}
+    - target: {fileID: 8339457258664310916, guid: 76eb5e600fa47604e96d47394fb88131,
+        type: 3}
+      propertyPath: _limiters.Array.data[1]
       value: 
       objectReference: {fileID: 869707060}
     - target: {fileID: 9151306692711931974, guid: 76eb5e600fa47604e96d47394fb88131,
@@ -1166,9 +1187,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5fa6f6d2dcebdd469b964f277b654a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maximum: 6
-  minSeconds: 3.1
-  maxSeconds: 4.9
+  _maximum: 5
+  _minSeconds: 3.1
+  _maxSeconds: 4.9
 --- !u!1001 &129139995
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2085,6 +2106,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2126,6 +2148,16 @@ PrefabInstance:
     - target: {fileID: 7734040548300680064, guid: 76eb5e600fa47604e96d47394fb88131,
         type: 3}
       propertyPath: runningLimiters.Array.data[1]
+      value: 
+      objectReference: {fileID: 869707060}
+    - target: {fileID: 8339457258664310916, guid: 76eb5e600fa47604e96d47394fb88131,
+        type: 3}
+      propertyPath: _limiters.Array.data[0]
+      value: 
+      objectReference: {fileID: 629789160}
+    - target: {fileID: 8339457258664310916, guid: 76eb5e600fa47604e96d47394fb88131,
+        type: 3}
+      propertyPath: _limiters.Array.data[1]
       value: 
       objectReference: {fileID: 869707060}
     - target: {fileID: 9151306692711931974, guid: 76eb5e600fa47604e96d47394fb88131,
@@ -2301,6 +2333,16 @@ PrefabInstance:
     - target: {fileID: 7734040548300680064, guid: 76eb5e600fa47604e96d47394fb88131,
         type: 3}
       propertyPath: runningLimiters.Array.data[1]
+      value: 
+      objectReference: {fileID: 869707060}
+    - target: {fileID: 8339457258664310916, guid: 76eb5e600fa47604e96d47394fb88131,
+        type: 3}
+      propertyPath: _limiters.Array.data[0]
+      value: 
+      objectReference: {fileID: 629789160}
+    - target: {fileID: 8339457258664310916, guid: 76eb5e600fa47604e96d47394fb88131,
+        type: 3}
+      propertyPath: _limiters.Array.data[1]
       value: 
       objectReference: {fileID: 869707060}
     - target: {fileID: 9151306692711931974, guid: 76eb5e600fa47604e96d47394fb88131,
@@ -2594,6 +2636,11 @@ PrefabInstance:
       propertyPath: Pool
       value: 
       objectReference: {fileID: 89633758}
+    - target: {fileID: 6692085849899657946, guid: 7ed7c802439ecc847bee1856a62e118e,
+        type: 3}
+      propertyPath: _spray
+      value: 
+      objectReference: {fileID: 1397588744}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ed7c802439ecc847bee1856a62e118e, type: 3}
 --- !u!4 &284030647 stripped
@@ -2652,8 +2699,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2727,6 +2775,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3296,6 +3345,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4183e57278497b848aa002e76e66f49f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _images:
+  - {fileID: 1211203531}
+  - {fileID: 577532089}
+  - {fileID: 1901899136}
+  - {fileID: 303884695}
 --- !u!114 &353432345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3334,7 +3388,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 353432346}
   m_OnClick:
     m_PersistentCalls:
@@ -3387,6 +3441,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.6666667}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3420,8 +3475,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d6bc557c3954a140915730a82893334, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stretcher: {fileID: 1949609367}
-  objects:
+  _stretcher: {fileID: 1949609367}
+  _images:
   - {fileID: 1211203531}
   - {fileID: 577532089}
   - {fileID: 1901899136}
@@ -3565,7 +3620,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 519420034}
-        m_MethodName: RestartScene
+        m_MethodName: RestartLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3620,6 +3675,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.99215686, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3657,7 +3713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b92e047cb5f233449176bda886cd0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: button-restart
+  _key: button-restart
 --- !u!1 &400738911
 GameObject:
   m_ObjectHideFlags: 0
@@ -4006,6 +4062,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4343,7 +4400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e93d489816304a4e9b262f38c91f3f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textChange: {fileID: 444406716}
+  _changeScore: {fileID: 444406716}
 --- !u!114 &471392654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4374,6 +4431,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4468,6 +4526,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4626,6 +4685,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.6666667}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4685,7 +4745,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 476140986}
   m_OnClick:
     m_PersistentCalls:
@@ -4724,6 +4784,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4183e57278497b848aa002e76e66f49f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _images:
+  - {fileID: 1383466656}
+  - {fileID: 611943049}
 --- !u!1001 &476927774
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4854,8 +4917,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4897,6 +4961,16 @@ PrefabInstance:
     - target: {fileID: 7734040548300680064, guid: 76eb5e600fa47604e96d47394fb88131,
         type: 3}
       propertyPath: runningLimiters.Array.data[1]
+      value: 
+      objectReference: {fileID: 869707060}
+    - target: {fileID: 8339457258664310916, guid: 76eb5e600fa47604e96d47394fb88131,
+        type: 3}
+      propertyPath: _limiters.Array.data[0]
+      value: 
+      objectReference: {fileID: 629789160}
+    - target: {fileID: 8339457258664310916, guid: 76eb5e600fa47604e96d47394fb88131,
+        type: 3}
+      propertyPath: _limiters.Array.data[1]
       value: 
       objectReference: {fileID: 869707060}
     - target: {fileID: 9151306692711931974, guid: 76eb5e600fa47604e96d47394fb88131,
@@ -5044,7 +5118,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 20
   field of view: 60
   orthographic: 1
   orthographic size: 5
@@ -5056,7 +5130,7 @@ Camera:
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 0
-  m_HDR: 1
+  m_HDR: 0
   m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
@@ -5125,8 +5199,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95652dc84a9d32f49aecf99673607f70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  victims: 46
-  errors: 3
+  _victims: 48
+  _errors: 3
 --- !u!114 &519420037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5139,16 +5213,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f295c04b589eb554eb00ebce67c43a9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuItems:
+  _menuItems:
   - {fileID: 716521013}
   - {fileID: 1008457370}
   - {fileID: 81682447}
   - {fileID: 560823383}
   - {fileID: 979519368}
   - {fileID: 1891201073}
-  scoreText: {fileID: 521007945}
-  backgroundMusic: {fileID: 541862122}
-  audioClips:
+  _score: {fileID: 521007945}
+  _backgroundMusic: {fileID: 541862122}
+  _audioClips:
   - {fileID: 8300000, guid: ed6069362d7c2b840ae7cc0080ece80d, type: 3}
   - {fileID: 8300000, guid: dc56ce9ddd31d604aa49012cba2e5ff8, type: 3}
 --- !u!1 &521007941
@@ -5235,6 +5309,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5427,6 +5502,11 @@ PrefabInstance:
       propertyPath: Pool
       value: 
       objectReference: {fileID: 89633758}
+    - target: {fileID: 6692085849899657946, guid: 7ed7c802439ecc847bee1856a62e118e,
+        type: 3}
+      propertyPath: _spray
+      value: 
+      objectReference: {fileID: 1397588744}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ed7c802439ecc847bee1856a62e118e, type: 3}
 --- !u!4 &528529611 stripped
@@ -5506,7 +5586,7 @@ Canvas:
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 519420031}
-  m_PlaneDistance: 100
+  m_PlaneDistance: 20
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -5935,8 +6015,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6055,6 +6136,11 @@ PrefabInstance:
       propertyPath: Pool
       value: 
       objectReference: {fileID: 89633758}
+    - target: {fileID: 6692085849899657946, guid: 7ed7c802439ecc847bee1856a62e118e,
+        type: 3}
+      propertyPath: _spray
+      value: 
+      objectReference: {fileID: 1397588744}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ed7c802439ecc847bee1856a62e118e, type: 3}
 --- !u!4 &594465901 stripped
@@ -6113,8 +6199,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6669,8 +6756,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6825,6 +6913,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.9019608}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -7623,6 +7712,16 @@ PrefabInstance:
       propertyPath: runningLimiters.Array.data[1]
       value: 
       objectReference: {fileID: 869707060}
+    - target: {fileID: 8339457258664310916, guid: 76eb5e600fa47604e96d47394fb88131,
+        type: 3}
+      propertyPath: _limiters.Array.data[0]
+      value: 
+      objectReference: {fileID: 629789160}
+    - target: {fileID: 8339457258664310916, guid: 76eb5e600fa47604e96d47394fb88131,
+        type: 3}
+      propertyPath: _limiters.Array.data[1]
+      value: 
+      objectReference: {fileID: 869707060}
     - target: {fileID: 9151306692711931974, guid: 76eb5e600fa47604e96d47394fb88131,
         type: 3}
       propertyPath: m_Name
@@ -7865,8 +7964,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb82b12bc2072c4a909aef5ff2c71b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectionBar: {fileID: 1378731916}
-  stretcher: {fileID: 1949609367}
+  _changeButtons:
+  - {fileID: 1342671059}
+  - {fileID: 1576803811}
+  - {fileID: 476140989}
+  _stretcher: {fileID: 1949609367}
+  _superStretcher: {fileID: 353432348}
 --- !u!1 &799793937
 GameObject:
   m_ObjectHideFlags: 0
@@ -8135,6 +8238,16 @@ PrefabInstance:
     - target: {fileID: 7734040548300680064, guid: 76eb5e600fa47604e96d47394fb88131,
         type: 3}
       propertyPath: runningLimiters.Array.data[1]
+      value: 
+      objectReference: {fileID: 869707060}
+    - target: {fileID: 8339457258664310916, guid: 76eb5e600fa47604e96d47394fb88131,
+        type: 3}
+      propertyPath: _limiters.Array.data[0]
+      value: 
+      objectReference: {fileID: 629789160}
+    - target: {fileID: 8339457258664310916, guid: 76eb5e600fa47604e96d47394fb88131,
+        type: 3}
+      propertyPath: _limiters.Array.data[1]
       value: 
       objectReference: {fileID: 869707060}
     - target: {fileID: 9151306692711931974, guid: 76eb5e600fa47604e96d47394fb88131,
@@ -8450,6 +8563,11 @@ PrefabInstance:
       propertyPath: Pool
       value: 
       objectReference: {fileID: 89633758}
+    - target: {fileID: 6692085849899657946, guid: 7ed7c802439ecc847bee1856a62e118e,
+        type: 3}
+      propertyPath: _spray
+      value: 
+      objectReference: {fileID: 1397588744}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ed7c802439ecc847bee1856a62e118e, type: 3}
 --- !u!4 &907354072 stripped
@@ -9039,6 +9157,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -9114,6 +9233,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -9417,6 +9537,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -9583,6 +9704,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -10035,6 +10157,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.99215686, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -10072,7 +10195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b92e047cb5f233449176bda886cd0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: button-return
+  _key: button-return
 --- !u!1 &1068462264
 GameObject:
   m_ObjectHideFlags: 0
@@ -10357,6 +10480,11 @@ PrefabInstance:
       propertyPath: Pool
       value: 
       objectReference: {fileID: 89633758}
+    - target: {fileID: 6692085849899657946, guid: 7ed7c802439ecc847bee1856a62e118e,
+        type: 3}
+      propertyPath: _spray
+      value: 
+      objectReference: {fileID: 1397588744}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ed7c802439ecc847bee1856a62e118e, type: 3}
 --- !u!4 &1102885775 stripped
@@ -10627,6 +10755,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -10793,7 +10922,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeee29211d031fe4a9592c9c05d498c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inverted: 1
+  _inverted: 0
 --- !u!95 &1179656316
 Animator:
   serializedVersion: 3
@@ -11116,8 +11245,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -11191,6 +11321,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -11472,6 +11603,11 @@ PrefabInstance:
       propertyPath: Pool
       value: 
       objectReference: {fileID: 89633758}
+    - target: {fileID: 6692085849899657946, guid: 7ed7c802439ecc847bee1856a62e118e,
+        type: 3}
+      propertyPath: _spray
+      value: 
+      objectReference: {fileID: 1397588744}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ed7c802439ecc847bee1856a62e118e, type: 3}
 --- !u!4 &1273981516 stripped
@@ -11695,6 +11831,11 @@ PrefabInstance:
       propertyPath: Pool
       value: 
       objectReference: {fileID: 89633758}
+    - target: {fileID: 6692085849899657946, guid: 7ed7c802439ecc847bee1856a62e118e,
+        type: 3}
+      propertyPath: _spray
+      value: 
+      objectReference: {fileID: 1397588744}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ed7c802439ecc847bee1856a62e118e, type: 3}
 --- !u!4 &1302974059 stripped
@@ -11723,6 +11864,16 @@ PrefabInstance:
     - target: {fileID: 7734040548300680064, guid: 76eb5e600fa47604e96d47394fb88131,
         type: 3}
       propertyPath: runningLimiters.Array.data[1]
+      value: 
+      objectReference: {fileID: 869707060}
+    - target: {fileID: 8339457258664310916, guid: 76eb5e600fa47604e96d47394fb88131,
+        type: 3}
+      propertyPath: _limiters.Array.data[0]
+      value: 
+      objectReference: {fileID: 629789160}
+    - target: {fileID: 8339457258664310916, guid: 76eb5e600fa47604e96d47394fb88131,
+        type: 3}
+      propertyPath: _limiters.Array.data[1]
       value: 
       objectReference: {fileID: 869707060}
     - target: {fileID: 9151306692711931974, guid: 76eb5e600fa47604e96d47394fb88131,
@@ -11854,6 +12005,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.6666667}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -11913,7 +12065,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1342671056}
   m_OnClick:
     m_PersistentCalls:
@@ -11952,6 +12104,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4183e57278497b848aa002e76e66f49f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _images:
+  - {fileID: 2089032538}
+  - {fileID: 476946930}
 --- !u!1001 &1354086074
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12205,7 +12360,6 @@ GameObject:
   - component: {fileID: 1378731915}
   - component: {fileID: 1378731918}
   - component: {fileID: 1378731917}
-  - component: {fileID: 1378731916}
   m_Layer: 5
   m_Name: Stretcher
   m_TagString: Untagged
@@ -12233,28 +12387,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -82.5, y: 0}
-  m_SizeDelta: {x: 165, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!95 &1378731916
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1378731914}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c623136fca24cf0419c46c4ea864da3b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &1378731917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12270,6 +12405,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -12341,8 +12477,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -17701,6 +17838,11 @@ PrefabInstance:
       propertyPath: Pool
       value: 
       objectReference: {fileID: 89633758}
+    - target: {fileID: 6692085849899657946, guid: 7ed7c802439ecc847bee1856a62e118e,
+        type: 3}
+      propertyPath: _spray
+      value: 
+      objectReference: {fileID: 1397588744}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ed7c802439ecc847bee1856a62e118e, type: 3}
 --- !u!4 &1470052881 stripped
@@ -18156,6 +18298,11 @@ PrefabInstance:
       propertyPath: Pool
       value: 
       objectReference: {fileID: 89633758}
+    - target: {fileID: 6692085849899657946, guid: 7ed7c802439ecc847bee1856a62e118e,
+        type: 3}
+      propertyPath: _spray
+      value: 
+      objectReference: {fileID: 1397588744}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ed7c802439ecc847bee1856a62e118e, type: 3}
 --- !u!4 &1549891644 stripped
@@ -18468,6 +18615,16 @@ PrefabInstance:
       propertyPath: runningLimiters.Array.data[1]
       value: 
       objectReference: {fileID: 869707060}
+    - target: {fileID: 8339457258664310916, guid: 76eb5e600fa47604e96d47394fb88131,
+        type: 3}
+      propertyPath: _limiters.Array.data[0]
+      value: 
+      objectReference: {fileID: 629789160}
+    - target: {fileID: 8339457258664310916, guid: 76eb5e600fa47604e96d47394fb88131,
+        type: 3}
+      propertyPath: _limiters.Array.data[1]
+      value: 
+      objectReference: {fileID: 869707060}
     - target: {fileID: 9151306692711931974, guid: 76eb5e600fa47604e96d47394fb88131,
         type: 3}
       propertyPath: m_Name
@@ -18597,6 +18754,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.6666667}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -18656,7 +18814,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1576803808}
   m_OnClick:
     m_PersistentCalls:
@@ -18695,6 +18853,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4183e57278497b848aa002e76e66f49f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _images:
+  - {fileID: 1880486600}
+  - {fileID: 666226636}
 --- !u!1001 &1583857973
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18792,6 +18953,11 @@ PrefabInstance:
       propertyPath: Pool
       value: 
       objectReference: {fileID: 89633758}
+    - target: {fileID: 6692085849899657946, guid: 7ed7c802439ecc847bee1856a62e118e,
+        type: 3}
+      propertyPath: _spray
+      value: 
+      objectReference: {fileID: 1397588744}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ed7c802439ecc847bee1856a62e118e, type: 3}
 --- !u!4 &1583857974 stripped
@@ -18897,6 +19063,11 @@ PrefabInstance:
       propertyPath: Pool
       value: 
       objectReference: {fileID: 89633758}
+    - target: {fileID: 6692085849899657946, guid: 7ed7c802439ecc847bee1856a62e118e,
+        type: 3}
+      propertyPath: _spray
+      value: 
+      objectReference: {fileID: 1397588744}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ed7c802439ecc847bee1856a62e118e, type: 3}
 --- !u!4 &1605625429 stripped
@@ -18997,6 +19168,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -19053,7 +19225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b92e047cb5f233449176bda886cd0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: level-failed
+  _key: level-failed
 --- !u!1 &1664608931
 GameObject:
   m_ObjectHideFlags: 0
@@ -19675,6 +19847,11 @@ PrefabInstance:
       propertyPath: Pool
       value: 
       objectReference: {fileID: 89633758}
+    - target: {fileID: 6692085849899657946, guid: 7ed7c802439ecc847bee1856a62e118e,
+        type: 3}
+      propertyPath: _spray
+      value: 
+      objectReference: {fileID: 1397588744}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ed7c802439ecc847bee1856a62e118e, type: 3}
 --- !u!4 &1781325508 stripped
@@ -19901,6 +20078,11 @@ PrefabInstance:
       propertyPath: Pool
       value: 
       objectReference: {fileID: 89633758}
+    - target: {fileID: 6692085849899657946, guid: 7ed7c802439ecc847bee1856a62e118e,
+        type: 3}
+      propertyPath: _spray
+      value: 
+      objectReference: {fileID: 1397588744}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ed7c802439ecc847bee1856a62e118e, type: 3}
 --- !u!4 &1809356790 stripped
@@ -20587,6 +20769,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -20659,8 +20842,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -20768,8 +20952,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -20942,6 +21127,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -21866,6 +22052,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.99215686, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -21903,7 +22090,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b92e047cb5f233449176bda886cd0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: button-continue
+  _key: button-continue
 --- !u!1001 &1990463680
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22001,6 +22188,11 @@ PrefabInstance:
       propertyPath: Pool
       value: 
       objectReference: {fileID: 89633758}
+    - target: {fileID: 6692085849899657946, guid: 7ed7c802439ecc847bee1856a62e118e,
+        type: 3}
+      propertyPath: _spray
+      value: 
+      objectReference: {fileID: 1397588744}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ed7c802439ecc847bee1856a62e118e, type: 3}
 --- !u!4 &1990463681 stripped
@@ -22498,6 +22690,16 @@ PrefabInstance:
       propertyPath: runningLimiters.Array.data[1]
       value: 
       objectReference: {fileID: 869707060}
+    - target: {fileID: 8339457258664310916, guid: 76eb5e600fa47604e96d47394fb88131,
+        type: 3}
+      propertyPath: _limiters.Array.data[0]
+      value: 
+      objectReference: {fileID: 629789160}
+    - target: {fileID: 8339457258664310916, guid: 76eb5e600fa47604e96d47394fb88131,
+        type: 3}
+      propertyPath: _limiters.Array.data[1]
+      value: 
+      objectReference: {fileID: 869707060}
     - target: {fileID: 9151306692711931974, guid: 76eb5e600fa47604e96d47394fb88131,
         type: 3}
       propertyPath: m_Name
@@ -22702,8 +22904,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -22854,6 +23057,11 @@ PrefabInstance:
       propertyPath: Pool
       value: 
       objectReference: {fileID: 89633758}
+    - target: {fileID: 6692085849899657946, guid: 7ed7c802439ecc847bee1856a62e118e,
+        type: 3}
+      propertyPath: _spray
+      value: 
+      objectReference: {fileID: 1397588744}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ed7c802439ecc847bee1856a62e118e, type: 3}
 --- !u!4 &2105352828 stripped
@@ -23012,6 +23220,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -23049,7 +23258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a4ec6de4efcbac4e9f2c552c0ed47a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stretcher: {fileID: 1949609367}
+  _stretcher: {fileID: 1949609367}
 --- !u!95 &2118523007
 Animator:
   serializedVersion: 3

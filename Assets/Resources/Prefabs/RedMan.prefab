@@ -282,7 +282,7 @@ MonoBehaviour:
   _weight: 45
   _delay: 6.2
   _offset: 0.04
-  _runningSpeed: 5
+  _runningSpeed: 1.6
   _limiters:
   - {fileID: 6860057772761418848}
   - {fileID: 2761157341080580015}
