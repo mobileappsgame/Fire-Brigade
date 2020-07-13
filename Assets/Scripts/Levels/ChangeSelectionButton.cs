@@ -6,17 +6,14 @@ namespace Cubra.Levels
 {
     public class ChangeSelectionButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
+        [Header("Дочерние изображения")]
+        [SerializeField] private Image[] _images;
+
         private Button _button;
-        private Image[] _images;
 
         private void Awake()
         {
             _button = GetComponent<Button>();
-
-            _images = new Image[gameObject.transform.childCount];
-
-            for (int i = 0; i < _images.Length; i++)
-                _images[i] = GetComponent<Image>();
         }
 
         /// <summary>

@@ -2109,6 +2109,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4183e57278497b848aa002e76e66f49f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _images:
+  - {fileID: 1211203531}
+  - {fileID: 577532089}
+  - {fileID: 1901899136}
+  - {fileID: 303884695}
 --- !u!114 &353432345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3245,7 +3250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EventMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 288
   m_MaxRayIntersections: 0
 --- !u!20 &519420031
 Camera:
@@ -4591,6 +4596,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4183e57278497b848aa002e76e66f49f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _images:
+  - {fileID: 831883677}
+  - {fileID: 742747524}
 --- !u!1 &716521013
 GameObject:
   m_ObjectHideFlags: 0
@@ -5438,6 +5446,7 @@ MonoBehaviour:
   - {fileID: 687606792}
   - {fileID: 1342671059}
   _stretcher: {fileID: 1949609367}
+  _superStretcher: {fileID: 353432348}
 --- !u!1 &801045226
 GameObject:
   m_ObjectHideFlags: 0
@@ -9025,6 +9034,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4183e57278497b848aa002e76e66f49f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _images:
+  - {fileID: 2089032538}
+  - {fileID: 476946930}
 --- !u!1 &1348093712
 GameObject:
   m_ObjectHideFlags: 0

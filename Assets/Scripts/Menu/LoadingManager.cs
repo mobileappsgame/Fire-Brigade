@@ -45,6 +45,8 @@ namespace Cubra
 
             // Активируем сервисы Google Play
             _ = PlayGamesPlatform.Activate();
+
+            PlayerPrefs.SetInt("super-stretcher", 0);
         }
 
         private void Start()
