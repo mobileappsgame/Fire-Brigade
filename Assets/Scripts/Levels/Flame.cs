@@ -1,24 +1,26 @@
 ﻿using UnityEngine;
 
-public class Flame : MonoBehaviour
+namespace Cubra.Levels
 {
-    // Ссылка на компонент
-    private Flames flames;
-
-    private void Start()
+    public class Flame : MonoBehaviour
     {
-        flames = GetComponentInParent<Flames>();
-    }
+        private Flames _flames;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        // Если огонек с носилок касается воды из гидранта
-        if (collision.transform.parent.GetComponent<Hydrant>())
+        private void Start()
         {
-            gameObject.SetActive(false);
+            _flames = GetComponentInParent<Flames>();
+        }
 
-            // Проверяем количество огней
-            flames.CheckQuantityFlames();
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            // Если огонек с носилок касается воды из гидранта
+            if (collision.transform.parent.GetComponent<Hydrant>())
+            {
+                gameObject.SetActive(false);
+                
+                // Проверяем количество огней
+                _flames.CheckQuantityFlames();
+            }
         }
     }
 }

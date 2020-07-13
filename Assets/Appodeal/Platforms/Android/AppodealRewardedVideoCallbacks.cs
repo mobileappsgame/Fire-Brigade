@@ -1,9 +1,11 @@
 using System.Diagnostics.CodeAnalysis;
 using AppodealAds.Unity.Common;
 
+
 namespace AppodealAds.Unity.Android
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     [SuppressMessage("ReSharper", "UnusedParameter.Local")]
     public class AppodealRewardedVideoCallbacks
 #if UNITY_ANDROID
@@ -17,47 +19,47 @@ namespace AppodealAds.Unity.Android
             this.listener = listener;
         }
 
-        private void onRewardedVideoLoaded(bool precache)
+       public void onRewardedVideoLoaded(bool precache)
         {
             listener.onRewardedVideoLoaded(precache);
         }
 
-        private void onRewardedVideoFailedToLoad()
+       public void onRewardedVideoFailedToLoad()
         {
             listener.onRewardedVideoFailedToLoad();
         }
 
-        private void onRewardedVideoShowFailed()
+       public void onRewardedVideoShowFailed()
         {
             listener.onRewardedVideoShowFailed();
         }
 
-        private void onRewardedVideoShown()
+       public void onRewardedVideoShown()
         {
             listener.onRewardedVideoShown();
         }
 
-        private void onRewardedVideoFinished(double amount, UnityEngine.AndroidJavaObject name)
+       public void onRewardedVideoFinished(double amount, UnityEngine.AndroidJavaObject name)
         {
             listener.onRewardedVideoFinished(amount, null);
         }
 
-        private void onRewardedVideoFinished(double amount, string name)
+       public void onRewardedVideoFinished(double amount, string name)
         {
             listener.onRewardedVideoFinished(amount, name);
         }
 
-        private void onRewardedVideoClosed(bool finished)
+       public void onRewardedVideoClosed(bool finished)
         {
             listener.onRewardedVideoClosed(finished);
         }
 
-        private void onRewardedVideoExpired()
+       public void onRewardedVideoExpired()
         {
             listener.onRewardedVideoExpired();
         }
 
-        private void onRewardedVideoClicked()
+       public void onRewardedVideoClicked()
         {
             listener.onRewardedVideoClicked();
         }

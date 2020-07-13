@@ -5,10 +5,10 @@ using System.IO;
 using System;
 using System.Diagnostics.CodeAnalysis;
 
-namespace AppodealAds.Unity.Editor
+namespace Appodeal.Unity.Editor
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class ArchitectureFilter
+    public static class ArchitectureFilter
     {
         private static readonly string JNI_SAFE_PATH =
             AppodealUnityUtils.combinePaths(Application.dataPath, "Appodeal", "InternalResources", "jni");
@@ -31,11 +31,11 @@ namespace AppodealAds.Unity.Editor
             if (arch == AppodealUnityUtils.AndroidArchitecture.invalid)
             {
                 EditorUtility.DisplayDialog("Architecture problems were found in the project",
-                    "For some reason it isn't possible to define selected architectures. Please check your settings. You also can check architectures manually",
+                    "For some reason it isn't possible to define selected architectures. " +
+                    "Please check your settings. You also can check architectures manually",
                     "Ok");
                 return;
             }
-
             var selectedArches =
                 new HashSet<AppodealUnityUtils.AndroidArchitecture>();
             foreach (AppodealUnityUtils.AndroidArchitecture a in Enum.GetValues(
@@ -51,8 +51,7 @@ namespace AppodealAds.Unity.Editor
             foreach (var libPath in nativeLibs)
             {
                 var
-                    dir = Path.GetFileName(
-                        libPath); //tricky thing. GetDirectoryName returns "Android", directory which contains current directory
+                    dir = Path.GetFileName(libPath); 
                 var archFullPaths =
                     new Dictionary<AppodealUnityUtils.AndroidArchitecture, string>();
                 var archSafeFullPaths =
@@ -73,7 +72,7 @@ namespace AppodealAds.Unity.Editor
                     if (Directory.Exists(AppodealUnityUtils.combinePaths(safePath, archDict[a]))) savedArches.Add(a);
                 }
 
-                if (presentedArches.Count == 0 && savedArches.Count == 0) continue; //library doesn't use native code
+                if (presentedArches.Count == 0 && savedArches.Count == 0) continue;
 
                 foreach (AppodealUnityUtils.AndroidArchitecture a in Enum.GetValues(
                     typeof(AppodealUnityUtils.AndroidArchitecture)))

@@ -2,50 +2,49 @@
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class FileProcessing : MonoBehaviour
+namespace Cubra
 {
-    /// <summary>
-    /// Чтение json файла
-    /// </summary>
-    /// <param name="fileName">имя файла</param>
-    /// <returns>текст из файла</returns>
-    protected string ReadJsonFile(string fileName)
+    public class FileProcessing : MonoBehaviour
     {
-        // Получаем путь до json файла
-        var path = Path.Combine(Application.streamingAssetsPath, fileName + ".json");
+        /// <summary>
+        /// Чтение json файла
+        /// </summary>
+        /// <param name="fileName">имя файла</param>
+        /// <returns>текст из файла</returns>
+        protected string ReadJsonFile(string fileName)
+        {
+            var path = Path.Combine(Application.streamingAssetsPath, fileName + ".json");
 
-        // Получаем данные по указанному пути
-        UnityWebRequest reader = UnityWebRequest.Get(path);
-        // Выполняем обработку полученнных данных
-        reader.SendWebRequest();
-        // Ждем завершения обработки
-        while (!reader.isDone) {}
+            // Получаем данные по указанному пути
+            UnityWebRequest reader = UnityWebRequest.Get(path);
+            // Выполняем обработку полученнных данных
+            reader.SendWebRequest();
+            // Ждем завершения обработки
+            while (!reader.isDone) {}
 
-        // Возвращаем прочитанную строку
-        return reader.downloadHandler.text;
-    }
+            return reader.downloadHandler.text;
+        }
 
-    /// <summary>
-    /// Преобразование json строки в объект
-    /// </summary>
-    /// <param name="obj">объект для записи</param>
-    /// <param name="json">текстовая json строка</param>
-    protected void ConvertToObject<T>(ref T obj, string json)
-    {
-        obj = JsonUtility.FromJson<T>(json);
-    }
+        /// <summary>
+        /// Преобразование json строки в объект
+        /// </summary>
+        /// <param name="obj">объект для записи</param>
+        /// <param name="json">json строка</param>
+        protected void ConvertToObject<T>(ref T obj, string json)
+        {
+            obj = JsonUtility.FromJson<T>(json);
+        }
 
-    /// <summary>
-    /// Преобразование объекта в json файл
-    /// </summary>
-    /// <param name="fileName">имя файла</param>
-    /// <param name="obj">объект для записи</param>
-    protected void WriteToFile<T>(string fileName, ref T obj)
-    {
-        // Получаем путь до json файла
-        var path = Path.Combine(Application.streamingAssetsPath, fileName + ".json");
+        /// <summary>
+        /// Преобразование объекта в json файл
+        /// </summary>
+        /// <param name="fileName">файл для записи</param>
+        /// <param name="obj">объект</param>
+        protected void WriteToFile<T>(string fileName, ref T obj)
+        {
+            var path = Path.Combine(Application.streamingAssetsPath, fileName + ".json");
 
-        // Записываем данные в файл
-        File.WriteAllText(path, JsonUtility.ToJson(obj));
+            File.WriteAllText(path, JsonUtility.ToJson(obj));
+        }
     }
 }

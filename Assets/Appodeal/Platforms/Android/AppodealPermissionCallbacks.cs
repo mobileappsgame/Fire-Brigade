@@ -4,6 +4,7 @@ using AppodealAds.Unity.Common;
 namespace AppodealAds.Unity.Android
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     [SuppressMessage("ReSharper", "UnusedParameter.Local")]
     public class AppodealPermissionCallbacks
 #if UNITY_ANDROID
@@ -17,12 +18,12 @@ namespace AppodealAds.Unity.Android
             this.listener = listener;
         }
 
-        private void writeExternalStorageResponse(int result)
+       public void writeExternalStorageResponse(int result)
         {
             listener.writeExternalStorageResponse(result);
         }
 
-        private void accessCoarseLocationResponse(int result)
+       public void accessCoarseLocationResponse(int result)
         {
             listener.accessCoarseLocationResponse(result);
         }

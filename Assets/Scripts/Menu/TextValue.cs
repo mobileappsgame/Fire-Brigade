@@ -1,21 +1,20 @@
 ﻿using UnityEngine;
+using Cubra.Controllers;
 
-public class TextValue : TextTranslation
+namespace Cubra
 {
-    [Header("Ключ сохранения")]
-    [SerializeField] private string saveKey;
-
-    protected override void Start()
+    public class TextValue : TextTranslation
     {
-        TranslateText();
-    }
+        [Header("Ключ сохранения")]
+        [SerializeField] private string _saveKey;
 
-    /// <summary>
-    /// Вывод переведенного текста из словаря с добавлением сохраненного значения
-    /// </summary>
-    public override void TranslateText()
-    {
-        textComponent.text = (key != "") ? Languages.translations[key] + " " : "";
-        textComponent.text += PlayerPrefs.GetInt(saveKey);
+        /// <summary>
+        /// Вывод переведенного текста из словаря с добавлением сохраненного значения
+        /// </summary>
+        public override void TranslateText()
+        {
+            _textComponent.text = (_key != "") ? LocalizationController.Translations[_key] + " " : "";
+            _textComponent.text += PlayerPrefs.GetInt(_saveKey);
+        }
     }
 }

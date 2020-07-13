@@ -1,10 +1,12 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using AppodealAds.Unity.Common;
 
+
 namespace AppodealAds.Unity.Android
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     [SuppressMessage("ReSharper", "UnusedParameter.Local")]
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public class AppodealInterstitialCallbacks
 #if UNITY_ANDROID
         : UnityEngine.AndroidJavaProxy
@@ -17,37 +19,37 @@ namespace AppodealAds.Unity.Android
             this.listener = listener;
         }
 
-        private void onInterstitialLoaded(bool isPrecache)
+        public void onInterstitialLoaded(bool isPrecache)
         {
             listener.onInterstitialLoaded(isPrecache);
         }
 
-        private void onInterstitialFailedToLoad()
+        public void onInterstitialFailedToLoad()
         {
             listener.onInterstitialFailedToLoad();
         }
 
-        private void onInterstitialShowFailed()
+        public void onInterstitialShowFailed()
         {
             listener.onInterstitialShowFailed();
         }
 
-        private void onInterstitialShown()
+        public void onInterstitialShown()
         {
             listener.onInterstitialShown();
         }
 
-        private void onInterstitialClicked()
+        public void onInterstitialClicked()
         {
             listener.onInterstitialClicked();
         }
 
-        private void onInterstitialClosed()
+        public void onInterstitialClosed()
         {
             listener.onInterstitialClosed();
         }
 
-        private void onInterstitialExpired()
+        public void onInterstitialExpired()
         {
             listener.onInterstitialExpired();
         }

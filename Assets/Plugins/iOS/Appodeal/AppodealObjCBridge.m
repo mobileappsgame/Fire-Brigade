@@ -5,7 +5,6 @@
 #endif
 
 #import <Appodeal/Appodeal.h>
-#import <StackConsentManager/StackConsentManager.h>
 
 #import "AppodealInterstitialDelegate.h"
 #import "AppodealNonSkippableVideoDelegate.h"
@@ -37,12 +36,6 @@ void AppodealInitialize(const char *apiKey, int types, BOOL consent, const char 
     [Appodeal setFramework:APDFrameworkUnity version: [NSString stringWithUTF8String:engineVer]];
     [Appodeal setPluginVersion:[NSString stringWithUTF8String:pluginVer]];
     [Appodeal initializeWithApiKey:[NSString stringWithUTF8String:apiKey] types:types hasConsent:consent];
-}
-
-void AppodealInitializeWithConsent(const char *apiKey, int types, const char *pluginVer, const char *engineVer) {
-    [Appodeal setFramework:APDFrameworkUnity version: [NSString stringWithUTF8String:engineVer]];
-    [Appodeal setPluginVersion:[NSString stringWithUTF8String:pluginVer]];
-    [Appodeal initializeWithApiKey:[NSString stringWithUTF8String:apiKey] types:types consentReport:STKConsentManager.sharedManager.consent];
 }
 
 BOOL AppodealIsInitialized(int types) {
@@ -130,10 +123,6 @@ void AppodealSetChildDirectedTreatment(BOOL value) {
 
 void AppodealUpdateConsent(BOOL value) {
     [Appodeal updateConsent:value];
-}
-
-void AppodealUpdateConsentReport() {
-    [Appodeal updateConsent:STKConsentManager.sharedManager.consent];
 }
 
 void AppodealDisableNetwork(const char * networkName) {

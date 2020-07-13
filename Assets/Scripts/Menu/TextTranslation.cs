@@ -1,39 +1,42 @@
-﻿using UnityEngine;
+﻿using Cubra.Controllers;
+using UnityEngine;
 using UnityEngine.UI;
 
-public class TextTranslation : MonoBehaviour
+namespace Cubra
 {
-    [Header("Ключ перевода")]
-    [SerializeField] protected string key;
-
-    // Ссылка на компонент
-    protected Text textComponent;
-
-    protected void Awake()
+    public class TextTranslation : MonoBehaviour
     {
-        textComponent = GetComponent<Text>();
-    }
+        [Header("Ключ перевода")]
+        [SerializeField] protected string _key;
 
-    protected virtual void Start()
-    {
-        TranslateText();
-    }
+        protected Text _textComponent;
 
-    /// <summary>
-    /// Вывод переведенного текста из словаря
-    /// </summary>
-    public virtual void TranslateText()
-    {
-        textComponent.text = Languages.translations[key];
-    }
+        protected void Awake()
+        {
+            _textComponent = GetComponent<Text>();
+        }
 
-    /// <summary>
-    /// Изменение ключа перевода
-    /// </summary>
-    /// <param name="value">новый ключ</param>
-    public void ChangeKey(string value)
-    {
-        key = value;
-        TranslateText();
+        protected void Start()
+        {
+            TranslateText();
+        }
+
+        /// <summary>
+        /// Вывод текста из словаря
+        /// </summary>
+        public virtual void TranslateText()
+        {
+            _textComponent.text = LocalizationController.Translations[_key];
+        }
+
+        /// <summary>
+        /// Изменение ключа перевода
+        /// </summary>
+        /// <param name="value">новый ключ</param>
+        public void ChangeKey(string value)
+        {
+            _key = value;
+            TranslateText();
+        }
     }
 }

@@ -1,61 +1,60 @@
 ﻿using UnityEngine;
 
-public class SelectionBar : MonoBehaviour
+namespace Cubra.Levels
 {
-    [Header("Панель выбора")]
-    [SerializeField] private Animator selectionBar;
-
-    [Header("Компонент носилок")]
-    [SerializeField] private Stretcher stretcher;
-
-    // Ссылка на компонент
-    private Slowdown slowdown;
-
-    private void Awake()
+    public class SelectionBar : MonoBehaviour
     {
-        slowdown = Camera.main.GetComponent<Slowdown>();
-    }
+        [Header("Кнопки выбора")]
+        [SerializeField] private ChangeSelectionButton[] _changeButtons;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        // Получаем компонент персонажей у коснувшегося объекта
-        var characters = collision.gameObject.GetComponent<Control>();
+        [Header("Компонент носилок")]
+        [SerializeField] private Stretcher _stretcher;
 
-        // Если персонажи касаются пожарной машины и не используются улучшенные носилки
-        if (characters == true && stretcher.IsSuper == false)
+        private Slowdown _slowdown;
+
+        private void Awake()
         {
-            // Открываем панель выбора
-            selectionBar.enabled = true;
-            selectionBar.SetBool("Opening", true);
-
-            // Замедляем коэффициент падения
-            slowdown.ChangeSlowdown(true);
-
-            // Указываем, что персонажи переключают носилки
-            characters.IsSwitched = true;
-
-            // Ремонтируем (увеличиваем) прочность носилок
-            stretcher.ActiveCoroutine = StartCoroutine(stretcher.IncreaseStrength(1 + stretcher.StretcherLevel));
+            _slowdown = Camera.main.GetComponent<Slowdown>();
         }
-    }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        // Получаем компонент персонажей у коснувшегося объекта
-        var characters = collision.gameObject.GetComponent<Control>();
-
-        if (collision.gameObject.GetComponent<Control>())
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            // Закрываем панель выбора
-            selectionBar.SetBool("Opening", false);
+            if (collision.gameObject.TryGetComponent(out Controllers.CharacterController character))
+            {
+                // Если не используются улучшенные носилки
+                if (_stretcher.IsSuper == false)
+                {
+                    for (int i = 0; i < _changeButtons.Length; i++)
+                        _changeButtons[i].CustomizeButton(true, Color.white);
 
-            // Восстанавливаем коэффициент падения
-            slowdown.ChangeSlowdown(false);
+                    // Замедляем коэффициент падения
+                    _slowdown.ChangeSlowdown(true);
 
-            characters.IsSwitched = false;
+                    // Указываем, что персонажи переключают носилки
+                    character.IsSwitched = true;
 
-            // Останавливаем постепенное увеличение прочности
-            if (stretcher.ActiveCoroutine != null) StopCoroutine(stretcher.ActiveCoroutine);
+                    // Ремонтируем прочность носилок
+                    _stretcher.ActiveCoroutine = StartCoroutine(_stretcher.IncreaseStrength(1 + _stretcher.StretcherLevel));
+                }
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.gameObject.TryGetComponent(out Controllers.CharacterController character))
+            {
+                for (int i = 0; i < _changeButtons.Length; i++)
+                    _changeButtons[i].CustomizeButton(false, new Color(1, 1, 1, 0.4f));
+
+                // Восстанавливаем коэффициент падения
+                _slowdown.ChangeSlowdown(false);
+
+                character.IsSwitched = false;
+
+                if (_stretcher.ActiveCoroutine != null)
+                    // Останавливаем постепенное увеличение прочности
+                    StopCoroutine(_stretcher.ActiveCoroutine);
+            }
         }
     }
 }

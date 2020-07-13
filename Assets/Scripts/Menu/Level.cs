@@ -1,49 +1,49 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class Level : MonoBehaviour
+namespace Cubra
 {
-    [Header("Номер уровня")]
-    [SerializeField] private int number;
-
-    public int Number => number;
-
-    [Header("Номер уровня")]
-    [SerializeField] private GameObject textNumber;
-
-    [Header("Статус уровня")]
-    [SerializeField] private Image imageLevel;
-
-    [Header("Спрайты статусов")]
-    [SerializeField] private Sprite[] statuses;
-
-    // Ссылка на компонент
-    private Button button;
-
-    private void Awake()
+    public class Level : MonoBehaviour
     {
-        button = GetComponent<Button>();
-    }
+        [Header("Номер уровня")]
+        [SerializeField] private int _number;
 
-    private void Start()
-    {
-        // Если игровой прогресс достаточный
-        if (PlayerPrefs.GetInt("progress") == number)
+        public int Number => _number;
+
+        [Header("Текст с номером")]
+        [SerializeField] private GameObject _textNumber;
+
+        [Header("Статус уровня")]
+        [SerializeField] private Image _status;
+
+        [Header("Спрайты статусов")]
+        [SerializeField] private Sprite[] _statuses;
+
+        private Button _button;
+
+        private void Awake()
         {
-            // Скрываем замок и показываем номер
-            imageLevel.gameObject.SetActive(false);
-            textNumber.SetActive(true);
-
-            // Активируем кнопку
-            button.interactable = true;
+            _button = GetComponent<Button>();
         }
-        else if (PlayerPrefs.GetInt("progress") > number)
-        {
-            // Меняем замок на галочку
-            imageLevel.sprite = statuses[1];
 
-            // Активируем кнопку
-            button.interactable = true;
+        private void Start()
+        {
+            // Если игровой прогресс достаточный
+            if (PlayerPrefs.GetInt("progress") == _number)
+            {
+                // Скрываем замок и показываем номер
+                _status.gameObject.SetActive(false);
+                _textNumber.SetActive(true);
+
+                _button.interactable = true;
+            }
+            else if (PlayerPrefs.GetInt("progress") > _number)
+            {
+                // Меняем замок на галочку
+                _status.sprite = _statuses[1];
+
+                _button.interactable = true;
+            }
         }
     }
 }

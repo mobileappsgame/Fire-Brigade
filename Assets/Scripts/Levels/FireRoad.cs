@@ -1,19 +1,19 @@
 ﻿using UnityEngine;
 
-public class FireRoad : MonoBehaviour
+namespace Cubra.Levels
 {
-    private void OnTriggerEnter2D(Collider2D collision)
+    public class FireRoad : MonoBehaviour
     {
-        // Получаем компонент носилок у коснувшегося объекта
-        var stretcher = collision.gameObject.GetComponent<Stretcher>();
-
-        if (stretcher)
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            // Если носилки не улучшенные
-            if (stretcher.IsSuper == false)
+            if (collision.gameObject.TryGetComponent(out Stretcher stretcher))
             {
-                // Поджигаем носилки
-                stretcher.SetFireStretcher(stretcher.IsBurns);
+                // Если носилки не улучшенные
+                if (stretcher.IsSuper == false)
+                {
+                    // Поджигаем носилки
+                    stretcher.SetFireStretcher(stretcher.IsBurns);
+                }
             }
         }
     }

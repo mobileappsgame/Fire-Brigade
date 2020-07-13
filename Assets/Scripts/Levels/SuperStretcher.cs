@@ -1,54 +1,54 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class SuperStretcher : MonoBehaviour
+namespace Cubra.Levels
 {
-    [Header("Компонент носилок")]
-    [SerializeField] private Stretcher stretcher;
-
-    [Header("Дочерние объекты")]
-    [SerializeField] private Image[] objects;
-
-    // Ссылка на компонент
-    private Button button;
-
-    private void Awake()
+    public class SuperStretcher : MonoBehaviour
     {
-        button = GetComponent<Button>();
-    }
+        [Header("Компонент носилок")]
+        [SerializeField] private Stretcher _stretcher;
 
-    private void Start()
-    {
-        CheckQuantity();
-    }
+        [Header("Дочерние изображения")]
+        [SerializeField] private Image[] _images;
 
-    /// <summary>
-    /// Проверка количества улучшенных носилок
-    /// </summary>
-    public void CheckQuantity()
-    {
-        button.interactable = PlayerPrefs.GetInt("super-stretcher") > 0 ? true : false;
+        private Button _button;
 
-        // Если кнопка отключена
-        if (button.interactable == false)
+        private void Awake()
         {
-            // Увеличиваем прозрачность дочерних объектов
-            foreach (var item in objects)
-                item.color = new Color(1, 1, 1, 0.4f);
+            _button = GetComponent<Button>();
         }
-    }
 
-    /// <summary>
-    /// Использование улучшенных носилок
-    /// </summary>
-    public void UseImprovement()
-    {
-        // Запускаем отсчет до возвращения стандартных носилок
-        _ = StartCoroutine(stretcher.SuperiorStretcher());
+        private void Start()
+        {
+            CheckQuantity();
+        }
 
-        // Уменьшаем количество улучшенных носилок
-        PlayerPrefs.SetInt("super-stretcher", PlayerPrefs.GetInt("super-stretcher") - 1);
+        /// <summary>
+        /// Проверка количества улучшенных носилок
+        /// </summary>
+        public void CheckQuantity()
+        {
+            _button.interactable = PlayerPrefs.GetInt("super-stretcher") > 0 ? true : false;
 
-        CheckQuantity();
+            // Если кнопка отключена
+            if (_button.interactable == false)
+            {
+                for (int i = 0; i < _images.Length; i++)
+                    _images[i].color = new Color(1, 1, 1, 0.4f);
+            }
+        }
+
+        /// <summary>
+        /// Использование улучшенных носилок
+        /// </summary>
+        public void UseImprovement()
+        {
+            // Запускаем отсчет до возвращения стандартных носилок
+            _ = StartCoroutine(_stretcher.SuperiorStretcher());
+
+            // Уменьшаем количество улучшенных носилок
+            PlayerPrefs.SetInt("super-stretcher", PlayerPrefs.GetInt("super-stretcher") - 1);
+            CheckQuantity();
+        }
     }
 }

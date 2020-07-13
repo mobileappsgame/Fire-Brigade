@@ -59,9 +59,13 @@ sysinfo.txt
 crashlytics-build.properties
 
 # Ignoring folders
-Sprites/
 GooglePlay/
+ExternalDependencyManager/
+GeneratedLocalRepo/
+Sprites/
 
 # Ignoring files
 *.gitattributes
 *.keystore
+*.log
+*.meta

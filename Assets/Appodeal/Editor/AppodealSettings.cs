@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEngine;
 using AppodealAds.Unity.Editor.Checkers;
 
-namespace AppodealAds.Unity.Editor
+namespace Appodeal.Unity.Editor
 {
     public class AppodealSettings : ScriptableObject
     {
@@ -19,15 +19,7 @@ namespace AppodealAds.Unity.Editor
             Application.OpenURL("http://www.appodeal.com");
         }
 
-        /* Will update in next release
-         
-        [MenuItem("Appodeal/Manage Appodeal SDK")]
-        public static void AppodealSdkManager()
-        {
-            AppodealSDKManager.ShowSdkManager();
-        }*/
-
-#if !UNITY_2019_3
+#if !UNITY_2019_3_OR_NEWER
         [MenuItem("Appodeal/Check Integration")]
         public static void TestWindow()
         {

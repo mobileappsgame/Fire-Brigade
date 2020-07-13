@@ -1,53 +1,56 @@
 ﻿using UnityEngine;
+using Cubra.Heplers;
 
-public class Drop : MonoBehaviour, IPoolable
+namespace Cubra.Levels
 {
-    [Header("Эффект огненных брызг")]
-    [SerializeField] private ParticleSystem spray;
-
-    // Скорость падения
-    private float speed;
-
-    // Ссылка на компонент
-    private Rigidbody2D rigbody;
-
-    private void Awake()
+    public class Drop : MonoBehaviour, IPoolable
     {
-        rigbody = GetComponent<Rigidbody2D>();
-    }
+        [Header("Эффект огненных брызг")]
+        [SerializeField] private ParticleSystem _spray;
 
-    /// <summary>
-    /// Активация объекта из пула
-    /// </summary>
-    public void ActivateObject()
-    {
-        gameObject.SetActive(true);
+        // Скорость падения
+        private float _speed;
 
-        // Определяем скорость падения
-        speed = Random.Range(5.0f, 6.5f);
-    }
+        private Rigidbody2D _rigidbody;
 
-    private void FixedUpdate()
-    {
-        // Перемещаем каплю вниз с указанной скоростью и коэффициентом замедления
-        rigbody.MovePosition(rigbody.position + (Vector2.down * (speed * Slowdown.coefficient) * Time.fixedDeltaTime));
-    }
+        private void Awake()
+        {
+            _rigidbody = GetComponent<Rigidbody2D>();
+        }
 
-    /// <summary>
-    /// Отображение эффекта огненных брызг от капли
-    /// </summary>
-    public void ShowSplashEffect()
-    {
-        // Перемещаем эффект брызг к огненной капле
-        spray.transform.position = transform.position;
-        spray.Play();
-    }
+        /// <summary>
+        /// Активация объекта из пула
+        /// </summary>
+        public void ActivateObject()
+        {
+            gameObject.SetActive(true);
 
-    /// <summary>
-    /// Деактивация объекта при возвращении в пул
-    /// </summary>
-    public void DeactivateObject()
-    {
-        gameObject.SetActive(false);
+            // Определяем скорость падения
+            _speed = Random.Range(5.0f, 6.5f);
+        }
+
+        private void FixedUpdate()
+        {
+            // Перемещаем каплю вниз с указанной скоростью и коэффициентом замедления
+            _rigidbody.MovePosition(_rigidbody.position + (Vector2.down * (_speed * Slowdown.Coefficient) * Time.fixedDeltaTime));
+        }
+
+        /// <summary>
+        /// Отображение эффекта огненных брызг от капли
+        /// </summary>
+        public void ShowSplashEffect()
+        {
+            // Перемещаем эффект брызг к огненной капле
+            _spray.transform.position = transform.position;
+            _spray.Play();
+        }
+
+        /// <summary>
+        /// Деактивация объекта при возвращении в пул
+        /// </summary>
+        public void DeactivateObject()
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

@@ -1,7 +1,5 @@
 ﻿#if UNITY_IPHONE
-
 using System.Runtime.InteropServices;
-using ConsentManager.Api;
 
 namespace AppodealAds.Unity.iOS
 {
@@ -35,14 +33,10 @@ namespace AppodealAds.Unity.iOS
 
     internal delegate void AppodealRewardedVideoDidFinishCallback(double amount, string name);
 
-    internal static class AppodealObjCBridge
+    internal class AppodealObjCBridge
     {
         [DllImport("__Internal")]
         internal static extern void AppodealInitialize(string apiKey, int types, bool hasConsent, string pluginVer,
-            string engineVersion);
-        
-        [DllImport("__Internal")]
-        internal static extern void AppodealInitializeWithConsent(string apiKey, int types, string pluginVer,
             string engineVersion);
 
         [DllImport("__Internal")]
@@ -101,9 +95,6 @@ namespace AppodealAds.Unity.iOS
 
         [DllImport("__Internal")]
         internal static extern void AppodealUpdateConsent(bool value);
-        
-        [DllImport("__Internal")]
-        internal static extern void AppodealUpdateConsentReport();
 
         [DllImport("__Internal")]
         internal static extern void AppodealDisableNetwork(string name);

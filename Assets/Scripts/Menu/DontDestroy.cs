@@ -1,16 +1,19 @@
 ﻿using UnityEngine;
 
-public class DontDestroy : MonoBehaviour
+namespace Cubra
 {
-    private void Awake()
+    public class DontDestroy : MonoBehaviour
     {
-        // Находим все объекты с фоновой музыкой
-        Music[] objs = FindObjectsOfType<Music>();
+        private void Awake()
+        {
+            // Находим все объекты с фоновой музыкой
+            BackgroundMusic[] objs = FindObjectsOfType<BackgroundMusic>();
 
-        // Если их больше одного, уничтожаем лишние
-        if (objs.Length > 1) Destroy(gameObject);
+            // Если их больше одного, уничтожаем лишние
+            if (objs.Length > 1) Destroy(gameObject);
 
-        // Отключаем уничтожение оставшегося объекта
-        DontDestroyOnLoad(gameObject);
+            // Отключаем уничтожение оставшегося объекта
+            DontDestroyOnLoad(gameObject);
+        }
     }
 }

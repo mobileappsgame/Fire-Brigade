@@ -3,6 +3,7 @@
 namespace AppodealAds.Unity.Common
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
+    [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     public interface IInterstitialAdListener
     {
         void onInterstitialLoaded(bool isPrecache);

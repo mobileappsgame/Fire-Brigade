@@ -1,31 +1,32 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class InfoVictims : MonoBehaviour
+namespace Cubra.Levels
 {
-    // Ссылки на компоненты
-    private Text quantity;
-    private LevelManager levelManager;
-
-    private void Awake()
+    public class InfoVictims : MonoBehaviour
     {
-        quantity = GetComponent<Text>();
-        levelManager = Camera.main.GetComponent<LevelManager>();
+        private Text _quantity;
+        private LevelManager _levelManager;
 
-        // Подписываем в событие метод количества персонажей
-        levelManager.VictimsChanged += ShowQuantity;
-    }
+        private void Awake()
+        {
+            _quantity = GetComponent<Text>();
 
-    private void Start()
-    {
-        ShowQuantity();
-    }
+            _levelManager = Camera.main.GetComponent<LevelManager>();
+            _levelManager.VictimsChanged += ShowQuantity;
+        }
 
-    /// <summary>
-    /// Отображение количества оставшихся персонажей
-    /// </summary>
-    private void ShowQuantity()
-    {
-        quantity.text = levelManager.CurrentVictims.ToString();
+        private void Start()
+        {
+            ShowQuantity();
+        }
+
+        /// <summary>
+        /// Отображение количества оставшихся персонажей
+        /// </summary>
+        private void ShowQuantity()
+        {
+            _quantity.text = _levelManager.CurrentVictims.ToString();
+        }
     }
 }

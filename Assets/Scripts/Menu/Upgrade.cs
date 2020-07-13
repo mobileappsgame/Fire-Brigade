@@ -1,62 +1,61 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class Upgrade : MonoBehaviour
+namespace Cubra
 {
-    [Header("Стоимость повышения")]
-    [SerializeField] private int[] upgradeCost;
-
-    [Header("Компонент перевода")]
-    [SerializeField] private TextValue level;
-
-    // Ссылка на компонент
-    private Button button;
-
-    private void Awake()
+    public class Upgrade : MonoBehaviour
     {
-        button = GetComponent<Button>();
-    }
+        [Header("Стоимость повышения")]
+        [SerializeField] private int[] _upgradeCost;
 
-    private void Start()
-    {
-        CheckCurrentScore();
-    }
+        [Header("Компонент перевода")]
+        [SerializeField] private TextValue _level;
 
-    /// <summary>
-    /// Проверка счета для улучшения носилок
-    /// </summary>
-    public void CheckCurrentScore()
-    {
-        // Текущий уровень носилок
-        var currentLevel = PlayerPrefs.GetInt("stretcher");
+        private Button _button;
 
-        // Достаточно ли текущего счета для улучшения
-        var enough = (currentLevel < 5) && (PlayerPrefs.GetInt("current-score") >= upgradeCost[currentLevel]);
+        private void Awake()
+        {
+            _button = GetComponent<Button>();
+        }
 
-        // Настраиваем кнопку
-        button.interactable = enough ? true : false;
-    }
+        private void Start()
+        {
+            CheckCurrentScore();
+        }
 
-    /// <summary>
-    /// Улучшение носилок
-    /// </summary>
-    public void UpgradeStretcher()
-    {
-        // Текущий уровень носилок
-        var currentLevel = PlayerPrefs.GetInt("stretcher");
+        /// <summary>
+        /// Проверка счета для улучшения носилок
+        /// </summary>
+        public void CheckCurrentScore()
+        {
+            // Текущий уровень носилок
+            var currentLevel = PlayerPrefs.GetInt("stretcher");
+            // Достаточно ли текущего счета для улучшения
+            var enough = (currentLevel < 5) && (PlayerPrefs.GetInt("current-score") >= _upgradeCost[currentLevel]);
 
-        // Уменьшаем текущее количество очков
-        PlayerPrefs.SetInt("current-score", PlayerPrefs.GetInt("current-score") - upgradeCost[currentLevel]);
-        // Увеличиваем уровень носилок
-        PlayerPrefs.SetInt("stretcher", currentLevel + 1);
+            _button.interactable = enough ? true : false;
+        }
 
-        // Открываем достижение по улучшению носилок
-        if (Application.internetReachability != NetworkReachability.NotReachable)
-            PlayServices.UnlockingAchievement(GPGSIds.achievement_3);
+        /// <summary>
+        /// Улучшение носилок
+        /// </summary>
+        public void UpgradeStretcher()
+        {
+            var currentLevel = PlayerPrefs.GetInt("stretcher");
 
-        // Обновляем перевод
-        level.TranslateText();
+            // Уменьшаем текущее количество очков
+            PlayerPrefs.SetInt("current-score", PlayerPrefs.GetInt("current-score") - _upgradeCost[currentLevel]);
+            // Увеличиваем уровень носилок
+            PlayerPrefs.SetInt("stretcher", currentLevel + 1);
 
-        CheckCurrentScore();
+            // Открываем достижение по улучшению носилок
+            if (Application.internetReachability != NetworkReachability.NotReachable)
+                GooglePlayServices.UnlockingAchievement(GPGSIds.achievement_3);
+
+            // Обновляем перевод
+            _level.TranslateText();
+
+            CheckCurrentScore();
+        }
     }
 }

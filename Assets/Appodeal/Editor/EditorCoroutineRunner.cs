@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
-namespace AppodealAds.Unity.Editor
+namespace Appodeal.Unity.Editor
 {
     [SuppressMessage("ReSharper", "MemberHidesStaticFromOuterClass")]
     [SuppressMessage("ReSharper", "InconsistentNaming")]
@@ -13,7 +13,7 @@ namespace AppodealAds.Unity.Editor
     {
         private class EditorCoroutine : IEnumerator
         {
-            private readonly Stack<IEnumerator> executionStack;
+            private Stack<IEnumerator> executionStack;
 
             public EditorCoroutine(IEnumerator iterator)
             {
@@ -27,7 +27,7 @@ namespace AppodealAds.Unity.Editor
 
                 if (i.MoveNext())
                 {
-                    var result = i.Current;
+                    object result = i.Current;
                     var enumerator = result as IEnumerator;
                     if (enumerator != null)
                     {
@@ -47,7 +47,10 @@ namespace AppodealAds.Unity.Editor
                 throw new System.NotSupportedException("This Operation Is Not Supported.");
             }
 
-            public object Current => executionStack.Peek().Current;
+            public object Current
+            {
+                get { return executionStack.Peek().Current;} 
+            }
 
             public bool Find(IEnumerator iterator)
             {
@@ -75,6 +78,7 @@ namespace AppodealAds.Unity.Editor
                 EditorApplication.update += Update;
             }
 
+            // add iterator to buffer first
             buffer.Add(iterator);
 
             return iterator;
@@ -93,8 +97,7 @@ namespace AppodealAds.Unity.Editor
             // Therefore we should run EditorCoroutine first
             editorCoroutineList.RemoveAll
             (
-                coroutine => { return coroutine.MoveNext() == false; }
-            );
+                coroutine => coroutine.MoveNext() == false);
 
             // If we have iterators in buffer
             if (buffer.Count > 0)

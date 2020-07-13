@@ -255,6 +255,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -328,6 +329,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -524,6 +526,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -761,6 +764,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -871,7 +875,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b92e047cb5f233449176bda886cd0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: rank
+  _key: rank
 --- !u!114 &754702094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -917,6 +921,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.99215686, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -995,7 +1000,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 20
   field of view: 60
   orthographic: 1
   orthographic size: 5
@@ -1007,7 +1012,7 @@ Camera:
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 0
-  m_HDR: 1
+  m_HDR: 0
   m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
@@ -1040,7 +1045,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4d4ea30f89b2c241814c3d884ffe68e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: 2
+  _scene: 2
 --- !u!114 &764726846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1065,9 +1070,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd146e9d9e75b8849adadb7a6d755d0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myRating: {fileID: 934256071}
-  leaderboard: {fileID: 1852449118}
-  loading: {fileID: 1656495405}
+  _myRating: {fileID: 934256071}
+  _leaderboard: {fileID: 1852449118}
+  _loading: {fileID: 1656495405}
 --- !u!1 &795160450
 GameObject:
   m_ObjectHideFlags: 0
@@ -1203,7 +1208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b92e047cb5f233449176bda886cd0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: leaderboard-menu
+  _key: leaderboard-menu
 --- !u!95 &810147990
 Animator:
   serializedVersion: 3
@@ -1268,6 +1273,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1345,6 +1351,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1486,6 +1493,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.99215686, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1659,6 +1667,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1732,8 +1741,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba1c6ed4032c31b4c9c696f926807139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: victims
-  saveKey: victims
+  _key: victims
+  _saveKey: victims
 --- !u!114 &1221291492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1779,6 +1788,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.99215686, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1889,6 +1899,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2012,6 +2023,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2250,6 +2262,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2342,6 +2355,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2455,6 +2469,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2522,7 +2537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b92e047cb5f233449176bda886cd0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: no-data
+  _key: no-data
 --- !u!1 &1861872525
 GameObject:
   m_ObjectHideFlags: 0
@@ -2539,7 +2554,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!114 &1861872526
 MonoBehaviour:
@@ -2781,7 +2796,7 @@ Canvas:
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 764726843}
-  m_PlaneDistance: 100
+  m_PlaneDistance: 20
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -2865,8 +2880,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba1c6ed4032c31b4c9c696f926807139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: total-score
-  saveKey: total-score
+  _key: total-score
+  _saveKey: total-score
 --- !u!114 &1941788598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2912,6 +2927,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.99215686, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []

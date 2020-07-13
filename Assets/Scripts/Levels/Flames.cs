@@ -1,49 +1,52 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
-public class Flames : MonoBehaviour
+namespace Cubra.Levels
 {
-    public delegate void Extinguishing();
-    // Событие по тушению носилок
-    public event Extinguishing Extinguished;
-
-    // Огоньки на носилках
-    private GameObject[] flames;
-
-    private void Start()
+    public class Flames : MonoBehaviour
     {
-        flames = new GameObject[transform.childCount];
+        // Событие по тушению носилок
+        public event Action Extinguished;
 
-        // Заполняем массив дочерними объектами
-        for (int i = 0; i < transform.childCount; i++)
-            flames[i] = transform.GetChild(i).gameObject;
-    }
+        // Огоньки на носилках
+        private GameObject[] _flames;
 
-    /// <summary>
-    /// Установка видимости огоньков на носилках
-    /// </summary>
-    /// <param name="state">видимость</param>
-    public void FlameVisibility(bool state)
-    {
-        for (int i = 0; i < flames.Length; i++)
-            flames[i].SetActive(state);
-    }
-
-    /// <summary>
-    /// Проверка оставшихся огоньков на носилках
-    /// </summary>
-    public void CheckQuantityFlames()
-    {
-        for (int i = 0; i < flames.Length; i++)
+        private void Start()
         {
-            // Если есть огоньки, выходим из метода
-            if (flames[i].activeInHierarchy) return;
+            _flames = new GameObject[transform.childCount];
+
+            // Заполняем массив дочерними объектами
+            for (int i = 0; i < transform.childCount; i++)
+                _flames[i] = transform.GetChild(i).gameObject;
         }
 
-        Extinguished?.Invoke();
-    }
+        /// <summary>
+        /// Установка видимости огоньков на носилках
+        /// </summary>
+        /// <param name="state">видимость</param>
+        public void FlameVisibility(bool state)
+        {
+            for (int i = 0; i < _flames.Length; i++)
+                _flames[i].SetActive(state);
+        }
 
-    private void OnDestroy()
-    {
-        Extinguished = null;
+        /// <summary>
+        /// Проверка оставшихся огоньков на носилках
+        /// </summary>
+        public void CheckQuantityFlames()
+        {
+            for (int i = 0; i < _flames.Length; i++)
+            {
+                // Если есть огоньки, выходим из метода
+                if (_flames[i].activeInHierarchy) return;
+            }
+
+            Extinguished?.Invoke();
+        }
+
+        private void OnDestroy()
+        {
+            Extinguished = null;
+        }
     }
 }

@@ -5,6 +5,7 @@ namespace AppodealAds.Unity.Android
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     [SuppressMessage("ReSharper", "UnusedParameter.Local")]
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public class AppodealMrecCallbacks
 #if UNITY_ANDROID
         : UnityEngine.AndroidJavaProxy
@@ -16,27 +17,27 @@ namespace AppodealAds.Unity.Android
             this.listener = listener;
         }
 
-        private void onMrecLoaded(bool isPrecache)
+        public void onMrecLoaded(bool isPrecache)
         {
             listener.onMrecLoaded(isPrecache);
         }
 
-        private void onMrecFailedToLoad()
+        public void onMrecFailedToLoad()
         {
             listener.onMrecFailedToLoad();
         }
 
-        private void onMrecShown()
+        public void onMrecShown()
         {
             listener.onMrecShown();
         }
 
-        private void onMrecClicked()
+        public void onMrecClicked()
         {
             listener.onMrecClicked();
         }
 
-        private void onMrecExpired()
+        public void onMrecExpired()
         {
             listener.onMrecExpired();
         }

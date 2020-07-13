@@ -1,28 +1,29 @@
 ﻿using UnityEngine;
+using Cubra.Heplers;
 
-public class Road : MonoBehaviour
+namespace Cubra.Levels
 {
-    private void OnCollisionEnter2D(Collision2D collision)
+    public class Road : MonoBehaviour
     {
-        // Получаем компонент персонажей у коснувшегося объекта
-        var control = collision.gameObject.GetComponent<Control>();
-
-        // Активируем переменную нахождения на земле
-        if (control) control.IsGroung = true;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        // Получаем компонент капли у коснувшегося объекта
-        var drop = collision.gameObject.GetComponent<Drop>();
-
-        if (drop)
+        private void OnCollisionEnter2D(Collision2D collision)
         {
-            // Отображаем эффект брызг
-            drop.ShowSplashEffect();
+            if (collision.gameObject.TryGetComponent(out Controllers.CharacterController character))
+            {
+                // Активируем переменную нахождения на земле
+                character.IsGroung = true;
+            }
+        }
 
-            // Возвращаем каплю в указанный пул объектов
-            PoolsManager.PutObjectToPool(ListingPools.Pools.Twinkle.ToString(), collision.gameObject);
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.TryGetComponent(out Drop drop))
+            {
+                // Отображаем эффект брызг
+                drop.ShowSplashEffect();
+
+                // Возвращаем каплю в указанный пул объектов
+                PoolsManager.PutObjectToPool(ListingPools.Pools.Twinkle.ToString(), collision.gameObject);
+            }
         }
     }
 }

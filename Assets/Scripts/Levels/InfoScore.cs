@@ -1,43 +1,44 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class InfoScore : MonoBehaviour
+namespace Cubra.Levels
 {
-    [Header("Текст изменения")]
-    [SerializeField] private Text textChange;
-
-    // Ссылки на компоненты
-    private Text textScore;
-    private Outline outline;
-    private Animator animator;
-    private LevelManager levelManager;
-
-    private void Awake()
+    public class InfoScore : MonoBehaviour
     {
-        textScore = GetComponent<Text>();
-        outline = textChange.GetComponent<Outline>();
-        animator = textChange.GetComponent<Animator>();
-        levelManager = Camera.main.GetComponent<LevelManager>();
+        [Header("Текст с очками")]
+        [SerializeField] private Text _changeScore;
 
-        // Подписываем в событие метод обновления счета
-        levelManager.ScoresChanged += UpdateLevelScore;
-    }
+        private Text _score;
+        private Outline _outlineScore;
+        private Animator _animatorScore;
+        private LevelManager _levelManager;
 
-    /// <summary>
-    /// Отображение текущего счета
-    /// </summary>
-    /// <param name="value">значение</param>
-    public void UpdateLevelScore(int value)
-    {
-        // Выводим счет уровня
-        textScore.text = levelManager.Score.ToString();
+        private void Awake()
+        {
+            _score = GetComponent<Text>();
+            _outlineScore = _changeScore.GetComponent<Outline>();
+            _animatorScore = _changeScore.GetComponent<Animator>();
 
-        animator.enabled = true;
-        // Записываем количество очков в эффект изменения
-        textChange.text = (value > 0 ? "+ " : "") + value.ToString();
-        // Устанавливаем обводку эффекта в зависимости от значения
-        outline.effectColor = value > 0 ? Color.green : Color.red;
-        // Перезапускаем анимацию
-        animator.Rebind();
+            _levelManager = Camera.main.GetComponent<LevelManager>();
+            // Подписываем в событие метод обновления счета
+            _levelManager.ScoresChanged += UpdateLevelScore;
+        }
+
+        /// <summary>
+        /// Отображение текущего счета
+        /// </summary>
+        /// <param name="value">значение</param>
+        public void UpdateLevelScore(int value)
+        {
+            _score.text = _levelManager.Score.ToString();
+
+            _animatorScore.enabled = true;
+            // Записываем количество очков в эффект изменения
+            _changeScore.text = (value > 0 ? "+ " : "") + value.ToString();
+            // Устанавливаем обводку эффекта в зависимости от значения
+            _outlineScore.effectColor = value > 0 ? Color.green : Color.red;
+            // Перезапускаем анимацию
+            _animatorScore.Rebind();
+        }
     }
 }

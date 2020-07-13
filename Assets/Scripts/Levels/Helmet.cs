@@ -1,19 +1,20 @@
 ﻿using UnityEngine;
+using Cubra.Heplers;
 
-public class Helmet : MonoBehaviour
+namespace Cubra.Levels
 {
-    private void OnTriggerEnter2D(Collider2D collision)
+    public class Helmet : MonoBehaviour
     {
-        // Получаем компонент капли у коснувшегося объекта
-        var drop = collision.gameObject.GetComponent<Drop>();
-
-        if (drop)
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            // Отображаем эффект брызг
-            drop.ShowSplashEffect();
+            if (collision.gameObject.TryGetComponent(out Drop drop))
+            {
+                // Отображаем эффект брызг
+                drop.ShowSplashEffect();
 
-            // Возвращаем каплю в указанный пул объектов
-            PoolsManager.PutObjectToPool(ListingPools.Pools.Twinkle.ToString(), collision.gameObject);
+                // Возвращаем каплю в указанный пул объектов
+                PoolsManager.PutObjectToPool(ListingPools.Pools.Twinkle.ToString(), collision.gameObject);
+            }
         }
     }
 }

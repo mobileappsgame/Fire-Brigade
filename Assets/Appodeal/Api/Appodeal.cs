@@ -2,12 +2,13 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using AppodealAds.Unity.Common;
-using ConsentManager.Api;
 using UnityEngine;
 
 namespace AppodealAds.Unity.Api
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
+    [SuppressMessage("ReSharper", "UnusedType.Global")]
     public class AppodealNetworks
     {
         public const string ADCOLONY = "adcolony";
@@ -37,14 +38,17 @@ namespace AppodealAds.Unity.Api
         public const string TAPJOY = "tapjoy";
         public const string UNITY_ADS = "unity_ads";
         public const string VAST = "vast";
-        public const string VPAID = "vpaid";
         public const string VUNGLE = "vungle";
+        public const string VPAID = "vpaid";
         public const string YANDEX = "yandex";
     }
 
     [SuppressMessage("ReSharper", "InconsistentNaming")]
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
+    [SuppressMessage("ReSharper", "UnusedMethodReturnValue.Global")]
     public static class Appodeal
     {
+        #region Constants
         public const int NONE = 0;
         public const int INTERSTITIAL = 3;
         public const int BANNER = 4;
@@ -64,8 +68,10 @@ namespace AppodealAds.Unity.Api
         public const int BANNER_HORIZONTAL_RIGHT = -3;
         public const int BANNER_HORIZONTAL_LEFT = -4;
 
-        public const string APPODEAL_PLUGIN_VERSION = "2.10.0";
-
+        public const string APPODEAL_PLUGIN_VERSION = "2.9.8";
+        
+        #endregion
+        
         public enum LogLevel
         {
             None,
@@ -88,11 +94,6 @@ namespace AppodealAds.Unity.Api
         public static void initialize(string appKey, int adTypes, bool hasConsent)
         {
             getInstance().initialize(appKey, adTypes, hasConsent);
-        }
-
-        public static void initialize(string appKey, int adTypes, Consent consent)
-        {
-            getInstance().initialize(appKey, adTypes, consent);
         }
 
         public static bool show(int adTypes)
@@ -119,12 +120,12 @@ namespace AppodealAds.Unity.Api
         {
             return getInstance().isLoaded(adTypes);
         }
-
+        
         public static void cache(int adTypes)
         {
             getInstance().cache(adTypes);
         }
-
+        
         public static void hide(int adTypes)
         {
             getInstance().hide(adTypes);
@@ -193,11 +194,6 @@ namespace AppodealAds.Unity.Api
         public static void updateConsent(bool value)
         {
             getInstance().updateConsent(value);
-        }
-
-        public static void updateConsent(Consent consent)
-        {
-            getInstance().updateConsent(consent);
         }
 
         public static void disableNetwork(string network)
@@ -384,8 +380,8 @@ namespace AppodealAds.Unity.Api
         public const string APPSFLYER_ID = "appsflyer_id";
     }
 
-    [SuppressMessage("ReSharper", "InconsistentNaming")]
     [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class UserSettings
     {
         private static IAppodealAdsClient client;

@@ -1,45 +1,50 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class Slowdown : MonoBehaviour
+namespace Cubra.Levels
 {
-    // Коэффициент замедления падения
-    public static float coefficient;
-
-    private void Start()
+    public class Slowdown : MonoBehaviour
     {
-        coefficient = 1;
-    }
+        // Коэффициент замедления падения
+        public static float Coefficient;
 
-    /// <summary>
-    /// Изменение коэффициента замедления
-    /// </summary>
-    /// <param name="activity">активность замедления</param>
-    public void ChangeSlowdown(bool activity)
-    {
-        if (activity)
+        private Coroutine _coroutine;
+
+        private void Start()
         {
-            StopAllCoroutines();
-
-            // Замедляем падение
-            coefficient = 0.45f;
+            Coefficient = 1;
         }
-        else
-        {
-            // Запускаем восстановление коэффициента
-            _ = StartCoroutine(IncreaseCoefficient());
-        }
-    }
 
-    /// <summary>
-    /// Постепенное восстановление коэффициента падения
-    /// </summary>
-    private IEnumerator IncreaseCoefficient()
-    {
-        while (coefficient < 1)
+        /// <summary>
+        /// Изменение коэффициента замедления
+        /// </summary>
+        /// <param name="activity">активность замедления</param>
+        public void ChangeSlowdown(bool activity)
         {
-            yield return new WaitForSeconds(0.05f);
-            coefficient += 0.1f;
+            if (activity)
+            {
+                if (_coroutine != null)
+                    StopCoroutine(_coroutine);
+
+                Coefficient = 0.45f;
+            }
+            else
+            {
+                // Запускаем восстановление коэффициента
+                _coroutine = StartCoroutine(IncreaseCoefficient());
+            }
+        }
+
+        /// <summary>
+        /// Постепенное восстановление коэффициента падения
+        /// </summary>
+        private IEnumerator IncreaseCoefficient()
+        {
+            while (Coefficient < 1)
+            {
+                yield return new WaitForSeconds(0.05f);
+                Coefficient += 0.1f;
+            }
         }
     }
 }

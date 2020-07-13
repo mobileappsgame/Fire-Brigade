@@ -1,10 +1,10 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.IO;
-using Unity.Appodeal.Xcode.PBX;
 using UnityEditor;
 
 [SuppressMessage("ReSharper", "InconsistentNaming")]
 [SuppressMessage("ReSharper", "RedundantJumpStatement")]
+[SuppressMessage("ReSharper", "UnusedMember.Global")]
 public class AppodealAssetsPostProcess : AssetPostprocessor
 {
     public static readonly string[] Plugins = {
@@ -36,14 +36,18 @@ public class AppodealAssetsPostProcess : AssetPostprocessor
             {
                 continue;
             }
-            else if (file.EndsWith(".meta", System.StringComparison.Ordinal))
+
+            if (file.EndsWith(".meta", System.StringComparison.Ordinal))
             {
                 continue;
             }
-            else
-            {
-                AssetDatabase.ImportAsset(Utils.FixSlashesInPath(file));
-            }
+
+            AssetDatabase.ImportAsset(FixSlashesInPath(file));
         }
+    }
+    
+    public static string FixSlashesInPath(string path)
+    {
+        return path?.Replace('\\', '/');
     }
 }

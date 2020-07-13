@@ -1,5 +1,5 @@
 {
-	"language":
+	"Phrase":
 	[
 		{
 			"Key": "play",
@@ -20,6 +20,10 @@
 		{
 			"Key": "sounds-off",
 			"Value": "SOUNDS: OFF"
+		},
+		{
+			"Key": "language-rus",
+			"Value": "ЯЗЫК: РУССКИЙ"
 		},
 		{
 			"Key": "language-eng",

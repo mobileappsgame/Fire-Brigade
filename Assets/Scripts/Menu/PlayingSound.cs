@@ -1,20 +1,23 @@
-﻿using UnityEngine;
+﻿using Cubra.Controllers;
+using UnityEngine;
 
-public class PlayingSound : MonoBehaviour
+namespace Cubra
 {
-    // Ссылка на компонент
-    private AudioSource audioSource;
-
-    private void Awake()
+    public class PlayingSound : MonoBehaviour
     {
-        audioSource = GetComponent<AudioSource>();
-    }
+        private AudioSource _audioSource;
 
-    /// <summary>
-    /// Воспроизведение звука
-    /// </summary>
-    public void PlaySound()
-    {
-        if (Sound.soundActivity) audioSource.Play();
+        private void Awake()
+        {
+            _audioSource = GetComponent<AudioSource>();
+        }
+
+        /// <summary>
+        /// Воспроизведение звука
+        /// </summary>
+        public void PlaySound()
+        {
+            if (SoundController.Activity) _audioSource.Play();
+        }
     }
 }

@@ -173,6 +173,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -248,6 +249,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.19607843}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -436,6 +438,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.99215686, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -473,8 +476,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba1c6ed4032c31b4c9c696f926807139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: total-score
-  saveKey: total-score
+  _key: total-score
+  _saveKey: total-score
 --- !u!1 &83457224
 GameObject:
   m_ObjectHideFlags: 0
@@ -559,6 +562,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.99215686, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -750,6 +754,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.99215686, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -875,7 +880,7 @@ MonoBehaviour:
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 177929514}
-          m_ObjectArgumentAssemblyTypeName: Level, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: Cubra.Level, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -896,6 +901,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -929,10 +935,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cf87cbdf7f96d04abf80e30ad3b6980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  number: 2
-  textNumber: {fileID: 1908123061}
-  imageLevel: {fileID: 1867272220}
-  statuses:
+  _number: 2
+  _textNumber: {fileID: 1908123061}
+  _status: {fileID: 1867272220}
+  _statuses:
   - {fileID: 21300000, guid: 308ae88102e013542980fa2085e44fae, type: 3}
   - {fileID: 21300000, guid: 0e17a1dd16ec8224a8124b3f794861dd, type: 3}
 --- !u!1 &197155709
@@ -1069,6 +1075,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1176,6 +1183,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1215,7 +1223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b92e047cb5f233449176bda886cd0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: shop-description
+  _key: shop-description
 --- !u!1 &309258056
 GameObject:
   m_ObjectHideFlags: 0
@@ -1269,6 +1277,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.19607843}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1374,6 +1383,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.99215686, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1600,6 +1610,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1673,6 +1684,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1746,7 +1758,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b92e047cb5f233449176bda886cd0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: price-two
+  _key: price-two
 --- !u!114 &383642629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1792,6 +1804,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.99215686, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1959,6 +1972,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1996,7 +2010,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b92e047cb5f233449176bda886cd0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: levels
+  _key: levels
 --- !u!1 &407258531
 GameObject:
   m_ObjectHideFlags: 0
@@ -2013,7 +2027,7 @@ GameObject:
   - component: {fileID: 407258537}
   - component: {fileID: 407258538}
   m_Layer: 5
-  m_Name: Shop
+  m_Name: ShopButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2083,6 +2097,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2229,7 +2244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b92e047cb5f233449176bda886cd0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: shop
+  _key: shop
 --- !u!1 &436976281
 GameObject:
   m_ObjectHideFlags: 0
@@ -2282,6 +2297,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2437,6 +2453,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2631,7 +2648,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b92e047cb5f233449176bda886cd0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: stretcher-buy
+  _key: stretcher-buy
 --- !u!114 &588280095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2688,13 +2705,13 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 2025719902}
         m_MethodName: BuyProduct
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 10
           m_FloatArgument: 0
-          m_StringArgument: 10_stretcher
+          m_StringArgument: stretcher_10
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &588280096
@@ -2742,6 +2759,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2819,6 +2837,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2892,6 +2911,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3013,7 +3033,7 @@ MonoBehaviour:
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 662234020}
-          m_ObjectArgumentAssemblyTypeName: Level, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: Cubra.Level, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3034,6 +3054,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3067,10 +3088,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cf87cbdf7f96d04abf80e30ad3b6980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  number: 5
-  textNumber: {fileID: 83457224}
-  imageLevel: {fileID: 27831726}
-  statuses:
+  _number: 5
+  _textNumber: {fileID: 83457224}
+  _status: {fileID: 27831726}
+  _statuses:
   - {fileID: 21300000, guid: 308ae88102e013542980fa2085e44fae, type: 3}
   - {fileID: 21300000, guid: 0e17a1dd16ec8224a8124b3f794861dd, type: 3}
 --- !u!1 &669742309
@@ -3173,7 +3194,7 @@ MonoBehaviour:
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 669742314}
-          m_ObjectArgumentAssemblyTypeName: Level, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: Cubra.Level, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3194,6 +3215,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3227,10 +3249,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cf87cbdf7f96d04abf80e30ad3b6980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  number: 10
-  textNumber: {fileID: 1321531818}
-  imageLevel: {fileID: 436976283}
-  statuses:
+  _number: 10
+  _textNumber: {fileID: 1321531818}
+  _status: {fileID: 436976283}
+  _statuses:
   - {fileID: 21300000, guid: 308ae88102e013542980fa2085e44fae, type: 3}
   - {fileID: 21300000, guid: 0e17a1dd16ec8224a8124b3f794861dd, type: 3}
 --- !u!1 &683763881
@@ -3354,6 +3376,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.99215686, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3479,7 +3502,7 @@ MonoBehaviour:
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 701348526}
-          m_ObjectArgumentAssemblyTypeName: Level, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: Cubra.Level, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3500,6 +3523,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3533,10 +3557,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cf87cbdf7f96d04abf80e30ad3b6980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  number: 7
-  textNumber: {fileID: 99139494}
-  imageLevel: {fileID: 1853511349}
-  statuses:
+  _number: 7
+  _textNumber: {fileID: 99139494}
+  _status: {fileID: 1853511349}
+  _statuses:
   - {fileID: 21300000, guid: 308ae88102e013542980fa2085e44fae, type: 3}
   - {fileID: 21300000, guid: 0e17a1dd16ec8224a8124b3f794861dd, type: 3}
 --- !u!1 &714757824
@@ -3555,7 +3579,7 @@ GameObject:
   - component: {fileID: 714757826}
   - component: {fileID: 714757831}
   m_Layer: 5
-  m_Name: Levels
+  m_Name: LevelsButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3734,6 +3758,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3771,7 +3796,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b92e047cb5f233449176bda886cd0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: list-levels
+  _key: list-levels
 --- !u!1 &779828802
 GameObject:
   m_ObjectHideFlags: 0
@@ -3856,6 +3881,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.99215686, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3965,6 +3991,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.99215686, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4042,6 +4069,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4115,6 +4143,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4222,6 +4251,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.99215686, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4259,8 +4289,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba1c6ed4032c31b4c9c696f926807139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: level-stretcher
-  saveKey: stretcher
+  _key: level-stretcher
+  _saveKey: stretcher
 --- !u!1 &979800787
 GameObject:
   m_ObjectHideFlags: 0
@@ -4316,6 +4346,7 @@ GameObject:
   - component: {fileID: 1030989119}
   - component: {fileID: 1030989123}
   - component: {fileID: 1030989124}
+  - component: {fileID: 1030989125}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -4373,7 +4404,7 @@ Canvas:
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 2025719898}
-  m_PlaneDistance: 100
+  m_PlaneDistance: 20
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -4516,6 +4547,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9698faf8aeab3c941bd58089fb7e8fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1030989125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030989118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 054031ac6a9dbfa45a2121273d36f75b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1034450557
 GameObject:
   m_ObjectHideFlags: 0
@@ -4637,6 +4680,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.99215686, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4714,7 +4758,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b92e047cb5f233449176bda886cd0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: price-one
+  _key: price-one
 --- !u!114 &1062840491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4760,6 +4804,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.99215686, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4838,6 +4883,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.19607843}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4959,7 +5005,7 @@ MonoBehaviour:
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1163385561}
-          m_ObjectArgumentAssemblyTypeName: Level, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: Cubra.Level, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4980,6 +5026,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5013,10 +5060,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cf87cbdf7f96d04abf80e30ad3b6980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  number: 9
-  textNumber: {fileID: 1061451822}
-  imageLevel: {fileID: 1630435440}
-  statuses:
+  _number: 9
+  _textNumber: {fileID: 1061451822}
+  _status: {fileID: 1630435440}
+  _statuses:
   - {fileID: 21300000, guid: 308ae88102e013542980fa2085e44fae, type: 3}
   - {fileID: 21300000, guid: 0e17a1dd16ec8224a8124b3f794861dd, type: 3}
 --- !u!1 &1207433298
@@ -5235,6 +5282,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5421,6 +5469,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.99215686, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5500,6 +5549,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.19607843}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5573,6 +5623,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5646,6 +5697,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5752,6 +5804,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.99215686, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5877,7 +5930,7 @@ MonoBehaviour:
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1425314966}
-          m_ObjectArgumentAssemblyTypeName: Level, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: Cubra.Level, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5898,6 +5951,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5931,10 +5985,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cf87cbdf7f96d04abf80e30ad3b6980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  number: 1
-  textNumber: {fileID: 2016919664}
-  imageLevel: {fileID: 908167324}
-  statuses:
+  _number: 1
+  _textNumber: {fileID: 2016919664}
+  _status: {fileID: 908167324}
+  _statuses:
   - {fileID: 21300000, guid: 308ae88102e013542980fa2085e44fae, type: 3}
   - {fileID: 21300000, guid: 0e17a1dd16ec8224a8124b3f794861dd, type: 3}
 --- !u!1 &1442694082
@@ -6037,7 +6091,7 @@ MonoBehaviour:
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1442694087}
-          m_ObjectArgumentAssemblyTypeName: Level, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: Cubra.Level, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6058,6 +6112,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6091,10 +6146,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cf87cbdf7f96d04abf80e30ad3b6980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  number: 8
-  textNumber: {fileID: 697168009}
-  imageLevel: {fileID: 628840952}
-  statuses:
+  _number: 8
+  _textNumber: {fileID: 697168009}
+  _status: {fileID: 628840952}
+  _statuses:
   - {fileID: 21300000, guid: 308ae88102e013542980fa2085e44fae, type: 3}
   - {fileID: 21300000, guid: 0e17a1dd16ec8224a8124b3f794861dd, type: 3}
 --- !u!1 &1460088051
@@ -6150,6 +6205,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6187,7 +6243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b92e047cb5f233449176bda886cd0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: loading-level
+  _key: loading-level
 --- !u!1 &1493148410
 GameObject:
   m_ObjectHideFlags: 0
@@ -6243,6 +6299,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.99215686, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6311,8 +6368,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba1c6ed4032c31b4c9c696f926807139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: super-stretcher
-  saveKey: super-stretcher
+  _key: super-stretcher
+  _saveKey: super-stretcher
 --- !u!1 &1575680324
 GameObject:
   m_ObjectHideFlags: 0
@@ -6373,7 +6430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 246531fbeef92194ab3a594c9ba38e7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loading: {fileID: 1725498731}
+  _loading: {fileID: 1725498731}
 --- !u!1 &1630435438
 GameObject:
   m_ObjectHideFlags: 0
@@ -6426,6 +6483,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6502,6 +6560,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6642,7 +6701,7 @@ MonoBehaviour:
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1757632169}
-          m_ObjectArgumentAssemblyTypeName: Level, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: Cubra.Level, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6663,6 +6722,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6696,10 +6756,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cf87cbdf7f96d04abf80e30ad3b6980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  number: 6
-  textNumber: {fileID: 309567872}
-  imageLevel: {fileID: 1819137336}
-  statuses:
+  _number: 6
+  _textNumber: {fileID: 309567872}
+  _status: {fileID: 1819137336}
+  _statuses:
   - {fileID: 21300000, guid: 308ae88102e013542980fa2085e44fae, type: 3}
   - {fileID: 21300000, guid: 0e17a1dd16ec8224a8124b3f794861dd, type: 3}
 --- !u!1 &1758383101
@@ -6788,6 +6848,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6890,7 +6951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b92e047cb5f233449176bda886cd0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: leaderboard
+  _key: leaderboard
 --- !u!1 &1819137334
 GameObject:
   m_ObjectHideFlags: 0
@@ -6943,6 +7004,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -7016,6 +7078,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -7137,7 +7200,7 @@ MonoBehaviour:
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1861548412}
-          m_ObjectArgumentAssemblyTypeName: Level, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: Cubra.Level, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -7158,6 +7221,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -7191,10 +7255,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cf87cbdf7f96d04abf80e30ad3b6980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  number: 11
-  textNumber: {fileID: 1416891319}
-  imageLevel: {fileID: 470882251}
-  statuses:
+  _number: 11
+  _textNumber: {fileID: 1416891319}
+  _status: {fileID: 470882251}
+  _statuses:
   - {fileID: 21300000, guid: 308ae88102e013542980fa2085e44fae, type: 3}
   - {fileID: 21300000, guid: 0e17a1dd16ec8224a8124b3f794861dd, type: 3}
 --- !u!1 &1867272218
@@ -7249,6 +7313,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -7322,6 +7387,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -7427,6 +7493,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.99215686, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -7505,7 +7572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b92e047cb5f233449176bda886cd0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: stretcher-buy
+  _key: stretcher-buy
 --- !u!114 &1913999513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7562,13 +7629,13 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 2025719902}
         m_MethodName: BuyProduct
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 3
           m_FloatArgument: 0
-          m_StringArgument: 3_stretcher
+          m_StringArgument: stretcher_3
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1913999514
@@ -7616,6 +7683,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -7735,6 +7803,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -7878,7 +7947,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b92e047cb5f233449176bda886cd0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: upgrade-stretcher
+  _key: upgrade-stretcher
 --- !u!114 &1918052482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7891,8 +7960,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7adf33c6f94b0144b5cb2380e3ada59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeCost: 0000000064000000e80300008813000010270000
-  level: {fileID: 931607620}
+  _upgradeCost: 0000000064000000e80300008813000010270000
+  _level: {fileID: 931607620}
 --- !u!1 &1926487302
 GameObject:
   m_ObjectHideFlags: 0
@@ -8074,7 +8143,7 @@ MonoBehaviour:
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1933247005}
-          m_ObjectArgumentAssemblyTypeName: Level, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: Cubra.Level, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -8095,6 +8164,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -8128,10 +8198,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cf87cbdf7f96d04abf80e30ad3b6980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  number: 3
-  textNumber: {fileID: 815553344}
-  imageLevel: {fileID: 2034421726}
-  statuses:
+  _number: 3
+  _textNumber: {fileID: 815553344}
+  _status: {fileID: 2034421726}
+  _statuses:
   - {fileID: 21300000, guid: 308ae88102e013542980fa2085e44fae, type: 3}
   - {fileID: 21300000, guid: 0e17a1dd16ec8224a8124b3f794861dd, type: 3}
 --- !u!1 &1951781121
@@ -8188,6 +8258,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -8358,6 +8429,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.99215686, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -8435,6 +8507,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -8468,7 +8541,6 @@ GameObject:
   - component: {fileID: 2025719899}
   - component: {fileID: 2025719898}
   - component: {fileID: 2025719897}
-  - component: {fileID: 2025719903}
   - component: {fileID: 2025719902}
   - component: {fileID: 2025719901}
   - component: {fileID: 2025719900}
@@ -8511,7 +8583,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 20
   field of view: 60
   orthographic: 1
   orthographic size: 5
@@ -8523,7 +8595,7 @@ Camera:
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 0
-  m_HDR: 1
+  m_HDR: 0
   m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
@@ -8556,7 +8628,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4d4ea30f89b2c241814c3d884ffe68e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: 1
+  _scene: 1
 --- !u!114 &2025719901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8606,18 +8678,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &2025719903
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2025719896}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 054031ac6a9dbfa45a2121273d36f75b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2034421724
 GameObject:
   m_ObjectHideFlags: 0
@@ -8670,6 +8730,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -8811,6 +8872,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.19607843}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -8932,7 +8994,7 @@ MonoBehaviour:
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2097028514}
-          m_ObjectArgumentAssemblyTypeName: Level, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: Cubra.Level, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -8953,6 +9015,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -8986,9 +9049,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cf87cbdf7f96d04abf80e30ad3b6980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  number: 4
-  textNumber: {fileID: 779828802}
-  imageLevel: {fileID: 607985196}
-  statuses:
+  _number: 4
+  _textNumber: {fileID: 779828802}
+  _status: {fileID: 607985196}
+  _statuses:
   - {fileID: 21300000, guid: 308ae88102e013542980fa2085e44fae, type: 3}
   - {fileID: 21300000, guid: 0e17a1dd16ec8224a8124b3f794861dd, type: 3}

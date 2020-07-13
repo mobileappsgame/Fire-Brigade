@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using Appodeal.Unity.Editor;
 using UnityEditor;
 using UnityEngine;
 
@@ -20,7 +21,7 @@ namespace AppodealAds.Unity.Editor.Checkers
         public static CheckerWindow GetWindow()
         {
             var pos = new Rect(Vector2.zero, new Vector2(800, 400));
-            var window = (CheckerWindow) EditorWindow.GetWindowWithRect(typeof(CheckerWindow), pos, true,
+            var window = (CheckerWindow) GetWindowWithRect(typeof(CheckerWindow), pos, true,
                 "Appodeal Integration Check");
             return window;
         }
@@ -50,7 +51,6 @@ namespace AppodealAds.Unity.Editor.Checkers
                 currentStep++;
                 fixes = steps[currentStep].check();
             }
-
             if ((fixes == null || fixes.Count == 0) && currentStep < steps.Count - 1) steps[currentStep].done = true;
             var w1 = position.width * 0.3f;
             var styleWhiteBG = new GUIStyle(GUI.skin.scrollView);
