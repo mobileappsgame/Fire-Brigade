@@ -45,11 +45,34 @@ namespace Cubra.Controllers
             _limiters[1] = Camera.main.ViewportToWorldPoint(new Vector2(0.89f, 0)).x;
         }
 
+        // Управление на клавиатуре для тестирования уровней
+        #if UNITY_EDITOR || UNITY_STANDALONE
+        private void Update()
+        {
+            if (Input.GetKey("left")) Direction = Vector2.left / 10;
+            else if (Input.GetKey("right")) Direction = Vector2.right / 10;
+            else Direction = Vector2.zero;
+
+            if (Input.GetKeyDown("space"))
+            {
+                if (IsGroung == true && IsSwitched == false)
+                {
+                    _rigidbody.AddForce(new Vector2(0.5f * Direction.x, 1 * _jump), ForceMode2D.Impulse);
+                    IsGroung = false;
+                }
+            }
+
+            MoveCharacters();
+        }
+        #endif
+
+        #if UNITY_ANDROID
         private void FixedUpdate()
         {
             SetMotionVector();
             MoveCharacters();
         }
+        #endif
 
         /// <summary>
         /// Установка направления персонажей
