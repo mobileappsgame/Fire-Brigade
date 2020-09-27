@@ -92,21 +92,21 @@ namespace Cubra
             {
                 // Скрываем загрузку
                 _loading.SetActive(false);
-                
+
                 for (int i = 0; i < scores.Length; i++)
                 {
                     // Создаем пользователя и ищем его id массиве
                     IUserProfile user = FindUser(users, scores[i].userID);
-                    
+
                     // Выводим результаты в текстовое поле
                     _leaderboard.text += i + 1 + " - " + ((user != null) ? user.userName.ToUpper() : "UNKNOWN") + " (" + scores[i].value.ToString() + ")";
                     if (i < 9) _leaderboard.text += "\n";
-                    
+
                     // Записываем в json имена и результаты игроков
                     _leaders.Names[i] = (user != null) ? user.userName.ToUpper() : "UNKNOWN";
                     _leaders.Results[i] = scores[i].value;
                 }
-                
+
                 // Записываем результаты в файл
                 WriteToFile("leaderboard", ref _leaders);
             });

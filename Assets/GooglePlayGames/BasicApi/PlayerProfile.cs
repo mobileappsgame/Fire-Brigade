@@ -1,5 +1,5 @@
-// <copyright file="PluginVersion.cs" company="Google Inc.">
-// Copyright (C) 2014 Google Inc. All Rights Reserved.
+// <copyright file="Player.cs" company="Google Inc.">
+// Copyright (C) 2014 Google Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -14,13 +14,19 @@
 //    limitations under the License.
 // </copyright>
 
-namespace GooglePlayGames
+#if UNITY_ANDROID
+
+namespace GooglePlayGames.BasicApi
 {
-    public class PluginVersion
+    /// <summary>
+    /// Represents a player, a real-world person (tied to a Games account).
+    /// </summary>
+    public class PlayerProfile : PlayGamesUserProfile
     {
-        // Current Version.
-        public const int VersionInt = 0x01011;
-        public const string VersionString = "0.10.11";
-        public const string VersionKey = "01011" ;
+        internal PlayerProfile(string displayName, string playerId, string avatarUrl, bool isFriend) : base(displayName,
+            playerId, avatarUrl, isFriend)
+        {
+        }
     }
 }
+#endif

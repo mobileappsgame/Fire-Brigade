@@ -26,12 +26,10 @@ namespace Cubra.Levels
         private PlayingSound _playingResults;
 
         private LevelManager _levelManager;
-        private Banner _adsBanners;
 
         private void Awake()
         {
             _levelManager = Camera.main.GetComponent<LevelManager>();
-            _adsBanners = Camera.main.GetComponent<Banner>();
 
             _audioResults = _menuItems[(int)MenuItems.Results].GetComponent<AudioSource>();
             _playingResults = _menuItems[(int)MenuItems.Results].GetComponent<PlayingSound>();
@@ -90,9 +88,6 @@ namespace Cubra.Levels
                 _audioResults.clip = _audioClips[(int)AudioClips.Lose];
                 _playingResults.PlaySound();
             }
-
-            // Показываем рекламу
-            _adsBanners.ShowBanner();
         }
 
         /// <summary>

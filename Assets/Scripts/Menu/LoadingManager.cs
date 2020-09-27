@@ -9,7 +9,7 @@ namespace Cubra
         {
             #region Saved Data
             // Если отсутствуют сохранения
-            if (!PlayerPrefs.HasKey("saved-data"))
+            if (!PlayerPrefs.HasKey("progress"))
             {
                 // Перевод игры
                 PlayerPrefs.SetString("language", (Application.systemLanguage == SystemLanguage.Russian) ? "ru-RU" : "en-US");
@@ -37,20 +37,17 @@ namespace Cubra
 
                 // Прохождение обучения
                 PlayerPrefs.SetString("training", "no");
-
-                // Первоначальное сохранение данных
-                PlayerPrefs.SetString("saved-data", "yes");
             }
             #endregion
 
             // Активируем сервисы Google Play
-            _ = PlayGamesPlatform.Activate();
+            PlayGamesPlatform.Activate();
         }
 
         private void Start()
         {
             var transitions = gameObject.GetComponent<TransitionsManager>();
-            _ = StartCoroutine(transitions.GoToSceneWithPause(2f, (int)TransitionsManager.Scenes.Menu));
+            _ = StartCoroutine(transitions.GoToSceneWithPause(1.5f, (int)TransitionsManager.Scenes.Menu));
         }
     }
 }

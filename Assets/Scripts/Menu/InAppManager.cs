@@ -20,10 +20,10 @@ namespace Cubra
         private void Start()
         {
             var builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance());
-
+            
             builder.AddProduct(_stretcherX3, ProductType.Consumable);
             builder.AddProduct(_stretcherX10, ProductType.Consumable);
-
+            
             UnityPurchasing.Initialize(this, builder);
         }
 
